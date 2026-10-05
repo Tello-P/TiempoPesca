@@ -4,15 +4,21 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cómo funciona · Tiempo de Pesca CyL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1><a href="./">🎣 Tiempo de Pesca</a> <span>Cómo funciona y de dónde salen los datos</span></h1>
-    <nav><a href="./">← Volver a la consulta</a></nav>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+  <header class="cabecera">
+    <a href="./" class="marca" aria-label="Tiempo de Pesca, volver a la consulta">
+Tiempo de Pesca <span>Castilla y León</span></a>
+    <a href="./" class="enlace-cabecera">← Volver a la consulta</a>
   </header>
 
-  <div class="doc">
+  <main class="doc" id="contenido" tabindex="-1">
+    <h1>Cómo funciona y de dónde sale cada dato</h1>
     <div class="card">
       <h2>En resumen</h2>
       <p>Eliges un <b>tramo de pesca</b> y un <b>día</b>. La web junta varias fuentes públicas:</p>
@@ -27,8 +33,8 @@
           <tr>
             <td><b>Tiempo</b> (viento, temperatura, lluvia)</td>
             <td><a href="https://open-meteo.com" target="_blank">Open-Meteo</a>, que agrega modelos meteorológicos públicos</td>
-            <td>Se pide para las coordenadas del <b>punto medio del tramo</b> (🌤️ en el mapa). Se indica el
-              <b>pueblo más cercano</b> a ese punto (🏠) como referencia.</td>
+            <td>Se pide para las coordenadas del <b>punto medio del tramo</b> (cuadrado negro en el mapa). Se indica el
+              <b>pueblo más cercano</b> a ese punto (círculo negro) como referencia.</td>
           </tr>
           <tr>
             <td><b>Pueblo de referencia</b></td>
@@ -38,22 +44,28 @@
           <tr>
             <td><b>Caudal</b></td>
             <td>Las cinco confederaciones hidrográficas con ríos en CyL: Duero, Tajo, Miño-Sil, Cantábrico y Ebro</td>
-            <td>Se usa la estación de aforo <b>del mismo río más cercana</b> al tramo (💧 en el mapa) o, si no hay, la del río
+            <td>Se usa la estación de aforo <b>del mismo río más cercana</b> al tramo (rombo azul en el mapa) o, si no hay, la del río
               principal como referencia.</td>
           </tr>
         </tbody>
       </table>
       <h3>Cómo se usa</h3>
+      <p>La web te guía con una pregunta cada vez. Arriba se ve en qué paso estás, y lo ya elegido aparece con un botón
+        «Cambiar» para volver atrás sin perder nada.</p>
       <ol>
-        <li><b>¿Dónde vas a pescar?</b> Pulsa el río en el <b>mapa</b> y luego «Elegir este tramo». Si no lo encuentras,
-          búscalo escribiendo el río, el pueblo o su nombre, o elige provincia y río: el mapa se acerca a esos tramos.
-          Tus últimos tramos aparecen bajo el mapa para volver a ellos con un clic
-          (se guardan solo en tu navegador).</li>
-        <li><b>¿Qué día?</b> Pulsa Hoy, Mañana o el día de la semana. Para otra fecha, usa «¿Otro día?».</li>
-        <li><b>De un vistazo:</b> un resumen con colores. <span style="color:var(--verde)"><b>Verde</b></span> es buen día para eso,
-          <span style="color:var(--ambar)"><b>ámbar</b></span> conviene mirarlo y <span style="color:var(--rojo)"><b>rojo</b></span> es
-          mal día o prohibido. Debajo están los detalles hora a hora, el caudal, el mapa y la normativa.</li>
+        <li><b>01 · Tramo.</b> Pulsa el río en el <b>mapa</b> y luego «Elegir este tramo», o búscalo por el nombre del río, del
+          pueblo o del tramo. Tus últimos tramos salen arriba (se guardan solo en tu navegador).</li>
+        <li><b>02 · Día.</b> Pulsa Hoy, Mañana o el día de la semana. Para otra fecha, usa «¿Otro día?».</li>
+        <li><b>03 · Zona</b> (solo en tramos largos). Elige el pueblo más cercano a donde vas a pescar para ver el tiempo de esa
+          parte del tramo. Si no lo sabes, elige el punto medio.</li>
+        <li><b>04 · Resultado.</b> Primero, en grande, si ese día se puede pescar y una frase con el tiempo y el río. Después, seis
+          fichas: cielo, viento, lluvia, temperatura, río y normas, cada una con su estado escrito (<b>Bien</b>,
+          <b>Atención</b> o <b>Mal</b>) además del color. Más abajo, todos los detalles: el tiempo hora a hora, el caudal, el
+          mapa y la normativa completa.</li>
       </ol>
+      <p><b>Accesibilidad:</b> se puede usar entera con el teclado, el foco va al título de cada paso, los avisos de carga se
+        leen en voz alta con lectores de pantalla, los colores cumplen el contraste recomendado y, si el sistema pide menos
+        movimiento, la web no hace animaciones.</p>
       <p class="nota">Todos los resultados llevan un recuadro <b>«Fuente»</b> con enlaces a los datos originales de esa consulta concreta.</p>
     </div>
 
@@ -82,6 +94,13 @@
       <h2>2. El tiempo</h2>
       <p><b>¿Dónde se calcula?</b> En las <b>coordenadas del punto medio del tramo</b>, medido a lo largo del río, y no en el centro
         de un pueblo. Muchos tramos de montaña están lejos del pueblo que les da nombre, y un tramo puede pasar por varios municipios.</p>
+      <p><b>Tramos largos:</b> algunos tramos miden decenas de kilómetros (el Carrión VI, 118 km; el Esgueva IV, 53 km), y el tiempo
+        puede cambiar mucho de un extremo a otro. En los tramos de 5 km o más, la web calcula <b>los pueblos por los que pasa</b>:
+        los núcleos habitados a menos de 2 km del río, ordenados desde el límite superior oficial del tramo (en los ríos, aguas arriba; en algunos embalses, la presa)
+        y con su kilómetro dentro del tramo. Si dos caen casi en el mismo punto del río
+        (a menos de 1,5 km), se queda el más cercano al agua. En los resultados aparece «¿En qué zona del tramo vas a pescar?»:
+        al elegir un pueblo, el tiempo se pide para el <b>punto del río más cercano a ese pueblo</b>. En el mapa del tramo, esos
+        pueblos salen como círculos blancos y también se pueden pulsar.</p>
       <p><b>¿Qué pueblo es?</b> Para que sepas de dónde es el tiempo, cada consulta indica el <b>pueblo más cercano</b> a ese punto
         (por ejemplo, «Tiempo junto a Lario»), con la distancia. Sale de la capa oficial de núcleos de población de la Junta (IDECyL):
         se usan los núcleos principales habitados y se elige el más cercano en línea recta. Normalmente está a 0,5–3 km.
@@ -205,7 +224,7 @@
         estaciones usadas; cuando un dato tiene más de 30 minutos, se muestra el que ya había y se actualiza en segundo plano. La hora
         exacta de cada dato aparece en su recuadro «Fuente».</p>
     </div>
-  </div>
+  </main>
 
   <script>
     const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));

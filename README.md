@@ -15,6 +15,8 @@ Pensada para que la use cualquiera, en tres pasos:
 - **Temperatura y lluvia por horas**, y la lluvia acumulada en los 7 días previos.
 - **Caudal** de la estación de aforo asignada al tramo: la semana que termina en ese día o,
   si el día es futuro, los últimos 7 días con su tendencia.
+- **Tramos largos**: se puede elegir el pueblo del tramo más cercano a donde vas a pescar y el tiempo se calcula
+  junto a él (en el punto del río más cercano a ese pueblo).
 - **Si ese día se puede pescar** en el tramo (temporada, día hábil, sin muerte o con muerte, festivos).
 - **Normativa completa**, como en la ficha oficial: periodos y días hábiles, permisos, tallas y cupos de todas las especies,
   cebos, cañas, aparatos de flotación, cangrejo y zonas de carpa y black-bass.

@@ -49,11 +49,20 @@ del _GEO, _por_provincia
 # El tiempo (Open-Meteo, rápido) y el caudal (las confederaciones, a veces muy lentas) se
 # piden por separado para que la web muestre cada cosa en cuanto llega.
 
-def consulta_meteo(tramo: dict, dia: date) -> dict:
-    return {"meteo": fuentes.meteo_dia(tramo["lat"], tramo["lon"], dia)}
+def consulta_meteo(tramo: dict, dia: date, q: dict) -> dict:
+    """Tiempo en el punto medio del tramo o, si se pide `punto=N`, junto al pueblo N del tramo."""
+    puntos = tramo.get("puntos") or []
+    try:
+        n = int(q.get("punto", [""])[0])
+    except ValueError:
+        n = None
+    if n is not None and 0 <= n < len(puntos):
+        punto = puntos[n]
+        return {"meteo": fuentes.meteo_dia(punto["lat"], punto["lon"], dia), "punto": n}
+    return {"meteo": fuentes.meteo_dia(tramo["lat"], tramo["lon"], dia), "punto": None}
 
 
-def consulta_caudal(tramo: dict, dia: date) -> dict:
+def consulta_caudal(tramo: dict, dia: date, q: dict) -> dict:
     estacion = ESTACIONES.get(tramo["estacion"])
     if not estacion:
         raise fuentes.ErrorFuente("Este tramo no tiene estación de aforo asignada.")
@@ -117,7 +126,7 @@ class Handler(SimpleHTTPRequestHandler):
             if not tramo:
                 return self._json(404, json.dumps({"error": f"Tramo desconocido: {id_tramo}"}, ensure_ascii=False))
             try:
-                resultado = CONSULTAS[url.path](tramo, dia)
+                resultado = CONSULTAS[url.path](tramo, dia, q)
             except fuentes.ErrorFuente as e:
                 return self._json(502, json.dumps({"error": str(e)}, ensure_ascii=False))
             return self._json(200, json.dumps(resultado, ensure_ascii=False))

@@ -72,6 +72,10 @@ CAMPOS = [
 ]
 CAPAS_ESPECIES = {"Carpa": "pesca:pesca_cyl_espec_v_carpa", "Black-bass": "pesca:pesca_cyl_espec_v_bbass"}
 MAX_KM_ZONA_ESPECIE = 0.3   # distancia máxima de un punto del tramo a la zona para contar como dentro
+# Pueblos a lo largo de cada tramo, para elegir dónde se pide el tiempo en tramos largos
+MAX_KM_PUEBLO_RIO = 2.0     # pueblos a menos de esta distancia del río
+MIN_KM_ENTRE_PUNTOS = 1.5   # no ofrecer dos puntos casi en el mismo sitio del río
+MIN_KM_TRAMO_PUNTOS = 5.0   # solo en tramos de al menos esta longitud
 MIN_FRACCION_ZONA = 1 / 3   # parte del tramo que debe estar dentro (evita marcar afluentes por su desembocadura)
 
 
@@ -110,6 +114,58 @@ def descargar_zonas_especies() -> list[dict]:
                           "caja": (min(x for x, _ in pts), min(y for _, y in pts),
                                    max(x for x, _ in pts), max(y for _, y in pts))})
     return zonas
+
+
+def puntos_del_tramo(partes, p: dict, pueblos: list[dict]) -> list[dict]:
+    """Pueblos junto al río a lo largo del tramo, de aguas arriba a aguas abajo.
+
+    Para cada pueblo se da el punto del río más cercano (ahí se pide el tiempo) y su
+    kilómetro desde el límite superior. El sentido se toma de las coordenadas oficiales
+    del límite superior (x1, y1)."""
+    if (p.get("long_km") or 0) < MIN_KM_TRAMO_PUNTOS:
+        return []
+    # Ordenar las partes empezando por la más cercana al límite superior y orientarlas
+    arriba = None
+    if p.get("x1") and p.get("y1"):
+        arriba = list(cuencas.utm_a_lonlat(p["x1"], p["y1"], 30))
+    partes = [list(parte) for parte in partes if parte]
+    if arriba:
+        def cerca(parte):
+            return min(dist_km(parte[0], arriba), dist_km(parte[-1], arriba))
+        partes.sort(key=cerca)
+        partes = [parte if dist_km(parte[0], arriba) <= dist_km(parte[-1], arriba) else parte[::-1]
+                  for parte in partes]
+    recorrido, km = [], 0.0
+    for parte in partes:
+        for i, v in enumerate(parte):
+            if i:
+                km += dist_km(parte[i - 1], v)
+            recorrido.append((v, km))
+
+    xs = [v[0] for v, _ in recorrido]
+    ys = [v[1] for v, _ in recorrido]
+    margen = 0.03
+    candidatos = []
+    for q in pueblos:
+        if not (min(xs) - margen <= q["lon"] <= max(xs) + margen and min(ys) - margen <= q["lat"] <= max(ys) + margen):
+            continue
+        pq = [q["lon"], q["lat"]]
+        v, k = min(recorrido, key=lambda r: dist_km(pq, r[0]))
+        d = dist_km(pq, v)
+        if d <= MAX_KM_PUEBLO_RIO:
+            candidatos.append((k, d, q, v))
+    # Si dos pueblos caen casi en el mismo punto del río, se queda el más cercano al río
+    candidatos.sort(key=lambda c: (c[0], c[1]))
+    puntos = []
+    for k, d, q, v in candidatos:
+        if puntos and k - puntos[-1]["km"] < MIN_KM_ENTRE_PUNTOS:
+            if d < puntos[-1]["dist_km"]:
+                puntos.pop()
+            else:
+                continue
+        puntos.append({"pueblo": q["nombre"], "municipio": q["municipio"], "km": round(k, 1),
+                       "lat": round(v[1], 5), "lon": round(v[0], 5), "dist_km": round(d, 1)})
+    return puntos if len(puntos) >= 2 else []
 
 
 def zonas_del_tramo(partes, zonas) -> list[dict]:
@@ -307,6 +363,7 @@ def main():
             lon=round(medio[0], 5),
             pueblo=pueblo_cercano(medio, pueblos),
             zonas_especies=zonas_del_tramo(partes, zonas),
+            puntos=puntos_del_tramo(simpl, p, pueblos),
             **asignacion,
         )
         salida.append({
@@ -337,6 +394,8 @@ def main():
                 "max_km_rio_principal": MAX_KM_RIO_PRINCIPAL,
                 "fuente_tramos": url_wfs(),
                 "fuente_pueblos": NUCLEOS_URL,
+                "puntos_tramo": {"max_km_pueblo_rio": MAX_KM_PUEBLO_RIO, "min_km_entre_puntos": MIN_KM_ENTRE_PUNTOS,
+                                 "min_km_tramo": MIN_KM_TRAMO_PUNTOS},
                 "fuente_zonas_especies": {k: url_wfs(v) for k, v in CAPAS_ESPECIES.items()},
                 "overrides_estacion": OVERRIDES_ESTACION,
             },

@@ -148,7 +148,7 @@ function fichaNormasDia(t, iso) {
   let valor, detalle, color;
   switch (e.estado) {
     case "vedado":
-      return ficha("⛔", "Las normas", "Vedado", "En este tramo no se puede pescar nunca." + enlace, "rojo");
+      return ficha("normas", "Las normas", "Vedado", "En este tramo no se puede pescar nunca." + enlace, "rojo");
     case "fuera":
       [valor, color] = ["Cerrado ese día", "rojo"];
       detalle = `Fuera de temporada. Se puede pescar ${esc(temporada)}.`;
@@ -179,8 +179,8 @@ function fichaNormasDia(t, iso) {
       detalle = temporada ? `Temporada: ${esc(temporada)}.` : "";
   }
   detalle += `<br>${esc(t.categoria)} · ${esc(t.modalidad)}.`;
-  if (e.cangrejo === "si") detalle += "<br>🦞 Ese día también se puede pescar cangrejo.";
-  return ficha("📋", "Las normas", valor, detalle + enlace, color);
+  if (e.cangrejo === "si") detalle += "<br>Ese día también se puede pescar cangrejo.";
+  return ficha("normas", "Las normas", valor, detalle + enlace, color);
 }
 
 // --- ficha completa ----------------------------------------------------------
@@ -213,7 +213,7 @@ function htmlPeriodo(n, ini, fin, sm, cm, permisos) {
 function htmlNormativa(t, iso) {
   const vedado = t.modalidad === "Vedado";
   const e = iso ? estadoDia(t, iso) : null;
-  let html = `<div class="card normativa"><h3>Normativa del tramo</h3>`;
+  let html = `<div class="card normativa">`;
 
   html += `<dl class="info">${filasInfo([
     ["Desde", esc(t.lim_superi)],
@@ -270,7 +270,7 @@ function htmlNormativa(t, iso) {
   }
 
   if (t.ord_cangre === "Sí" && !vedado) {
-    html += `<h4 class="seccion">🦞 Cangrejo rojo y señal</h4><dl class="info">${filasInfo([
+    html += `<h4 class="seccion">Cangrejo rojo y señal</h4><dl class="info">${filasInfo([
       ["Periodo", esc(textoPeriodo(t.per1_c_i, t.per1_c_f))],
       ["Días", esc(t.dp1_cang_c)],
       ["Segundo periodo", esc(textoPeriodo(t.per2_c_i, t.per2_c_f))],
@@ -288,4 +288,20 @@ function htmlNormativa(t, iso) {
     ${fuenteTramo()}
   </div>`;
   return html;
+}
+
+// Frase grande del resultado: { texto, clase: "bien" | "ojo" | "mal" }
+function veredictoNormas(t, iso) {
+  const e = estadoDia(t, iso);
+  const dia = NOMBRE_DIA[new Date(iso + "T12:00").getDay()];
+  switch (e.estado) {
+    case "vedado": return { texto: "Tramo vedado: aquí no se puede pescar.", clase: "mal" };
+    case "fuera": return { texto: "Ese día está cerrado: fuera de temporada.", clase: "mal" };
+    case "no_habil": return { texto: `El ${dia} no se puede pescar en este tramo.`, clase: "mal" };
+    case "sin_muerte": return { texto: "Se puede pescar, sin muerte.", clase: "bien" };
+    case "con_muerte": return { texto: "Se puede pescar, con muerte.", clase: "bien" };
+    case "ambas":
+    case "temporada": return { texto: "Se puede pescar.", clase: "bien" };
+    default: return { texto: "Consulta la ficha oficial para saber si se puede pescar.", clase: "ojo" };
+  }
 }

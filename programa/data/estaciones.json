@@ -2413,19 +2413,6 @@
   }
  },
  {
-  "id": "Miño-Sil:N037",
-  "cuenca": "Miño-Sil",
-  "codigo": "N037",
-  "nombre": "Rio Sil En Matarrosa Del Sil",
-  "rio": "Sil",
-  "lat": 42.758462,
-  "lon": -6.529674,
-  "url_publica": "https://saih.chminosil.es/index.php?url=/datos/ficha/estacion:N037/area:HID",
-  "extra": {
-   "tag": "N037_ACQRIO1"
-  }
- },
- {
   "id": "Miño-Sil:N036",
   "cuenca": "Miño-Sil",
   "codigo": "N036",
@@ -2436,6 +2423,19 @@
   "url_publica": "https://saih.chminosil.es/index.php?url=/datos/ficha/estacion:N036/area:HID",
   "extra": {
    "tag": "N036_ACQRIO1"
+  }
+ },
+ {
+  "id": "Miño-Sil:N037",
+  "cuenca": "Miño-Sil",
+  "codigo": "N037",
+  "nombre": "Rio Sil En Matarrosa Del Sil",
+  "rio": "Sil",
+  "lat": 42.758462,
+  "lon": -6.529674,
+  "url_publica": "https://saih.chminosil.es/index.php?url=/datos/ficha/estacion:N037/area:HID",
+  "extra": {
+   "tag": "N037_ACQRIO1"
   }
  },
  {

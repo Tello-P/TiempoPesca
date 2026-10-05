@@ -3,30 +3,50 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tiempo de Pesca CyL</title>
+  <title>Tiempo de Pesca · Castilla y León</title>
+  <meta name="description" content="El tiempo, el caudal y las normas de cada tramo de pesca de Castilla y León.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1><a href="./" id="inicio">🎣 Tiempo de Pesca <span>Castilla y León</span></a></h1>
-    <nav><a href="como-funciona.html">¿Cómo funciona?</a></nav>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <header class="cabecera">
+    <a href="./" class="marca" aria-label="Tiempo de Pesca, volver al inicio">Tiempo de Pesca <span>Castilla y León</span></a>
+    <a href="como-funciona.html" class="enlace-cabecera">Cómo funciona</a>
   </header>
 
-  <main class="pasos">
-    <!-- PASO 1: elegir tramo -->
-    <section id="paso1" class="paso">
-      <h2><span class="num">1</span> ¿Dónde vas a pescar?</h2>
+  <nav class="pasos-nav" aria-label="Pasos de la consulta">
+    <ol id="progreso">
+      <li data-paso="1"><button type="button" data-ir="1"><span class="n">1</span> Tramo</button></li>
+      <li data-paso="2"><button type="button" data-ir="2"><span class="n">2</span> Día</button></li>
+      <li data-paso="3"><button type="button" data-ir="3"><span class="n">3</span> Zona</button></li>
+      <li data-paso="4"><button type="button" data-ir="4"><span class="n">4</span> Resultado</button></li>
+    </ol>
+  </nav>
 
-      <div id="elegido" class="elegido" hidden></div>
+  <!-- Avisos para lectores de pantalla (cargas, cambios de paso) -->
+  <p id="avisos" class="solo-lectores" role="status" aria-live="polite"></p>
 
-      <div id="eleccion">
-        <p class="instruccion">Pulsa sobre el río en el mapa para elegir el tramo. Usa <b>+</b> y <b>−</b> para acercarte.</p>
-        <div id="mapaElegir"><p class="cargando-mini">Cargando el mapa de tramos…</p></div>
-        <div class="leyenda-mapa">
+  <main id="contenido" tabindex="-1">
+    <!-- PASO 1: tramo -->
+    <section id="paso1" class="paso" aria-labelledby="titulo1">
+      <div class="encabezado-paso">
+        <h1 id="titulo1" tabindex="-1">¿Dónde vas a pescar?</h1>
+        <p class="guia">Pulsa el río en el mapa y luego «Elegir este tramo». También puedes buscarlo debajo del mapa.</p>
+      </div>
+
+      <div id="mapaElegir" role="region" aria-label="Mapa de tramos de pesca. Pulsa un tramo para elegirlo.">
+        <p class="cargando">Cargando el mapa de tramos…</p>
+      </div>
+      <div class="bajo-mapa">
+        <div class="leyenda-mapa" aria-label="Leyenda">
           <span><i class="linea truchera"></i> Aguas trucheras</span>
           <span><i class="linea otras"></i> Aguas no trucheras</span>
-          <span><i class="linea vedada"></i> Vedado (no se puede pescar)</span>
+          <span><i class="linea vedada"></i> Vedado: no se puede pescar</span>
         </div>
         <label class="campo filtro">Qué tramos ver
           <select id="filtroTramos">
@@ -36,18 +56,19 @@
             <option value="no_trucheras">Solo aguas no trucheras (barbo, carpa, tenca…)</option>
           </select>
         </label>
+      </div>
 
-        <div id="recientes" hidden>
-          <p class="etiqueta">Tus últimos tramos:</p>
-          <div id="listaRecientes" class="lista"></div>
-        </div>
+      <div class="bloque-paso" id="recientes" hidden>
+        <h2>Tus últimos tramos</h2>
+        <div id="listaRecientes" class="lista"></div>
+      </div>
 
-        <p class="o">¿No lo encuentras en el mapa? Búscalo aquí:</p>
-        <label class="campo">Busca por río, pueblo o nombre del tramo
-          <input id="buscar" type="search" placeholder="Por ejemplo: Carrión, Saldaña, Esla…" autocomplete="off">
+      <div class="bloque-paso">
+        <h2>Buscar por su nombre</h2>
+        <label class="campo">Escribe el río, el pueblo o el nombre del tramo
+          <input id="buscar" type="search" placeholder="Por ejemplo: Carrión, Saldaña, Esla" autocomplete="off">
         </label>
-
-        <p class="o">o elígelo por partes:</p>
+        <p class="o">O elige la provincia y el río:</p>
         <div class="fila">
           <label class="campo">Provincia
             <select id="provincia"><option value="">Elige la provincia</option></select>
@@ -56,34 +77,48 @@
             <select id="rio" disabled><option value="">Primero elige la provincia</option></select>
           </label>
         </div>
-
-        <div id="listaTramos" class="lista"></div>
+        <div id="listaTramos" class="lista" aria-live="polite">
+          <p class="vacio">Aquí aparecerán los tramos cuando escribas un nombre o elijas una provincia.</p>
+        </div>
       </div>
     </section>
 
-    <!-- PASO 2: elegir día -->
-    <section id="paso2" class="paso" hidden>
-      <h2><span class="num">2</span> ¿Qué día?</h2>
-      <div id="elegidoDia" class="elegido" hidden></div>
-      <div id="eleccionDia">
-        <div id="dias" class="dias"></div>
-        <label class="campo otro-dia">¿Otro día?
-          <input type="date" id="fecha">
-        </label>
+    <!-- PASO 2: día -->
+    <section id="paso2" class="paso" aria-labelledby="titulo2" hidden>
+      <div class="encabezado-paso">
+        <p class="elegido" id="resumen2"></p>
+        <h1 id="titulo2" tabindex="-1">¿Qué día vas a ir?</h1>
+        <p class="guia">Hay previsión para los próximos 15 días. También puedes mirar un día pasado.</p>
       </div>
+      <div id="dias" class="dias" role="group" aria-label="Próximos días"></div>
+      <label class="campo otro-dia">Otro día
+        <input type="date" id="fecha">
+      </label>
+      <p class="acciones"><button class="boton-texto" data-ir="1">← Elegir otro tramo</button></p>
     </section>
 
-    <!-- PASO 3: resultados -->
-    <section id="paso3" hidden></section>
+    <!-- PASO 3: zona del tramo (solo tramos largos) -->
+    <section id="paso3" class="paso" aria-labelledby="titulo3" hidden>
+      <div class="encabezado-paso">
+        <p class="elegido" id="resumen3"></p>
+        <h1 id="titulo3" tabindex="-1">¿Por qué zona del tramo?</h1>
+        <p class="guia" id="guiaZona"></p>
+      </div>
+      <div id="zonas" class="lista zonas" role="group" aria-label="Zonas del tramo"></div>
+      <p class="acciones"><button class="boton-texto" data-ir="2">← Elegir otro día</button></p>
+    </section>
+
+    <!-- PASO 4: resultado -->
+    <section id="paso4" class="paso resultado" aria-labelledby="titulo4" hidden></section>
   </main>
 
-  <footer>
-    Datos: tramos y pueblos <a href="https://idecyl.jcyl.es" target="_blank">Junta de Castilla y León (IDECyL)</a> ·
-    caudales: confederaciones hidrográficas del <a href="https://www.saihduero.es" target="_blank">Duero</a>,
-    <a href="https://saihtajo.chtajo.es" target="_blank">Tajo</a>, <a href="https://saih.chminosil.es" target="_blank">Miño-Sil</a>,
-    <a href="https://visor.saichcantabrico.es" target="_blank">Cantábrico</a> y <a href="https://www.saihebro.com" target="_blank">Ebro</a> ·
-    tiempo <a href="https://open-meteo.com" target="_blank">Open-Meteo</a>.
-    Consulta siempre la normativa oficial antes de pescar. <a href="como-funciona.html">Cómo funciona</a>.
+  <footer class="pie">
+    <p>Tramos, normativa y pueblos: <a href="https://idecyl.jcyl.es" target="_blank" rel="noopener">Junta de Castilla y León</a>.
+      Caudales: confederaciones hidrográficas del <a href="https://www.saihduero.es" target="_blank" rel="noopener">Duero</a>,
+      <a href="https://saihtajo.chtajo.es" target="_blank" rel="noopener">Tajo</a>, <a href="https://saih.chminosil.es" target="_blank" rel="noopener">Miño-Sil</a>,
+      <a href="https://visor.saichcantabrico.es" target="_blank" rel="noopener">Cantábrico</a> y <a href="https://www.saihebro.com" target="_blank" rel="noopener">Ebro</a>.
+      Tiempo: <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo</a>.</p>
+    <p>Consulta siempre la normativa oficial antes de pescar. <a href="como-funciona.html">Cómo funciona esta web</a>.</p>
   </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
