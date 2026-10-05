@@ -1,7 +1,7 @@
 # TiempoPesca
 
 Web local para consultar el tiempo y el caudal en **todos los tramos de pesca de Castilla y León**
-(2.354 tramos de la capa oficial de la Junta).
+(los 2.354 tramos de la capa oficial de la Junta: trucheros, no trucheros y vedados).
 
 Pensada para que la use cualquiera, en tres pasos:
 
@@ -15,7 +15,9 @@ Pensada para que la use cualquiera, en tres pasos:
 - **Temperatura y lluvia por horas**, y la lluvia acumulada en los 7 días previos.
 - **Caudal** de la estación de aforo asignada al tramo: la semana que termina en ese día o,
   si el día es futuro, los últimos 7 días con su tendencia.
-- **Normativa del tramo**: límites, periodo hábil, cebos, cupo y enlace a la ficha oficial.
+- **Si ese día se puede pescar** en el tramo (temporada, día hábil, sin muerte o con muerte, festivos).
+- **Normativa completa**, como en la ficha oficial: periodos y días hábiles, permisos, tallas y cupos de todas las especies,
+  cebos, cañas, aparatos de flotación, cangrejo y zonas de carpa y black-bass.
 - **Mapa** del tramo con el pueblo de referencia y la estación de aforo.
 
 ## Cómo usarlo

@@ -64,8 +64,14 @@
         de cada tramo sobre el río y sus datos de normativa, así que <b>no hace falta mantener una base de datos propia</b>.</p>
       <p>El script <code>programa/scripts/build_data.py</code> descarga esa capa con un servicio WFS estándar, con <b>todos los tramos de Castilla y León</b>
         (<span id="numTramos">…</span>) y lo guarda en <code>programa/data/tramos.geojson</code>.</p>
-      <p>Por defecto, en los menús solo salen las <b>aguas trucheras</b> donde se puede pescar. Marcando «Mostrar también aguas no
-        trucheras y refugios» aparecen todos: aguas de ciprínidos, lagunas y tramos vedados.</p>
+      <p>Salen <b>todos los tramos</b>: aguas trucheras (azul), aguas no trucheras de barbo, carpa, tenca… (ocre) y vedados
+        (rojo discontinuo). Con «Qué tramos ver», debajo del mapa, se puede dejar solo los pescables, solo los trucheros o solo
+        los no trucheros.</p>
+      <p>De cada tramo se muestra <b>toda la normativa de la ficha oficial</b>: periodos y días hábiles (sin muerte y con muerte),
+        permisos por día, tallas mínimas y cupos de cada especie (trucha, barbos, boga y otros ciprínidos, carpín, tenca, hucho y
+        exóticas invasoras), cebos y señuelos, número de cañas, aparatos de flotación, otras limitaciones y, si está regulado, la
+        pesca del cangrejo rojo y señal. También se indica si el tramo está en una <b>zona de pesca de carpa o black-bass</b>
+        (capas oficiales de la Junta; cuenta si al menos un tercio del tramo cae dentro).</p>
       <p>Algunos tramos se solapan. Por ejemplo, una «excepción de fecha de inicio y cierre» puede cubrir el mismo trozo de río
         que un tramo libre: son normas distintas que se aplican sobre el mismo sitio.</p>
       <p><b>Última descarga:</b> <span id="generado">…</span>. La normativa puede cambiar: antes de pescar, consulta siempre la
@@ -107,6 +113,11 @@
         <li><b>Lluvia:</b> «no se espera» (menos de 0,2 mm y probabilidad menor del 30 %), «puede caer alguna gota», «algo de lluvia»
           (hasta 3 mm) o «lluvia».</li>
         <li><b>El cielo:</b> el estado que más se repite durante el día.</li>
+        <li><b>Las normas:</b> dice si <b>ese día se puede pescar</b> en el tramo. Comprueba que la fecha esté dentro de alguno de
+          sus periodos hábiles (entiende fechas como «Último sábado de marzo» o «Tercer sábado de marzo») y que ese día de la
+          semana sea hábil, y si es sin muerte o con muerte. Tiene en cuenta los festivos nacionales y de Castilla y León
+          (incluidos Jueves y Viernes Santo), pero <b>no los festivos locales</b> de cada pueblo: si el día no sale como hábil y en
+          el tramo se pesca los festivos, la web avisa de que lo compruebes. Si además se puede pescar cangrejo ese día, lo dice.</li>
       </ul>
       <p><b>Limitaciones:</b> la malla tiene una resolución de kilómetros, y en valles encajados (Riaño, alto Carrión…) el viento real puede
         ser distinto por encauzamientos o brisas de valle. En tramos muy largos, como los embalses, el punto medio puede no representar

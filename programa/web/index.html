@@ -25,9 +25,17 @@
         <div id="mapaElegir"><p class="cargando-mini">Cargando el mapa de tramos…</p></div>
         <div class="leyenda-mapa">
           <span><i class="linea truchera"></i> Aguas trucheras</span>
-          <span class="solo-todos" hidden><i class="linea otras"></i> No trucheras</span>
-          <span class="solo-todos" hidden><i class="linea vedada"></i> Vedado</span>
+          <span><i class="linea otras"></i> Aguas no trucheras</span>
+          <span><i class="linea vedada"></i> Vedado (no se puede pescar)</span>
         </div>
+        <label class="campo filtro">Qué tramos ver
+          <select id="filtroTramos">
+            <option value="todos">Todos los tramos</option>
+            <option value="pescables">Solo donde se puede pescar (sin vedados)</option>
+            <option value="trucheras">Solo aguas trucheras</option>
+            <option value="no_trucheras">Solo aguas no trucheras (barbo, carpa, tenca…)</option>
+          </select>
+        </label>
 
         <div id="recientes" hidden>
           <p class="etiqueta">Tus últimos tramos:</p>
@@ -48,7 +56,6 @@
             <select id="rio" disabled><option value="">Primero elige la provincia</option></select>
           </label>
         </div>
-        <label class="check"><input type="checkbox" id="verTodos"> Mostrar también aguas no trucheras y refugios (vedados)</label>
 
         <div id="listaTramos" class="lista"></div>
       </div>
@@ -81,6 +88,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="normativa.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

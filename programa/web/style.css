@@ -235,7 +235,7 @@ footer { max-width: 920px; margin: 0 auto; padding: 12px 20px 30px; color: var(-
 .leyenda-mapa { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 8px 2px 4px; color: var(--muted); font-size: .95rem; }
 .leyenda-mapa i.linea { display: inline-block; width: 26px; height: 5px; border-radius: 3px; vertical-align: middle; margin-right: 4px; }
 .linea.truchera { background: #1f5fa8; }
-.linea.otras { background: #7a8a85; }
+.linea.otras { background: #b8741a; }
 .linea.vedada { background: repeating-linear-gradient(90deg, #b42318 0 6px, transparent 6px 10px); }
 .popup-tramo { font-size: 1rem; line-height: 1.4; min-width: 220px; }
 .popup-tramo b { font-size: 1.1rem; }
@@ -243,3 +243,11 @@ footer { max-width: 920px; margin: 0 auto; padding: 12px 20px 30px; color: var(-
 .popup-tramo button { width: 100%; background: var(--accent); color: #fff; border: none; font-weight: 700; min-height: 48px; }
 .popup-tramo .no-pescar { color: var(--danger); font-weight: 700; }
 .leaflet-container { font: inherit; }
+.filtro { margin-top: 14px; max-width: 520px; }
+
+/* Normativa completa */
+.normativa h4.seccion { margin: 22px 0 8px; font-size: 1.08rem; border-top: 1px solid var(--border); padding-top: 14px; }
+.normativa .periodo { margin: 8px 0 12px; }
+.normativa .periodo h4 { margin: 0 0 6px; font-size: 1rem; }
+.tabla-normas td, .tabla-normas th { text-align: left; white-space: normal; }
+.tabla-normas td:first-child { font-weight: 600; }

@@ -87,8 +87,7 @@ async function init() {
 
   $("provincia").addEventListener("change", () => { rellenarRios(); listarPorRio(); });
   $("rio").addEventListener("change", listarPorRio);
-  $("verTodos").addEventListener("change", () => {
-    document.querySelectorAll(".solo-todos").forEach((el) => (el.hidden = !$("verTodos").checked));
+  $("filtroTramos").addEventListener("change", () => {
     dibujarTramosMapa();
     if ($("buscar").value) buscar(); else { rellenarRios(); listarPorRio(); }
   });
@@ -131,7 +130,7 @@ function mostrarPaso(n) {
 
 const ESTILO_TRAMO = {
   truchera: { color: "#1f5fa8", weight: 4, opacity: 0.85, dashArray: null },
-  otras: { color: "#7a8a85", weight: 4, opacity: 0.85, dashArray: null },
+  otras: { color: "#b8741a", weight: 4, opacity: 0.85, dashArray: null },
   vedada: { color: "#b42318", weight: 4, opacity: 0.85, dashArray: "6 6" },
 };
 const tipoTramo = (t) => (t.modalidad === "Vedado" ? "vedada" : t.truchera === "Aguas trucheras" ? "truchera" : "otras");
@@ -174,6 +173,7 @@ function abrirPopupTramo(t, latlng) {
     .setContent(`<div class="popup-tramo">
       <b>${esc(t.nombr_tram)}</b>${rioDe(t)}
       <span class="tramo-info">${esc(t.categoria)} · ${vedado ? `<span class="no-pescar">VEDADO</span>` : esc(t.modalidad)}<br>
+        ${esc(t.truchera)}${especiesExoticas(t)}<br>
         Junto a ${esc(t.pueblo?.nombre)} (${esc(t.provincia)})</span>
       <button>Elegir este tramo</button>
     </div>`)
@@ -198,7 +198,16 @@ function resaltarEnMapa(lista) {
 
 // --- paso 1: tramo ------------------------------------------------------------
 
-const visible = (t) => $("verTodos").checked || (t.truchera === "Aguas trucheras" && t.modalidad !== "Vedado");
+// Filtro "Qué tramos ver": por defecto, todos
+const FILTROS = {
+  todos: () => true,
+  pescables: (t) => t.modalidad !== "Vedado",
+  trucheras: (t) => t.truchera === "Aguas trucheras",
+  no_trucheras: (t) => t.truchera !== "Aguas trucheras",
+};
+const visible = (t) => (FILTROS[$("filtroTramos").value] ?? FILTROS.todos)(t);
+const especiesExoticas = (t) => (t.zonas_especies?.length
+  ? ` · zona de ${[...new Set(t.zonas_especies.map((z) => z.especie.toLowerCase()))].join(" y ")}` : "");
 
 function rellenarRios() {
   const prov = $("provincia").value;
@@ -248,6 +257,7 @@ function tarjetaTramo(t) {
   return `<button class="tramo ${vedado ? "es-vedado" : ""}" data-id="${esc(t.id)}">
     <span class="tramo-nombre">${esc(t.nombr_tram)} <small>${rioDe(t)}</small></span>
     <span class="tramo-info">${esc(t.categoria)} · ${vedado ? "<b>VEDADO</b>" : esc(t.modalidad)}
+      · ${t.truchera === "Aguas trucheras" ? "truchera" : "no truchera"}${especiesExoticas(t)}
       · junto a ${esc(t.pueblo?.nombre)} (${esc(t.provincia)})</span>
   </button>`;
 }
@@ -255,7 +265,7 @@ function tarjetaTramo(t) {
 function pintarLista(contenedor, lista, titulo) {
   contenedor.innerHTML = lista.length
     ? `<p class="etiqueta">${esc(titulo)}</p>` + lista.map(tarjetaTramo).join("")
-    : `<p class="etiqueta">No hay tramos que coincidan.${$("verTodos").checked ? "" : " Prueba a marcar «Mostrar también aguas no trucheras»."}</p>`;
+    : `<p class="etiqueta">No hay tramos que coincidan.${$("filtroTramos").value === "todos" ? "" : " Prueba a elegir «Todos los tramos» en «Qué tramos ver»."}</p>`;
   contenedor.querySelectorAll("button.tramo").forEach((b) => b.addEventListener("click", () => elegirTramo(b.dataset.id)));
 }
 
@@ -340,7 +350,7 @@ async function consultar(t, fecha) {
         <div class="ficha" id="fLluvia"></div>
         <div class="ficha" id="fTemp"></div>
         <div class="ficha" id="fRio"><p class="cargando-mini">Consultando el río…</p></div>
-        <div class="ficha" id="fNormas">${fichaNormas(t)}</div>
+        <div class="ficha" id="fNormas">${fichaNormasDia(t, fecha)}</div>
       </div>
     </div>
     <h2 class="titulo-detalles">Más detalles</h2>
@@ -352,7 +362,7 @@ async function consultar(t, fecha) {
     <div class="card"><h3>Mapa del tramo</h3><div id="mapa"></div>
       <p class="nota leyenda">Tramo en azul · 🌤️ punto donde se calcula el tiempo · 🏠 pueblo de referencia${t.estacion ? " · 💧 estación de aforo" : ""}</p>
     </div>
-    ${htmlInfoTramo(t)}`;
+    ${htmlNormativa(t, fecha)}`;
   $("paso3").scrollIntoView({ behavior: "smooth", block: "start" });
 
   pintarMapa(t, estacion);
@@ -531,18 +541,6 @@ function fichaRio(c, t) {
   $("fRio").innerHTML = ficha("🏞️", "El río", `${txt} ${tend}`,
     `Ahora ${fmtCaudal(c.ultimo.valor)} m³/s; lo normal estos días, unos ${fmtCaudal(c.mediana_historico)} m³/s.` + aprox,
     c.tendencia === "subiendo" && color === "verde" ? "ambar" : color);
-}
-
-function fichaNormas(t) {
-  if (t.modalidad === "Vedado") {
-    return ficha("⛔", "Las normas", "Vedado", "En este tramo no se puede pescar.", "rojo");
-  }
-  const minus = (s) => (s ? s.charAt(0).toLowerCase() + s.slice(1) : s);
-  const temporada = [t.per1_pec_i, t.per1_pec_f].filter(Boolean).map(minus).join(" al ");
-  const segunda = [t.per2_pec_i, t.per2_pec_f].filter(Boolean).map(minus).join(" al ");
-  return ficha("📋", "Las normas", esc(t.modalidad === "Sin Muerte" ? "Sin muerte" : t.modalidad),
-    `${esc(t.categoria)}.` + (temporada ? `<br>Temporada: del ${esc(temporada)}${segunda ? ` y del ${esc(segunda)}` : ""}.` : "")
-    + `<br><a href="${esc(t.info_tramo)}" target="_blank">Ver ficha oficial</a>`, "gris");
 }
 
 // --- mapa -----------------------------------------------------------------------
@@ -769,27 +767,6 @@ function htmlCaudal(d) {
       <div class="grafico" style="margin-top:12px"><canvas id="gCaudal"></canvas></div>
       <p class="nota">${esc(c.nota)}</p>
       ${fuenteCaudal(d)}
-    </div>`;
-}
-
-function htmlInfoTramo(t) {
-  const filas = [
-    ["Desde", t.lim_superi],
-    ["Hasta", t.lim_inferi],
-    ["Periodo hábil", [t.per1_pec_i, t.per1_pec_f].filter(Boolean).join(" – ")],
-    ["2º periodo", [t.per2_pec_i, t.per2_pec_f].filter(Boolean).join(" – ")],
-    ["Especie principal", t.esp_princ],
-    ["Cebos", t.cebos],
-    ["Cupo trucha", t.truch_cup_ ? `${t.truch_cup_} (talla ${t.truch_cm} cm)` : null],
-    ["Otras limitaciones", t.otras_limi],
-  ].filter(([, v]) => v);
-  return `
-    <div class="card">
-      <h3>Normativa del tramo</h3>
-      <dl class="info">${filas.map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join("")}</dl>
-      <p>Puede no reflejar cambios posteriores: consulta la
-        <a href="${esc(t.info_tramo)}" target="_blank">ficha oficial del tramo en pescacastillayleon.es</a>.</p>
-      ${fuenteTramo()}
     </div>`;
 }
 

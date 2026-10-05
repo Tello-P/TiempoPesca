@@ -6,6 +6,8 @@
   Miño-Sil, Cantábrico y Ebro), leídas con programa/app/cuencas.py.
 - Pueblos: capa oficial "Núcleos de población" (WFS de IDECyL), para indicar el pueblo
   más cercano al punto donde se pide el tiempo de cada tramo.
+- Zonas de carpa y black-bass: capas "pesca_cyl_espec_v_carpa" y "..._bbass" (IDECyL),
+  donde se permite la pesca de esas especies exóticas; se marca cada tramo que cae en una.
 
 Se descargan todos los tramos de Castilla y León. A cada tramo se le asigna una
 estación de aforo de su misma cuenca:
@@ -49,13 +51,28 @@ DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 # id_tramo -> id_estacion. Para corregir asignaciones automáticas.
 OVERRIDES_ESTACION: dict[str, str] = {}
 
-# Propiedades de la capa oficial que se conservan
+# Propiedades de la capa oficial que se conservan (toda la normativa de la ficha oficial)
 CAMPOS = [
-    "codigo", "etiqueta", "nombr_tram", "rio_mas_a", "categoria", "modalidad",
-    "provincia", "tm", "truchera", "long_km", "lim_superi", "lim_inferi",
-    "n_canas", "esp_princ", "per1_pec_i", "per1_pec_f", "per2_pec_i", "per2_pec_f",
-    "truch_cm", "truch_cup_", "cebos", "otras_limi", "info_tramo", "cuenca", "subcuenca",
+    # identificación y descripción
+    "codigo", "etiqueta", "nombr_tram", "rio_mas_a", "categoria", "modalidad", "plan_pesca",
+    "provincia", "tm", "truchera", "long_km", "lim_superi", "lim_inferi", "cuenca", "subcuenca",
+    "esp_princ", "esp_secund", "esp_exot_i", "info_tramo",
+    # periodos y días hábiles (sm = sin muerte, cm = con muerte) y permisos por día
+    "per1_pec_i", "per1_pec_f", "dp1_pec_sm", "dp1_pec_cm", "n_per_dia_",
+    "per2_pec_i", "per2_pec_f", "dp2_pec_sm", "dp2_pec_cm", "n_per_di_2",
+    # tallas mínimas (cm) y cupos por especie
+    "truch_cm", "truch_cup_", "barbo_cm", "barb_cup_d", "cipr_ib_cm", "ci_cup_dia",
+    "carpin_cm", "carp_cup_d", "tenca_cm", "tenca_cup_", "hucho_cm", "hucho_cup_",
+    "exo_inv_cm", "eei_cup_di",
+    # cebos y señuelos, aparatos de flotación, cañas y otras limitaciones
+    "cys_dcm_pe", "cys_dcm_pr", "cebos_sm", "apar_flota", "n_canas", "otras_limi",
+    # cangrejo rojo y señal
+    "ord_cangre", "per1_c_i", "per1_c_f", "dp1_cang_c", "per2_c_i", "per2_c_f", "dp2_cang_c",
+    "ceb_c_perm", "ceb_c_prh", "n_reteles", "diametro", "calado_ret",
 ]
+CAPAS_ESPECIES = {"Carpa": "pesca:pesca_cyl_espec_v_carpa", "Black-bass": "pesca:pesca_cyl_espec_v_bbass"}
+MAX_KM_ZONA_ESPECIE = 0.3   # distancia máxima de un punto del tramo a la zona para contar como dentro
+MIN_FRACCION_ZONA = 1 / 3   # parte del tramo que debe estar dentro (evita marcar afluentes por su desembocadura)
 
 
 def http_get(url: str) -> bytes:
@@ -64,12 +81,12 @@ def http_get(url: str) -> bytes:
         return r.read()
 
 
-def url_wfs() -> str:
+def url_wfs(capa: str = "pesca:pesca_cyl_tramos_v") -> str:
     params = {
         "service": "WFS",
         "version": "1.1.0",
         "request": "GetFeature",
-        "typename": "pesca:pesca_cyl_tramos_v",
+        "typename": capa,
         "srsName": "EPSG:4326",
         "outputFormat": "application/json",
     }
@@ -78,6 +95,40 @@ def url_wfs() -> str:
 
 def descargar_tramos() -> list[dict]:
     return json.loads(http_get(url_wfs()))["features"]
+
+
+def descargar_zonas_especies() -> list[dict]:
+    """Zonas donde se permite pescar carpa y black-bass, con su caja envolvente."""
+    zonas = []
+    for especie, capa in CAPAS_ESPECIES.items():
+        for f in json.loads(http_get(url_wfs(capa)))["features"]:
+            if not f.get("geometry"):
+                continue
+            partes = [[v[:2] for v in parte] for parte in lineas(f["geometry"])]  # algunas traen altura
+            pts = [v for parte in partes for v in parte]
+            zonas.append({"especie": especie, "zona": f["properties"].get("zona"), "partes": partes,
+                          "caja": (min(x for x, _ in pts), min(y for _, y in pts),
+                                   max(x for x, _ in pts), max(y for _, y in pts))})
+    return zonas
+
+
+def zonas_del_tramo(partes, zonas) -> list[dict]:
+    pts = [v for parte in partes for v in parte]
+    caja = (min(x for x, _ in pts), min(y for _, y in pts), max(x for x, _ in pts), max(y for _, y in pts))
+    margen = 0.01  # ~1 km en grados, solo para descartar rápido
+    res = []
+    for z in zonas:
+        zc = z["caja"]
+        if zc[0] > caja[2] + margen or zc[2] < caja[0] - margen or zc[1] > caja[3] + margen or zc[3] < caja[1] - margen:
+            continue
+        zpts = [v for parte in z["partes"] for v in parte]
+        muestra = pts[::3] or pts
+        dentro = sum(any(dist_km(a, b) <= MAX_KM_ZONA_ESPECIE for b in zpts) for a in muestra)
+        if dentro / len(muestra) >= MIN_FRACCION_ZONA:
+            entrada = {"especie": z["especie"], "zona": z["zona"]}
+            if entrada not in res:
+                res.append(entrada)
+    return res
 
 
 def descargar_estaciones() -> tuple[list[dict], dict]:
@@ -227,6 +278,9 @@ def main():
     print("Descargando núcleos de población de IDECyL...")
     pueblos = descargar_pueblos()
     print(f"  {len(pueblos)} pueblos")
+    print("Descargando zonas de carpa y black-bass de IDECyL...")
+    zonas = descargar_zonas_especies()
+    print(f"  {len(zonas)} zonas")
 
     salida = []
     vistos: dict[str, int] = {}
@@ -252,6 +306,7 @@ def main():
             lat=round(medio[1], 5),
             lon=round(medio[0], 5),
             pueblo=pueblo_cercano(medio, pueblos),
+            zonas_especies=zonas_del_tramo(partes, zonas),
             **asignacion,
         )
         salida.append({
@@ -282,6 +337,7 @@ def main():
                 "max_km_rio_principal": MAX_KM_RIO_PRINCIPAL,
                 "fuente_tramos": url_wfs(),
                 "fuente_pueblos": NUCLEOS_URL,
+                "fuente_zonas_especies": {k: url_wfs(v) for k, v in CAPAS_ESPECIES.items()},
                 "overrides_estacion": OVERRIDES_ESTACION,
             },
             "features": salida,
