@@ -1,0 +1,17 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "api/index.py": {
+      "includeFiles": "programa/**",
+      "maxDuration": 60
+    }
+  },
+  "env": {
+    "TZ": "Europe/Madrid"
+  },
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/index.py" },
+    { "source": "/", "destination": "/programa/web/index.html" },
+    { "source": "/((?!api/).*)", "destination": "/programa/web/$1" }
+  ]
+}

@@ -73,6 +73,37 @@ def consulta_caudal(tramo: dict, dia: date, q: dict) -> dict:
 CONSULTAS = {"/api/meteo": consulta_meteo, "/api/caudal": consulta_caudal}
 
 
+def responder_api(ruta: str, query: dict) -> tuple[int, str] | None:
+    """Resuelve una ruta /api/*. Devuelve (código, cuerpo JSON) o None si no es una ruta de API.
+
+    La usan tanto el servidor local (Handler) como la función serverless de Vercel.
+    """
+    if ruta == "/api/tramos":
+        return 200, TRAMOS_JSON
+    if ruta == "/api/geometria":
+        provincia = query.get("provincia", [""])[0]
+        if provincia not in GEOMETRIAS:
+            return 404, json.dumps({"error": f"Provincia desconocida: {provincia}"}, ensure_ascii=False)
+        return 200, GEOMETRIAS[provincia]
+    if ruta == "/api/estaciones":
+        return 200, json.dumps(list(ESTACIONES.values()), ensure_ascii=False)
+    if ruta in CONSULTAS:
+        try:
+            id_tramo = query["tramo"][0]
+            dia = date.fromisoformat(query["fecha"][0])
+        except (KeyError, ValueError):
+            return 400, json.dumps({"error": "Parámetros: tramo=ID&fecha=AAAA-MM-DD"})
+        tramo = TRAMOS.get(id_tramo)
+        if not tramo:
+            return 404, json.dumps({"error": f"Tramo desconocido: {id_tramo}"}, ensure_ascii=False)
+        try:
+            resultado = CONSULTAS[ruta](tramo, dia, query)
+        except fuentes.ErrorFuente as e:
+            return 502, json.dumps({"error": str(e)}, ensure_ascii=False)
+        return 200, json.dumps(resultado, ensure_ascii=False)
+    return None
+
+
 def precargar_caudales():
     """Descarga en segundo plano el caudal de todas las estaciones al arrancar."""
     def una(e):
@@ -106,30 +137,9 @@ class Handler(SimpleHTTPRequestHandler):
 
     def do_GET(self):
         url = urlparse(self.path)
-        if url.path == "/api/tramos":
-            return self._json(200, TRAMOS_JSON)
-        if url.path == "/api/geometria":
-            provincia = parse_qs(url.query).get("provincia", [""])[0]
-            if provincia not in GEOMETRIAS:
-                return self._json(404, json.dumps({"error": f"Provincia desconocida: {provincia}"}, ensure_ascii=False))
-            return self._json(200, GEOMETRIAS[provincia])
-        if url.path == "/api/estaciones":
-            return self._json(200, json.dumps(list(ESTACIONES.values()), ensure_ascii=False))
-        if url.path in CONSULTAS:
-            q = parse_qs(url.query)
-            try:
-                id_tramo = q["tramo"][0]
-                dia = date.fromisoformat(q["fecha"][0])
-            except (KeyError, ValueError):
-                return self._json(400, json.dumps({"error": "Parámetros: tramo=ID&fecha=AAAA-MM-DD"}))
-            tramo = TRAMOS.get(id_tramo)
-            if not tramo:
-                return self._json(404, json.dumps({"error": f"Tramo desconocido: {id_tramo}"}, ensure_ascii=False))
-            try:
-                resultado = CONSULTAS[url.path](tramo, dia, q)
-            except fuentes.ErrorFuente as e:
-                return self._json(502, json.dumps({"error": str(e)}, ensure_ascii=False))
-            return self._json(200, json.dumps(resultado, ensure_ascii=False))
+        respuesta = responder_api(url.path, parse_qs(url.query))
+        if respuesta is not None:
+            return self._json(*respuesta)
         return super().do_GET()
 
     def log_message(self, fmt, *args):

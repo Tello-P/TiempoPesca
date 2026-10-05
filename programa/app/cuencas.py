@@ -16,6 +16,7 @@ import html
 import io
 import json
 import math
+import os
 import re
 import ssl
 import threading
@@ -148,9 +149,14 @@ def estacion(cuenca: str, codigo: str, nombre: str, rio: str, lon: float, lat: f
 
 def leer_config() -> dict:
     try:
-        return json.loads(CONFIG.read_text(encoding="utf-8"))
+        cfg = json.loads(CONFIG.read_text(encoding="utf-8"))
     except (OSError, ValueError):
-        return {}
+        cfg = {}
+    # En Vercel (y otros despliegues) la clave del Ebro llega por variable de entorno.
+    clave = os.environ.get("EBRO_APIKEY", "").strip()
+    if clave and not cfg.get("ebro_apikey"):
+        cfg["ebro_apikey"] = clave
+    return cfg
 
 
 # --- Duero: www.saihduero.es -------------------------------------------------------

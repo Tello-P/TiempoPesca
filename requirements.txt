@@ -1,0 +1,2 @@
+# TiempoPesca no usa dependencias externas: solo la biblioteca estándar de Python.
+# Este archivo le indica a Vercel que el proyecto es Python.

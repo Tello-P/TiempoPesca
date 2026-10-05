@@ -51,6 +51,8 @@ TiempoPesca/
 ├── Iniciar-Windows.bat     ← doble clic en Windows
 ├── Iniciar-Linux.sh        ← doble clic en Linux
 ├── README.md
+├── vercel.json             ← configuración para desplegar en Vercel
+├── api/                    función serverless para /api/* en Vercel
 └── programa/
     ├── app/                servidor local (Python, sin dependencias)
     ├── web/                interfaz: mapa, gráficas y página «¿Cómo funciona?»
@@ -59,6 +61,23 @@ TiempoPesca/
 ```
 
 Para arrancarlo a mano: `python3 programa/app/server.py [puerto] [--abrir]`.
+
+## Desplegar en internet (Vercel)
+
+El proyecto está listo para publicarse en [Vercel](https://vercel.com) sin cambios: importa el
+repositorio (o usa `vercel` desde la terminal) y despliega. No hay que configurar nada más.
+
+- La web (`programa/web/`) se sirve desde el CDN de Vercel y las rutas `/api/*` las atiende una
+  función serverless (`api/index.py`) que reutiliza la misma lógica que el servidor local.
+- **Clave del Ebro** (opcional): en vez del `config.json`, define la variable de entorno
+  `EBRO_APIKEY` en *Settings → Environment Variables*. Sin ella, el Ebro muestra solo el caudal actual.
+
+Diferencias respecto a usarlo en local, por ser serverless:
+
+- **No hay precarga de caudales**: cada consulta se pide bajo demanda. Algunas confederaciones
+  (Duero, Miño-Sil) tardan 20–35 s y la primera consulta a un tramo irá lenta.
+- Cada función está limitada a **60 s** (plan Hobby), así que una fuente especialmente lenta puede
+  llegar a cortarse. La caché solo vive mientras la función sigue «caliente».
 
 ## Fuentes de datos
 
