@@ -6,9 +6,6 @@
       "maxDuration": 60
     }
   },
-  "env": {
-    "TZ": "Europe/Madrid"
-  },
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/index.py" },
     { "source": "/", "destination": "/programa/web/index.html" },

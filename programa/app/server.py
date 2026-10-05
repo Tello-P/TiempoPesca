@@ -13,6 +13,7 @@ if sys.version_info < (3, 10):
 
 import errno
 import json
+import os
 import threading
 import time
 import webbrowser
@@ -21,6 +22,13 @@ from datetime import date
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
+
+# Todas las fechas ("hoy", caché, pasado/futuro) van en hora peninsular. En servidores
+# como Vercel el reloj es UTC; aquí se fija a Europe/Madrid. (En Windows no hay tzset: se
+# ignora y se usa la hora del sistema, que ya es la local del usuario.)
+os.environ["TZ"] = "Europe/Madrid"
+if hasattr(time, "tzset"):
+    time.tzset()
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import fuentes  # noqa: E402
