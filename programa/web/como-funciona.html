@@ -37,11 +37,23 @@
           </tr>
           <tr>
             <td><b>Caudal</b></td>
-            <td><a href="https://www.saihduero.es" target="_blank">SAIH Duero</a>, de la Confederación Hidrográfica del Duero</td>
-            <td>Se usa la estación de aforo <b>del mismo río más cercana</b> al tramo (💧 en el mapa).</td>
+            <td>Las cinco confederaciones hidrográficas con ríos en CyL: Duero, Tajo, Miño-Sil, Cantábrico y Ebro</td>
+            <td>Se usa la estación de aforo <b>del mismo río más cercana</b> al tramo (💧 en el mapa) o, si no hay, la del río
+              principal como referencia.</td>
           </tr>
         </tbody>
       </table>
+      <h3>Cómo se usa</h3>
+      <ol>
+        <li><b>¿Dónde vas a pescar?</b> Pulsa el río en el <b>mapa</b> y luego «Elegir este tramo». Si no lo encuentras,
+          búscalo escribiendo el río, el pueblo o su nombre, o elige provincia y río: el mapa se acerca a esos tramos.
+          Tus últimos tramos aparecen bajo el mapa para volver a ellos con un clic
+          (se guardan solo en tu navegador).</li>
+        <li><b>¿Qué día?</b> Pulsa Hoy, Mañana o el día de la semana. Para otra fecha, usa «¿Otro día?».</li>
+        <li><b>De un vistazo:</b> un resumen con colores. <span style="color:var(--verde)"><b>Verde</b></span> es buen día para eso,
+          <span style="color:var(--ambar)"><b>ámbar</b></span> conviene mirarlo y <span style="color:var(--rojo)"><b>rojo</b></span> es
+          mal día o prohibido. Debajo están los detalles hora a hora, el caudal, el mapa y la normativa.</li>
+      </ol>
       <p class="nota">Todos los resultados llevan un recuadro <b>«Fuente»</b> con enlaces a los datos originales de esa consulta concreta.</p>
     </div>
 
@@ -50,8 +62,10 @@
       <p>La Junta publica cada temporada una capa cartográfica oficial con <b>todos los tramos de pesca</b> de la comunidad:
         cotos, AREC, escenarios deportivo-sociales, aguas libres, refugios, excepciones de fechas… Esa capa ya trae el trazado
         de cada tramo sobre el río y sus datos de normativa, así que <b>no hace falta mantener una base de datos propia</b>.</p>
-      <p>El script <code>programa/scripts/build_data.py</code> descarga esa capa con un servicio WFS estándar, se queda con los tramos de los
-        ríos Carrión, Esla, Arlanzón y Cea, y lo guarda en <code>programa/data/tramos.geojson</code>.</p>
+      <p>El script <code>programa/scripts/build_data.py</code> descarga esa capa con un servicio WFS estándar, con <b>todos los tramos de Castilla y León</b>
+        (<span id="numTramos">…</span>) y lo guarda en <code>programa/data/tramos.geojson</code>.</p>
+      <p>Por defecto, en los menús solo salen las <b>aguas trucheras</b> donde se puede pescar. Marcando «Mostrar también aguas no
+        trucheras y refugios» aparecen todos: aguas de ciprínidos, lagunas y tramos vedados.</p>
       <p>Algunos tramos se solapan. Por ejemplo, una «excepción de fecha de inicio y cierre» puede cubrir el mismo trozo de río
         que un tramo libre: son normas distintas que se aplican sobre el mismo sitio.</p>
       <p><b>Última descarga:</b> <span id="generado">…</span>. La normativa puede cambiar: antes de pescar, consulta siempre la
@@ -86,6 +100,14 @@
           crecido o tomado.</li>
         <li>En la tabla se resaltan las horas con viento de 25 km/h o más, o con rachas de 35 km/h o más.</li>
       </ul>
+      <p><b>El resumen «De un vistazo»</b> usa solo las horas de luz (de amanecer a anochecer):</p>
+      <ul>
+        <li><b>Viento:</b> casi en calma (menos de 10 km/h), flojo (hasta 20), moderado (hasta 30) o fuerte. Si hay rachas de 45 km/h o
+          más, se marca en ámbar aunque el viento medio sea flojo. También indica las 3 horas seguidas con menos viento.</li>
+        <li><b>Lluvia:</b> «no se espera» (menos de 0,2 mm y probabilidad menor del 30 %), «puede caer alguna gota», «algo de lluvia»
+          (hasta 3 mm) o «lluvia».</li>
+        <li><b>El cielo:</b> el estado que más se repite durante el día.</li>
+      </ul>
       <p><b>Limitaciones:</b> la malla tiene una resolución de kilómetros, y en valles encajados (Riaño, alto Carrión…) el viento real puede
         ser distinto por encauzamientos o brisas de valle. En tramos muy largos, como los embalses, el punto medio puede no representar
         todo el tramo.</p>
@@ -93,12 +115,51 @@
 
     <div class="card">
       <h2>3. El caudal</h2>
-      <p>El <a href="https://www.saihduero.es" target="_blank">SAIH Duero</a> (Sistema Automático de Información Hidrológica) es la red de
-        estaciones de aforo de la Confederación Hidrográfica del Duero: miden el nivel y el caudal de los ríos cada pocos minutos.
-        No tiene API pública, así que la web lee el mismo histórico que muestra su página de cada estación (unos 35 días, dato horario).</p>
-      <p><b>¿Cómo se elige la estación?</b> Al generar los datos, a cada tramo se le asigna la estación de aforo <b>del mismo río</b>
-        más cercana a la línea del tramo. Si hay varias dentro del tramo, se elige la más cercana a su punto medio. La asignación completa
-        está en la tabla de abajo, con la distancia, y se puede corregir a mano en <code>OVERRIDES_ESTACION</code>.</p>
+      <p>Cada confederación hidrográfica tiene su red de estaciones de aforo (el <b>SAIH</b>, Sistema Automático de Información
+        Hidrológica), que mide el nivel y el caudal de los ríos cada pocos minutos. Los ríos de Castilla y León reparten sus aguas
+        entre cinco confederaciones, y la web consulta las cinco:</p>
+      <table>
+        <thead><tr><th>Confederación</th><th>Zona de CyL</th><th>Qué se puede ver</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://www.saihduero.es" target="_blank">SAIH Duero</a></td><td>Casi toda la comunidad</td>
+            <td>Unos 35 días, un dato por hora.</td></tr>
+          <tr><td><a href="https://saihtajo.chtajo.es" target="_blank">SAIH Tajo</a></td><td>Sur de Ávila y Salamanca (Alberche, Tiétar, Alagón…)</td>
+            <td>Los últimos 10 días, cada 15 minutos.</td></tr>
+          <tr><td><a href="https://saih.chminosil.es" target="_blank">SAIH Miño-Sil</a></td><td>El Bierzo, Laciana y Sanabria (Sil, Cúa, Boeza, Burbia…)</td>
+            <td>Las últimas 3 semanas, cada 15 minutos. Su web es lenta: la primera consulta puede tardar.</td></tr>
+          <tr><td><a href="https://visor.saichcantabrico.es" target="_blank">SAI Cantábrico</a></td><td>Picos de Europa y norte de Burgos (Cares, Sella, Cadagua…)</td>
+            <td>Unos 35 días, un dato por hora (llega con horas de retraso; se añade el último dato en tiempo real).</td></tr>
+          <tr id="ebro"><td><a href="https://www.saihebro.com" target="_blank">SAIH Ebro</a></td><td>Norte de Burgos y Soria (Ebro, Nela, Trueba, Jerea…)</td>
+            <td><b>Sin clave: solo el dato actual.</b> Con clave de su API de datos abiertos: unos 35 días.</td></tr>
+        </tbody>
+      </table>
+      <p>Salvo el Ebro, ninguna tiene una API pública documentada, así que la web lee los mismos datos que muestran sus páginas.
+        Si alguna confederación cambia su web, puede dejar de funcionar esa cuenca hasta que se ajuste
+        <code>programa/app/cuencas.py</code>.</p>
+      <h3>Ver el histórico del Ebro</h3>
+      <p>El SAIH Ebro solo da el histórico a usuarios registrados. Es gratis:</p>
+      <ol>
+        <li>Regístrate en <a href="https://www.saihebro.com/usuarios/registro" target="_blank">saihebro.com/usuarios/registro</a>
+          y escribe en «Observaciones» que quieres acceder a la API de Open Data.</li>
+        <li>Cuando te den la clave, copia el fichero <code>programa/config.ejemplo.json</code> como <code>programa/config.json</code>
+          y pega la clave entre las comillas de <code>"ebro_apikey"</code>.</li>
+        <li>Cierra y vuelve a abrir la web.</li>
+      </ol>
+      <p><b>¿Cómo se elige la estación?</b> Al generar los datos, a cada tramo se le asigna:</p>
+      <ol>
+        <li>La estación de aforo <b>del mismo río</b> más cercana a la línea del tramo, a menos de 50 km. Si hay varias dentro
+          del tramo, la más cercana a su punto medio.</li>
+        <li>Si el río no tiene estación (muchos arroyos y afluentes), la del <b>río principal de su subcuenca</b> más cercana, a menos de
+          30 km. Se avisa de que es <b>aproximado</b>: el caudal de un afluente es mucho menor, pero suele subir y bajar a la vez.</li>
+        <li>Si no hay ninguna, o es una laguna o un canal, se indica que no hay datos.</li>
+      </ol>
+      <p>La asignación completa está en la tabla de abajo y se puede corregir a mano en <code>OVERRIDES_ESTACION</code>.</p>
+      <p><b>¿Y los arroyos sin estación?</b> Muchos ríos pequeños no tienen ninguna estación de aforo, y no existe ningún dato
+        medido de su caudal. Se probó a usar un modelo europeo de caudales (GloFAS), pero su malla de 5 km no distingue los ríos
+        pequeños: en Saldaña daba 0,09 m³/s cuando el Carrión llevaba 7,9. Por eso, en esos tramos la web dice que no hay datos
+        en lugar de dar uno falso.</p>
+      <p><b>¿Normal, alto o bajo?</b> Se compara el último dato con la mediana de todo el histórico disponible (de 10 días a un mes,
+        según la confederación): más de 1,5 veces lo normal es «alto» y menos de 0,6 veces es «bajo».</p>
       <ul>
         <li><b>Día de hoy o futuro:</b> se muestran los últimos 7 días, porque no existe previsión pública de caudal.</li>
         <li><b>Día pasado:</b> se muestran los 7 días que terminan ese día, si están dentro del histórico disponible.</li>
@@ -111,6 +172,10 @@
 
     <div class="card">
       <h2>Pueblo y estación de cada tramo</h2>
+      <div class="fila">
+        <label class="campo">Provincia <select id="filtroProvincia"></select></label>
+        <label class="campo">Buscar <input type="search" id="filtroTexto" placeholder="Río o tramo"></label>
+      </div>
       <div class="tabla-wrap">
         <table id="asignacion">
           <thead><tr><th>Río</th><th>Tramo</th><th>Categoría</th><th>Tiempo junto a</th><th>Estación de aforo</th><th>Distancia</th></tr></thead>
@@ -122,37 +187,56 @@
     <div class="card">
       <h2>Privacidad y funcionamiento local</h2>
       <p>La web funciona en tu ordenador (se arranca con <code>Iniciar-Windows.bat</code> o <code>Iniciar-Linux.sh</code>). Las únicas peticiones externas son las de los datos
-        (Open-Meteo y SAIH Duero), el mapa base de OpenStreetMap y las librerías Leaflet y Chart.js. Las respuestas se guardan en
+        (Open-Meteo y las webs de las confederaciones), el mapa base de OpenStreetMap y las librerías Leaflet y Chart.js. Las respuestas se guardan en
         memoria unos 30 minutos para no repetir peticiones.</p>
       <p><b>Velocidad:</b> el tiempo y el caudal se piden por separado, así que el tiempo aparece en un segundo aunque el SAIH
         vaya lento (a veces tarda más de 20 s por página). Al arrancar, el servidor descarga en segundo plano el caudal de todas las
-        estaciones; cuando un dato tiene más de 30 minutos, se muestra el que ya había y se actualiza en segundo plano. La hora
+        estaciones usadas; cuando un dato tiene más de 30 minutos, se muestra el que ya había y se actualiza en segundo plano. La hora
         exacta de cada dato aparece en su recuadro «Fuente».</p>
     </div>
   </div>
 
   <script>
     const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    const normalizar = (s) => String(s ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    const TIPOS = { mismo_rio: "", rio_principal: " · <i>aproximada (río principal)</i>", manual: " · asignada a mano" };
     (async () => {
-      const [geo, estaciones] = await Promise.all([
+      const [datos, estaciones] = await Promise.all([
         fetch("/api/tramos").then((r) => r.json()),
         fetch("/api/estaciones").then((r) => r.json()),
       ]);
-      const meta = geo.metadata || {};
+      const meta = datos.metadata || {};
+      const tramos = datos.tramos;
       document.getElementById("generado").textContent = (meta.generado || "desconocida").replace("T", " ");
+      document.getElementById("numTramos").textContent = `${tramos.length.toLocaleString("es-ES")} tramos`;
       const porId = Object.fromEntries(estaciones.map((e) => [e.id, e]));
-      const ajustes = meta.overrides_estacion || {};
-      document.querySelector("#asignacion tbody").innerHTML = geo.features.map(({ properties: p }) => {
-        const e = porId[p.estacion];
-        return `<tr>
-          <td>${esc(p.rio_mas_a)}</td>
-          <td><a href="./#tramo=${encodeURIComponent(p.codigo)}">${esc(p.nombr_tram)}</a> (${esc(p.codigo)})</td>
-          <td>${esc(p.categoria)}</td>
-          <td>${p.pueblo ? `${esc(p.pueblo.nombre)} <span class="sub">(${p.pueblo.dist_km.toLocaleString("es-ES")} km)</span>` : "–"}</td>
-          <td>${e ? `<a href="https://www.saihduero.es/risr/${esc(e.id)}" target="_blank">${esc(e.nombre)}</a> (${esc(e.id)})` : "–"}${ajustes[p.codigo] ? " · asignada a mano" : ""}</td>
-          <td>${p.estacion_dist_km != null ? p.estacion_dist_km.toLocaleString("es-ES") + " km" : "–"}</td>
-        </tr>`;
-      }).join("");
+      const provincias = [...new Set(tramos.map((t) => t.provincia))].sort((a, b) => a.localeCompare(b, "es"));
+      const selProv = document.getElementById("filtroProvincia");
+      selProv.innerHTML = provincias.map((p) => `<option>${esc(p)}</option>`).join("");
+      const texto = document.getElementById("filtroTexto");
+
+      function pintar() {
+        const q = normalizar(texto.value.trim());
+        const filas = tramos.filter((p) => p.provincia === selProv.value
+          && (!q || normalizar(`${p.rio_mas_a} ${p.nombr_tram} ${p.codigo}`).includes(q)));
+        document.querySelector("#asignacion tbody").innerHTML = filas.map((p) => {
+          const e = porId[p.estacion];
+          let est;
+          if (e) est = `<a href="${esc(e.url_publica)}" target="_blank">${esc(e.nombre)}</a> (río ${esc(e.rio)}, ${esc(e.cuenca)})${TIPOS[p.estacion_tipo] ?? ""}`;
+          else est = "Sin estación cerca";
+          return `<tr>
+            <td>${esc(p.rio_mas_a)}</td>
+            <td><a href="./#tramo=${encodeURIComponent(p.id)}">${esc(p.nombr_tram)}</a> (${esc(p.codigo)})</td>
+            <td>${esc(p.categoria)}</td>
+            <td>${p.pueblo ? `${esc(p.pueblo.nombre)} <span class="sub">(${p.pueblo.dist_km.toLocaleString("es-ES")} km)</span>` : "–"}</td>
+            <td>${est}</td>
+            <td>${p.estacion_dist_km != null ? p.estacion_dist_km.toLocaleString("es-ES") + " km" : "–"}</td>
+          </tr>`;
+        }).join("") || `<tr><td colspan="6">No hay tramos que coincidan.</td></tr>`;
+      }
+      selProv.addEventListener("change", pintar);
+      texto.addEventListener("input", pintar);
+      pintar();
     })();
   </script>
 </body>

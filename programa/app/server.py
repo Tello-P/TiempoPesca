@@ -29,11 +29,24 @@ RAIZ = Path(__file__).resolve().parent.parent
 WEB_DIR = RAIZ / "web"
 DATA_DIR = RAIZ / "data"
 
-TRAMOS_GEOJSON = (DATA_DIR / "tramos.geojson").read_text(encoding="utf-8")
-TRAMOS = {f["properties"]["codigo"]: f["properties"] for f in json.loads(TRAMOS_GEOJSON)["features"]}
+_GEO = json.loads((DATA_DIR / "tramos.geojson").read_text(encoding="utf-8"))
+TRAMOS = {f["properties"]["id"]: f["properties"] for f in _GEO["features"]}
 ESTACIONES = {e["id"]: e for e in json.loads((DATA_DIR / "estaciones.json").read_text(encoding="utf-8"))}
 
-# El tiempo (Open-Meteo, rápido) y el caudal (SAIH Duero, a veces muy lento) se
+# Lista ligera para los menús (sin geometría) y trazados agrupados por provincia para el mapa
+TRAMOS_JSON = json.dumps({"metadata": _GEO["metadata"], "tramos": list(TRAMOS.values())}, ensure_ascii=False)
+_por_provincia: dict[str, list] = {}
+for _f in _GEO["features"]:
+    _por_provincia.setdefault(_f["properties"]["provincia"], []).append(
+        {"type": "Feature", "properties": {"id": _f["properties"]["id"]}, "geometry": _f["geometry"]})
+GEOMETRIAS = {prov: json.dumps({"type": "FeatureCollection", "features": fs})
+              for prov, fs in _por_provincia.items()}
+# Todas juntas, para el mapa de elegir tramo
+GEOMETRIAS[""] = json.dumps({"type": "FeatureCollection",
+                             "features": [f for fs in _por_provincia.values() for f in fs]})
+del _GEO, _por_provincia
+
+# El tiempo (Open-Meteo, rápido) y el caudal (las confederaciones, a veces muy lentas) se
 # piden por separado para que la web muestre cada cosa en cuanto llega.
 
 def consulta_meteo(tramo: dict, dia: date) -> dict:
@@ -44,7 +57,7 @@ def consulta_caudal(tramo: dict, dia: date) -> dict:
     estacion = ESTACIONES.get(tramo["estacion"])
     if not estacion:
         raise fuentes.ErrorFuente("Este tramo no tiene estación de aforo asignada.")
-    caudal = fuentes.caudal_semana(estacion["id"], dia, estacion.get("url_historico"))
+    caudal = fuentes.caudal_semana(estacion, dia)
     return {"estacion": estacion, "caudal": caudal}
 
 
@@ -55,7 +68,7 @@ def precargar_caudales():
     """Descarga en segundo plano el caudal de todas las estaciones al arrancar."""
     def una(e):
         try:
-            fuentes.serie_caudal(e["id"], e.get("url_historico"))
+            fuentes.serie_caudal(e)
             return True
         except fuentes.ErrorFuente as err:
             print(f"  Aviso: sin caudal para {e['id']} ({err})")
@@ -63,7 +76,7 @@ def precargar_caudales():
 
     def tarea():
         inicio = time.time()
-        with ThreadPoolExecutor(max_workers=4) as pool:  # sin saturar al SAIH
+        with ThreadPoolExecutor(max_workers=4) as pool:  # sin saturar a las confederaciones
             ok = sum(pool.map(una, ESTACIONES.values()))
         print(f"Caudales precargados: {ok}/{len(ESTACIONES)} estaciones en {time.time() - inicio:.0f} s")
 
@@ -85,19 +98,24 @@ class Handler(SimpleHTTPRequestHandler):
     def do_GET(self):
         url = urlparse(self.path)
         if url.path == "/api/tramos":
-            return self._json(200, TRAMOS_GEOJSON)
+            return self._json(200, TRAMOS_JSON)
+        if url.path == "/api/geometria":
+            provincia = parse_qs(url.query).get("provincia", [""])[0]
+            if provincia not in GEOMETRIAS:
+                return self._json(404, json.dumps({"error": f"Provincia desconocida: {provincia}"}, ensure_ascii=False))
+            return self._json(200, GEOMETRIAS[provincia])
         if url.path == "/api/estaciones":
             return self._json(200, json.dumps(list(ESTACIONES.values()), ensure_ascii=False))
         if url.path in CONSULTAS:
             q = parse_qs(url.query)
             try:
-                codigo = q["tramo"][0]
+                id_tramo = q["tramo"][0]
                 dia = date.fromisoformat(q["fecha"][0])
             except (KeyError, ValueError):
-                return self._json(400, json.dumps({"error": "Parámetros: tramo=CODIGO&fecha=AAAA-MM-DD"}))
-            tramo = TRAMOS.get(codigo)
+                return self._json(400, json.dumps({"error": "Parámetros: tramo=ID&fecha=AAAA-MM-DD"}))
+            tramo = TRAMOS.get(id_tramo)
             if not tramo:
-                return self._json(404, json.dumps({"error": f"Tramo desconocido: {codigo}"}, ensure_ascii=False))
+                return self._json(404, json.dumps({"error": f"Tramo desconocido: {id_tramo}"}, ensure_ascii=False))
             try:
                 resultado = CONSULTAS[url.path](tramo, dia)
             except fuentes.ErrorFuente as e:
@@ -134,7 +152,7 @@ def main():
     url = f"http://localhost:{servidor.server_address[1]}"
     print(f"TiempoPesca funcionando en {url}  ({len(TRAMOS)} tramos)")
     print("Para apagarlo, cierra esta ventana o pulsa Ctrl+C.")
-    print(f"Precargando caudales de {len(ESTACIONES)} estaciones del SAIH Duero en segundo plano...")
+    print(f"Precargando caudales de {len(ESTACIONES)} estaciones de aforo en segundo plano (puede tardar)...")
     precargar_caudales()
     if abrir:
         webbrowser.open(url)

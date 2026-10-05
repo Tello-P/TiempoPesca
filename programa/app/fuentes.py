@@ -1,18 +1,18 @@
-"""Acceso a las fuentes externas: Open-Meteo (tiempo) y SAIH Duero (caudal)."""
+"""Acceso a las fuentes externas: Open-Meteo (tiempo) y las confederaciones (caudal, vía cuencas.py)."""
 import json
-import re
 import threading
 import time
 import urllib.parse
 import urllib.request
 from datetime import date, datetime, timedelta
 
+import cuencas
+from cuencas import ErrorFuente
+
 USER_AGENT = "TiempoPesca/1.0 (uso personal)"
 
 OPEN_METEO_FORECAST = "https://api.open-meteo.com/v1/forecast"
 OPEN_METEO_ARCHIVE = "https://archive-api.open-meteo.com/v1/archive"
-SAIH_BASE = "https://www.saihduero.es"
-SAIH_TIMEOUT = 90
 
 # Límites de la API de previsión de Open-Meteo (días respecto a hoy)
 PREVISION_DIAS_ATRAS = 90
@@ -23,10 +23,6 @@ VARIABLES_HORARIAS = [
     "wind_speed_10m", "wind_gusts_10m", "wind_direction_10m",
     "cloud_cover", "weather_code",
 ]
-
-
-class ErrorFuente(Exception):
-    pass
 
 
 # --- caché en memoria ------------------------------------------------------
@@ -88,16 +84,25 @@ def cacheado(clave: str, ttl: int, funcion, servir_caducado: bool = False):
     return _cargar(clave, funcion)
 
 
+REINTENTOS = 3                       # para errores temporales (sobrecarga, 5xx)
+CODIGOS_TEMPORALES = {429, 500, 502, 503, 504}
+
+
 def http_get(url: str, timeout: int = 30) -> bytes:
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-    try:
-        with urllib.request.urlopen(req, timeout=timeout) as r:
-            return r.read()
-    except urllib.error.HTTPError as e:
-        cuerpo = e.read().decode("utf-8", "replace")[:300]
-        raise ErrorFuente(f"HTTP {e.code} en {url.split('?')[0]}: {cuerpo}") from e
-    except (urllib.error.URLError, TimeoutError) as e:
-        raise ErrorFuente(f"No se pudo conectar con {url.split('?')[0]}: {e}") from e
+    for intento in range(REINTENTOS):
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return r.read()
+        except urllib.error.HTTPError as e:
+            if e.code in CODIGOS_TEMPORALES and intento < REINTENTOS - 1:
+                time.sleep(1.5 * (intento + 1))
+                continue
+            cuerpo = e.read().decode("utf-8", "replace")[:300]
+            raise ErrorFuente(f"HTTP {e.code} en {url.split('?')[0]}: {cuerpo}") from e
+        except (urllib.error.URLError, TimeoutError) as e:
+            raise ErrorFuente(f"No se pudo conectar con {url.split('?')[0]}: {e}") from e
+    raise AssertionError("inalcanzable")
 
 
 # --- Open-Meteo ------------------------------------------------------------
@@ -119,6 +124,7 @@ def _open_meteo(lat: float, lon: float, desde: date, hasta: date, horario: bool)
         if archivo:  # el archivo no tiene probabilidad de precipitación
             variables = [v for v in variables if v != "precipitation_probability"]
         params["hourly"] = ",".join(variables)
+        params["daily"] = "sunrise,sunset"
     else:
         params["daily"] = "precipitation_sum,temperature_2m_max,temperature_2m_min"
     url = (OPEN_METEO_ARCHIVE if archivo else OPEN_METEO_FORECAST) + "?" + urllib.parse.urlencode(params)
@@ -152,7 +158,8 @@ def meteo_dia(lat: float, lon: float, dia: date) -> dict:
         diario, fuente_previos = _open_meteo(lat, lon, previos_ini, dia - timedelta(days=1), horario=False)
         fuente["url_previos"] = fuente_previos["url"]
         fuente["consultado"] = datetime.now().strftime("%Y-%m-%dT%H:%M")
-        return {"horas": horas["hourly"], "dias_previos": diario["daily"], "fuente": fuente}
+        sol = {"amanecer": horas["daily"]["sunrise"][0], "anochecer": horas["daily"]["sunset"][0]}
+        return {"horas": horas["hourly"], "sol": sol, "dias_previos": diario["daily"], "fuente": fuente}
 
     datos = cacheado(clave, ttl, cargar)
     h = datos["horas"]
@@ -177,61 +184,38 @@ def meteo_dia(lat: float, lon: float, dia: date) -> dict:
         "resumen": resumen,
         "dias_previos": previos,
         "lluvia_7d_previos_mm": round(lluvia_previa, 1),
+        "sol": datos["sol"],
         "fuente": datos["fuente"],
     }
 
 
-# --- SAIH Duero ------------------------------------------------------------
+# --- Caudal (todas las confederaciones) -------------------------------------
 
-_RE_PUNTO = re.compile(r'\{d:"(\d{2})/(\d{2})/(\d{4}) (\d{2}):(\d{2})", v:(-?[\d.]+)\}')
+def serie_caudal(estacion: dict) -> dict:
+    """Serie de caudal (m³/s) de la estación y la URL de origen, cacheada 30 minutos.
 
-
-def _url_historico_caudal(estacion: str) -> str:
-    html = http_get(f"{SAIH_BASE}/risr/{estacion}", timeout=SAIH_TIMEOUT).decode("utf-8", "replace")
-    m = re.search(
-        r"<td>Caudal</td>.*?href=\"(risr/" + re.escape(estacion) + r"/historico/[A-Za-z0-9]+)\"",
-        html, re.S,
-    )
-    if not m:
-        raise ErrorFuente(f"La estación {estacion} no publica caudal en el SAIH Duero.")
-    return f"{SAIH_BASE}/{m.group(1)}"
-
-
-def serie_caudal(estacion: str, url_historico: str | None = None) -> dict:
-    """Serie horaria de caudal (m³/s) de los últimos ~35 días y la URL de origen.
-
-    `url_historico` viene precalculada en data/estaciones.json; si falta, se
-    busca en la página de la estación (una petición más al SAIH).
+    Si el dato tiene más de 30 minutos se sirve igualmente y se actualiza en segundo
+    plano: algunas webs (el SAIH Duero, Miño-Sil) tardan 20 s o más en responder.
     """
     def cargar():
-        url = url_historico or cacheado(
-            f"saih-url:{estacion}", 7 * 86400, lambda: _url_historico_caudal(estacion))
-        # El SAIH a veces tarda 20 s o más en responder
-        html = http_get(url, timeout=SAIH_TIMEOUT).decode("utf-8", "replace")
-        serie = []
-        for d, mo, a, hh, mi, v in _RE_PUNTO.findall(html):
-            serie.append((datetime(int(a), int(mo), int(d), int(hh), int(mi)), float(v)))
-        if not serie:
-            raise ErrorFuente(f"Sin datos de caudal para {estacion} en el SAIH Duero.")
-        return {
-            "serie": serie,
-            "url_historico": url,
-            "consultado": datetime.now().strftime("%Y-%m-%dT%H:%M"),
-        }
+        serie, url = cuencas.serie(estacion)
+        return {"serie": serie, "url_datos": url, "consultado": datetime.now().strftime("%Y-%m-%dT%H:%M")}
 
-    return cacheado(f"saih:{estacion}", 1800, cargar, servir_caducado=True)
+    return cacheado(f"caudal:{estacion['id']}", 1800, cargar, servir_caducado=True)
 
 
-def caudal_semana(estacion: str, dia: date, url_historico: str | None = None) -> dict:
+def caudal_semana(estacion: dict, dia: date) -> dict:
     """Caudal de la semana que termina en `dia`; si `dia` es futuro, últimos 7 días."""
-    datos = serie_caudal(estacion, url_historico)
+    datos = serie_caudal(estacion)
     serie = datos["serie"]
     fuente = {
-        "url_estacion": f"{SAIH_BASE}/risr/{estacion}",
-        "url_historico": datos["url_historico"],
+        "url_estacion": estacion["url_publica"],
+        "url_datos": datos["url_datos"],
         "historico_desde": serie[0][0].strftime("%Y-%m-%dT%H:%M"),
         "historico_hasta": serie[-1][0].strftime("%Y-%m-%dT%H:%M"),
         "consultado": datos["consultado"],
+        # Ebro sin clave de su API: solo se conoce el valor actual
+        "solo_actual": len(serie) == 1,
     }
     hoy = date.today()
     if dia >= hoy:
@@ -245,7 +229,7 @@ def caudal_semana(estacion: str, dia: date, url_historico: str | None = None) ->
     puntos = [(t, v) for t, v in serie if ini <= t <= fin]
     if not puntos:
         disponible = serie[0][0].date().isoformat()
-        return {"puntos": [], "nota": f"El SAIH solo publica histórico desde {disponible}.", "fuente": fuente}
+        return {"puntos": [], "nota": f"La confederación solo publica datos desde {disponible}.", "fuente": fuente}
 
     valores = [v for _, v in puntos]
     ultimo_t, ultimo_v = puntos[-1]
@@ -257,6 +241,21 @@ def caudal_semana(estacion: str, dia: date, url_historico: str | None = None) ->
         m1, m0 = sum(ult24) / len(ult24), sum(prev24) / len(prev24)
         cambio = (m1 - m0) / m0 if m0 else 0
         tendencia = "subiendo" if cambio > 0.1 else "bajando" if cambio < -0.1 else "estable"
+
+    # Estado: el caudal de referencia (último dato, o media de la semana si es pasada)
+    # comparado con la mediana de todo el histórico disponible (de 10 a 35 días según la fuente)
+    todos = sorted(v for _, v in serie)
+    mediana = todos[len(todos) // 2]
+    referencia = ultimo_v if dia >= hoy else sum(valores) / len(valores)
+    relacion = referencia / mediana if mediana and len(serie) > 24 else None
+    if relacion is None:
+        estado = None
+    elif relacion > 1.5:
+        estado = "alto"
+    elif relacion < 0.6:
+        estado = "bajo"
+    else:
+        estado = "normal"
     return {
         "puntos": [[t.strftime("%Y-%m-%dT%H:%M"), v] for t, v in puntos],
         "ultimo": {"fecha": ultimo_t.strftime("%Y-%m-%dT%H:%M"), "valor": ultimo_v},
@@ -264,6 +263,8 @@ def caudal_semana(estacion: str, dia: date, url_historico: str | None = None) ->
         "min": min(valores),
         "max": max(valores),
         "tendencia": tendencia,
+        "mediana_historico": round(mediana, 2),
+        "estado": estado,
         "nota": nota,
         "fuente": fuente,
     }

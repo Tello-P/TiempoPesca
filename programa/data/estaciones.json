@@ -1,194 +1,2933 @@
 [
  {
-  "id": "EA508",
+  "id": "Duero:EA153",
+  "cuenca": "Duero",
+  "codigo": "EA153",
+  "nombre": "La Fuentona",
+  "rio": "Abión",
+  "lat": 41.730433,
+  "lon": -2.85761,
+  "url_publica": "https://www.saihduero.es/risr/EA153",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA153/historico/xATVRFURfNTNxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA046",
+  "cuenca": "Duero",
+  "codigo": "EA046",
+  "nombre": "Ávila",
+  "rio": "Adaja",
+  "lat": 40.649838,
+  "lon": -4.707181,
+  "url_publica": "https://www.saihduero.es/risr/EA046",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA046/historico/xATVRFURfZDNwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA500",
+  "cuenca": "Duero",
+  "codigo": "EA500",
+  "nombre": "Salida del embalse de Castro de las Cogotas",
+  "rio": "Adaja",
+  "lat": 40.726441,
+  "lon": -4.694503,
+  "url_publica": "https://www.saihduero.es/risr/EA500",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA500/historico/xATVRFURfBDM1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA323",
+  "cuenca": "Duero",
+  "codigo": "EA323",
+  "nombre": "Mingorría",
+  "rio": "Adaja",
+  "lat": 40.7667,
+  "lon": -4.693167,
+  "url_publica": "https://www.saihduero.es/risr/EA323",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA323/historico/xATVRFURfNjMzEUR"
+  }
+ },
+ {
+  "id": "Duero:EA158",
+  "cuenca": "Duero",
+  "codigo": "EA158",
+  "nombre": "Arévalo",
+  "rio": "Adaja",
+  "lat": 41.032281,
+  "lon": -4.704511,
+  "url_publica": "https://www.saihduero.es/risr/EA158",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA158/historico/xATVRFURfhTNxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA167",
+  "cuenca": "Duero",
+  "codigo": "EA167",
+  "nombre": "Olmedo",
+  "rio": "Adaja",
+  "lat": 41.291325,
+  "lon": -4.742468,
+  "url_publica": "https://www.saihduero.es/risr/EA167",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA167/historico/xATVRFURfdjNxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA501",
+  "cuenca": "Duero",
+  "codigo": "EA501",
+  "nombre": "Zamarra",
+  "rio": "Agadón",
+  "lat": 40.491416,
+  "lon": -6.449445,
+  "url_publica": "https://www.saihduero.es/risr/EA501",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA501/historico/xATVRFURfFDM1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA502",
+  "cuenca": "Duero",
+  "codigo": "EA502",
+  "nombre": "Robleda-Águeda",
+  "rio": "Águeda",
+  "lat": 40.363185,
+  "lon": -6.675901,
+  "url_publica": "https://www.saihduero.es/risr/EA502",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA502/historico/xATVRFURfJDM1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA503",
+  "cuenca": "Duero",
+  "codigo": "EA503",
+  "nombre": "Salida del embalse de Irueña",
+  "rio": "Águeda",
+  "lat": 40.444835,
+  "lon": -6.574375,
+  "url_publica": "https://www.saihduero.es/risr/EA503",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA503/historico/xATVRFURfNDM1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA092",
+  "cuenca": "Duero",
+  "codigo": "EA092",
+  "nombre": "Salida del embalse del Águeda",
+  "rio": "Águeda",
+  "lat": 40.53533,
+  "lon": -6.484846,
+  "url_publica": "https://www.saihduero.es/risr/EA092",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA092/historico/xATVRFURfJTOwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA137",
+  "cuenca": "Duero",
+  "codigo": "EA137",
+  "nombre": "Ciudad Rodrigo",
+  "rio": "Águeda",
+  "lat": 40.603762,
+  "lon": -6.563495,
+  "url_publica": "https://www.saihduero.es/risr/EA137",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA137/historico/xATVRFURfdzMxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA505",
+  "cuenca": "Duero",
+  "codigo": "EA505",
+  "nombre": "Saelices El Chico",
+  "rio": "Águeda",
+  "lat": 40.649846,
+  "lon": -6.661277,
+  "url_publica": "https://www.saihduero.es/risr/EA505",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA505/historico/xATVRFURfVDM1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA149",
+  "cuenca": "Duero",
+  "codigo": "EA149",
+  "nombre": "Alhándiga",
+  "rio": "Alhándiga",
+  "lat": 40.708187,
+  "lon": -5.605439,
+  "url_publica": "https://www.saihduero.es/risr/EA149",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA149/historico/xATVRFURflDNxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA155",
+  "cuenca": "Duero",
+  "codigo": "EA155",
+  "nombre": "Vegalatrave",
+  "rio": "Aliste",
+  "lat": 41.700343,
+  "lon": -6.119583,
+  "url_publica": "https://www.saihduero.es/risr/EA155",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA155/historico/xATVRFURfVTNxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA712",
+  "cuenca": "Duero",
+  "codigo": "EA712",
+  "nombre": "Alconada",
+  "rio": "Almar",
+  "lat": 40.913256,
+  "lon": -5.363851,
+  "url_publica": "https://www.saihduero.es/risr/EA712",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA712/historico/xATVRFURfJTM3EUR"
+  }
+ },
+ {
+  "id": "Duero:EA719",
+  "cuenca": "Duero",
+  "codigo": "EA719",
+  "nombre": "Brime de Urz",
+  "rio": "Almucera",
+  "lat": 42.039453,
+  "lon": -5.872693,
+  "url_publica": "https://www.saihduero.es/risr/EA719",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA719/historico/xATVRFURflTM3EUR"
+  }
+ },
+ {
+  "id": "Duero:EA165",
+  "cuenca": "Duero",
+  "codigo": "EA165",
+  "nombre": "Palacios de la Sierra",
+  "rio": "Arlanza",
+  "lat": 41.967254,
+  "lon": -3.124825,
+  "url_publica": "https://www.saihduero.es/risr/EA165",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA165/historico/xATVRFURfVjNxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA166",
+  "cuenca": "Duero",
+  "codigo": "EA166",
+  "nombre": "Salida del embalse de Castrovido",
+  "rio": "Arlanza",
+  "lat": 42.045544,
+  "lon": -3.249183,
+  "url_publica": "https://www.saihduero.es/risr/EA166",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA166/historico/xATVRFURfZjNxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA028",
+  "cuenca": "Duero",
+  "codigo": "EA028",
+  "nombre": "Salas de los Infantes",
+  "rio": "Arlanza",
+  "lat": 42.03431,
+  "lon": -3.277735,
+  "url_publica": "https://www.saihduero.es/risr/EA028",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA028/historico/xATVRFURfhjMwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA030",
+  "cuenca": "Duero",
+  "codigo": "EA030",
+  "nombre": "Covarrubias",
+  "rio": "Arlanza",
+  "lat": 42.053928,
+  "lon": -3.50869,
+  "url_publica": "https://www.saihduero.es/risr/EA030",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA030/historico/xATVRFURfBzMwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA507",
+  "cuenca": "Duero",
+  "codigo": "EA507",
+  "nombre": "Lerma",
+  "rio": "Arlanza",
+  "lat": 42.030678,
+  "lon": -3.758921,
+  "url_publica": "https://www.saihduero.es/risr/EA507",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA507/historico/xATVRFURfdDM1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA031",
+  "cuenca": "Duero",
+  "codigo": "EA031",
+  "nombre": "Peral de Arlanza",
+  "rio": "Arlanza",
+  "lat": 42.078863,
+  "lon": -4.079419,
+  "url_publica": "https://www.saihduero.es/risr/EA031",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA031/historico/xATVRFURfFzMwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA036",
+  "cuenca": "Duero",
+  "codigo": "EA036",
+  "nombre": "Quintana del Puente",
+  "rio": "Arlanza",
+  "lat": 42.056462,
+  "lon": -4.23918,
+  "url_publica": "https://www.saihduero.es/risr/EA036",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA036/historico/xATVRFURfZzMwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA508",
+  "cuenca": "Duero",
+  "codigo": "EA508",
   "nombre": "Pineda de la Sierra",
   "rio": "Arlanzón",
-  "lat": 42.22937903,
-  "lon": -3.31020521,
-  "url_historico": "https://www.saihduero.es/risr/EA508/historico/xATVRFURfhDM1EUR"
+  "lat": 42.229379,
+  "lon": -3.310205,
+  "url_publica": "https://www.saihduero.es/risr/EA508",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA508/historico/xATVRFURfhDM1EUR"
+  }
  },
  {
-  "id": "EA109",
+  "id": "Duero:EA109",
+  "cuenca": "Duero",
+  "codigo": "EA109",
   "nombre": "Salida del embalse de Arlanzón",
   "rio": "Arlanzón",
-  "lat": 42.26967097,
-  "lon": -3.33955368,
-  "url_historico": "https://www.saihduero.es/risr/EA109/historico/xATVRFURflDMxEUR"
+  "lat": 42.269671,
+  "lon": -3.339554,
+  "url_publica": "https://www.saihduero.es/risr/EA109",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA109/historico/xATVRFURflDMxEUR"
+  }
  },
  {
-  "id": "EA032",
+  "id": "Duero:EA032",
+  "cuenca": "Duero",
+  "codigo": "EA032",
   "nombre": "Salida del embalse de Úzquiza",
   "rio": "Arlanzón",
-  "lat": 42.30521355,
-  "lon": -3.3730129,
-  "url_historico": "https://www.saihduero.es/risr/EA032/historico/xATVRFURfJzMwEUR"
+  "lat": 42.305214,
+  "lon": -3.373013,
+  "url_publica": "https://www.saihduero.es/risr/EA032",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA032/historico/xATVRFURfJzMwEUR"
+  }
  },
  {
-  "id": "EA139",
+  "id": "Duero:EA139",
+  "cuenca": "Duero",
+  "codigo": "EA139",
   "nombre": "Burgos-Arlanzón",
   "rio": "Arlanzón",
-  "lat": 42.34816593,
-  "lon": -3.73718339,
-  "url_historico": "https://www.saihduero.es/risr/EA139/historico/xATVRFURflzMxEUR"
+  "lat": 42.348166,
+  "lon": -3.737183,
+  "url_publica": "https://www.saihduero.es/risr/EA139",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA139/historico/xATVRFURflzMxEUR"
+  }
  },
  {
-  "id": "EA116",
+  "id": "Duero:EA116",
+  "cuenca": "Duero",
+  "codigo": "EA116",
   "nombre": "Celada del Camino",
   "rio": "Arlanzón",
-  "lat": 42.25524238,
-  "lon": -3.92800992,
-  "url_historico": "https://www.saihduero.es/risr/EA116/historico/xATVRFURfZTMxEUR"
+  "lat": 42.255242,
+  "lon": -3.92801,
+  "url_publica": "https://www.saihduero.es/risr/EA116",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA116/historico/xATVRFURfZTMxEUR"
+  }
  },
  {
-  "id": "EA512",
+  "id": "Duero:EA098",
+  "cuenca": "Duero",
+  "codigo": "EA098",
+  "nombre": "Villamanín",
+  "rio": "Bernesga",
+  "lat": 42.934965,
+  "lon": -5.657666,
+  "url_publica": "https://www.saihduero.es/risr/EA098",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA098/historico/xATVRFURfhTOwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA510",
+  "cuenca": "Duero",
+  "codigo": "EA510",
+  "nombre": "Cascantes",
+  "rio": "Bernesga",
+  "lat": 42.759649,
+  "lon": -5.636518,
+  "url_publica": "https://www.saihduero.es/risr/EA510",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA510/historico/xATVRFURfBTM1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA115",
+  "cuenca": "Duero",
+  "codigo": "EA115",
+  "nombre": "León",
+  "rio": "Bernesga",
+  "lat": 42.59367,
+  "lon": -5.578464,
+  "url_publica": "https://www.saihduero.es/risr/EA115",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA115/historico/xATVRFURfVTMxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA119",
+  "cuenca": "Duero",
+  "codigo": "EA119",
+  "nombre": "Alija de la Ribera",
+  "rio": "Bernesga",
+  "lat": 42.523065,
+  "lon": -5.536393,
+  "url_publica": "https://www.saihduero.es/risr/EA119",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA119/historico/xATVRFURflTMxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA034",
+  "cuenca": "Duero",
+  "codigo": "EA034",
+  "nombre": "Besande",
+  "rio": "Besandino",
+  "lat": 42.896917,
+  "lon": -4.885417,
+  "url_publica": "https://www.saihduero.es/risr/EA034",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA034/historico/xATVRFURfRzMwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA035",
+  "cuenca": "Duero",
+  "codigo": "EA035",
+  "nombre": "Otero de Guardo",
+  "rio": "Besandino",
+  "lat": 42.829707,
+  "lon": -4.849324,
+  "url_publica": "https://www.saihduero.es/risr/EA035",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA035/historico/xATVRFURfVzMwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA182",
+  "cuenca": "Duero",
+  "codigo": "EA182",
+  "nombre": "La Granja",
+  "rio": "Cambrones",
+  "lat": 40.91263,
+  "lon": -4.013844,
+  "url_publica": "https://www.saihduero.es/risr/EA182",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA182/historico/xATVRFURfJDOxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA131",
+  "cuenca": "Duero",
+  "codigo": "EA131",
+  "nombre": "Villaescusa de Las Torres",
+  "rio": "Camesa",
+  "lat": 42.763125,
+  "lon": -4.248025,
+  "url_publica": "https://www.saihduero.es/risr/EA131",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA131/historico/xATVRFURfFzMxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA511",
+  "cuenca": "Duero",
+  "codigo": "EA511",
+  "nombre": "Cardaño de Arriba",
+  "rio": "Cardaño",
+  "lat": 42.934418,
+  "lon": -4.760173,
+  "url_publica": "https://www.saihduero.es/risr/EA511",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA511/historico/xATVRFURfFTM1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA512",
+  "cuenca": "Duero",
+  "codigo": "EA512",
   "nombre": "Triollo",
   "rio": "Carrión",
-  "lat": 42.92926519,
-  "lon": -4.6750927,
-  "url_historico": "https://www.saihduero.es/risr/EA512/historico/xATVRFURfJTM1EUR"
+  "lat": 42.929265,
+  "lon": -4.675093,
+  "url_publica": "https://www.saihduero.es/risr/EA512",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA512/historico/xATVRFURfJTM1EUR"
+  }
  },
  {
-  "id": "EA108",
+  "id": "Duero:EA108",
+  "cuenca": "Duero",
+  "codigo": "EA108",
   "nombre": "Salida del embalse de Camporredondo",
   "rio": "Carrión",
-  "lat": 42.89520652,
-  "lon": -4.74454434,
-  "url_historico": "https://www.saihduero.es/risr/EA108/historico/xATVRFURfhDMxEUR"
+  "lat": 42.895207,
+  "lon": -4.744544,
+  "url_publica": "https://www.saihduero.es/risr/EA108",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA108/historico/xATVRFURfhDMxEUR"
+  }
  },
  {
-  "id": "EA037",
+  "id": "Duero:EA037",
+  "cuenca": "Duero",
+  "codigo": "EA037",
   "nombre": "Salida del embalse de Compuerto",
   "rio": "Carrión",
-  "lat": 42.85284602,
-  "lon": -4.83334502,
-  "url_historico": "https://www.saihduero.es/risr/EA037/historico/xATVRFURfdzMwEUR"
+  "lat": 42.852846,
+  "lon": -4.833345,
+  "url_publica": "https://www.saihduero.es/risr/EA037",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA037/historico/xATVRFURfdzMwEUR"
+  }
  },
  {
-  "id": "EA134",
+  "id": "Duero:EA134",
+  "cuenca": "Duero",
+  "codigo": "EA134",
   "nombre": "Guardo",
   "rio": "Carrión",
-  "lat": 42.80747349,
-  "lon": -4.84990891,
-  "url_historico": "https://www.saihduero.es/risr/EA134/historico/xATVRFURfRzMxEUR"
+  "lat": 42.807473,
+  "lon": -4.849909,
+  "url_publica": "https://www.saihduero.es/risr/EA134",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA134/historico/xATVRFURfRzMxEUR"
+  }
  },
  {
-  "id": "EA023",
+  "id": "Duero:EA023",
+  "cuenca": "Duero",
+  "codigo": "EA023",
   "nombre": "Celadilla del Río",
   "rio": "Carrión",
-  "lat": 42.60824545,
-  "lon": -4.79830863,
-  "url_historico": "https://www.saihduero.es/risr/EA023/historico/xATVRFURfNjMwEUR"
+  "lat": 42.608245,
+  "lon": -4.798309,
+  "url_publica": "https://www.saihduero.es/risr/EA023",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA023/historico/xATVRFURfNjMwEUR"
+  }
  },
  {
-  "id": "EA040",
+  "id": "Duero:EA040",
+  "cuenca": "Duero",
+  "codigo": "EA040",
   "nombre": "Villoldo",
   "rio": "Carrión",
-  "lat": 42.2494274,
-  "lon": -4.60015592,
-  "url_historico": "https://www.saihduero.es/risr/EA040/historico/xATVRFURfBDNwEUR"
+  "lat": 42.249427,
+  "lon": -4.600156,
+  "url_publica": "https://www.saihduero.es/risr/EA040",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA040/historico/xATVRFURfBDNwEUR"
+  }
  },
  {
-  "id": "EA187",
-  "nombre": "Ribas de Campos",
-  "rio": "Carrión",
-  "lat": 42.14477751,
-  "lon": -4.52275278,
-  "url_historico": "https://www.saihduero.es/risr/EA187/historico/xATVRFURfdDOxEUR"
- },
- {
-  "id": "EA042",
+  "id": "Duero:EA042",
+  "cuenca": "Duero",
+  "codigo": "EA042",
   "nombre": "Palencia",
   "rio": "Carrión",
-  "lat": 42.03625314,
-  "lon": -4.55828678,
-  "url_historico": "https://www.saihduero.es/risr/EA042/historico/xATVRFURfJDNwEUR"
+  "lat": 42.036253,
+  "lon": -4.558287,
+  "url_publica": "https://www.saihduero.es/risr/EA042",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA042/historico/xATVRFURfJDNwEUR"
+  }
  },
  {
-  "id": "EA104",
+  "id": "Duero:EA514",
+  "cuenca": "Duero",
+  "codigo": "EA514",
+  "nombre": "Salida del embalse de Casares",
+  "rio": "Casares",
+  "lat": 42.919571,
+  "lon": -5.762062,
+  "url_publica": "https://www.saihduero.es/risr/EA514",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA514/historico/xATVRFURfRTM1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA181",
+  "cuenca": "Duero",
+  "codigo": "EA181",
+  "nombre": "Vañes",
+  "rio": "Castillería",
+  "lat": 42.923253,
+  "lon": -4.472484,
+  "url_publica": "https://www.saihduero.es/risr/EA181",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA181/historico/xATVRFURfFDOxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA717",
+  "cuenca": "Duero",
+  "codigo": "EA717",
+  "nombre": "Villaveza de Valverde",
+  "rio": "Castrón",
+  "lat": 41.948114,
+  "lon": -5.849428,
+  "url_publica": "https://www.saihduero.es/risr/EA717",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA717/historico/xATVRFURfdTM3EUR"
+  }
+ },
+ {
+  "id": "Duero:EA104",
+  "cuenca": "Duero",
+  "codigo": "EA104",
   "nombre": "Villaverde de Arcayos",
   "rio": "Cea",
-  "lat": 42.61335066,
-  "lon": -5.03866094,
-  "url_historico": "https://www.saihduero.es/risr/EA104/historico/xATVRFURfRDMxEUR"
+  "lat": 42.613351,
+  "lon": -5.038661,
+  "url_publica": "https://www.saihduero.es/risr/EA104",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA104/historico/xATVRFURfRDMxEUR"
+  }
  },
  {
-  "id": "EA073",
+  "id": "Duero:EA073",
+  "cuenca": "Duero",
+  "codigo": "EA073",
   "nombre": "Sahagún",
   "rio": "Cea",
-  "lat": 42.37044177,
-  "lon": -5.03802237,
-  "url_historico": "https://www.saihduero.es/risr/EA073/historico/xATVRFURfNzNwEUR"
+  "lat": 42.370442,
+  "lon": -5.038022,
+  "url_publica": "https://www.saihduero.es/risr/EA073",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA073/historico/xATVRFURfNzNwEUR"
+  }
  },
  {
-  "id": "EA516",
+  "id": "Duero:EA516",
+  "cuenca": "Duero",
+  "codigo": "EA516",
   "nombre": "Valderas",
   "rio": "Cea",
-  "lat": 42.08158196,
-  "lon": -5.46223185,
-  "url_historico": "https://www.saihduero.es/risr/EA516/historico/xATVRFURfZTM1EUR"
+  "lat": 42.081582,
+  "lon": -5.462232,
+  "url_publica": "https://www.saihduero.es/risr/EA516",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA516/historico/xATVRFURfZTM1EUR"
+  }
  },
  {
-  "id": "EA529",
+  "id": "Duero:EA183",
+  "cuenca": "Duero",
+  "codigo": "EA183",
+  "nombre": "Navafría",
+  "rio": "Cega",
+  "lat": 41.064227,
+  "lon": -3.826646,
+  "url_publica": "https://www.saihduero.es/risr/EA183",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA183/historico/xATVRFURfNDOxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA016",
+  "cuenca": "Duero",
+  "codigo": "EA016",
+  "nombre": "Pajares de Pedraza",
+  "rio": "Cega",
+  "lat": 41.16727,
+  "lon": -3.854749,
+  "url_publica": "https://www.saihduero.es/risr/EA016",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA016/historico/xATVRFURfZTMwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA517",
+  "cuenca": "Duero",
+  "codigo": "EA517",
+  "nombre": "Aguilafuente",
+  "rio": "Cega",
+  "lat": 41.273759,
+  "lon": -4.093366,
+  "url_publica": "https://www.saihduero.es/risr/EA517",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA517/historico/xATVRFURfdTM1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA518",
+  "cuenca": "Duero",
+  "codigo": "EA518",
+  "nombre": "Megeces",
+  "rio": "Cega",
+  "lat": 41.416069,
+  "lon": -4.571559,
+  "url_publica": "https://www.saihduero.es/risr/EA518",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA518/historico/xATVRFURfhTM1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA063",
+  "cuenca": "Duero",
+  "codigo": "EA063",
+  "nombre": "Tolibia de Abajo",
+  "rio": "Curueño",
+  "lat": 42.952472,
+  "lon": -5.399707,
+  "url_publica": "https://www.saihduero.es/risr/EA063",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA063/historico/xATVRFURfNjNwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA068",
+  "cuenca": "Duero",
+  "codigo": "EA068",
+  "nombre": "Caldas de Nocedo",
+  "rio": "Curueño",
+  "lat": 42.897928,
+  "lon": -5.400259,
+  "url_publica": "https://www.saihduero.es/risr/EA068",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA068/historico/xATVRFURfhjNwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA147",
+  "cuenca": "Duero",
+  "codigo": "EA147",
+  "nombre": "Ambasaguas",
+  "rio": "Curueño",
+  "lat": 42.709017,
+  "lon": -5.377395,
+  "url_publica": "https://www.saihduero.es/risr/EA147",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA147/historico/xATVRFURfdDNxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA151",
+  "cuenca": "Duero",
+  "codigo": "EA151",
+  "nombre": "Crémenes",
+  "rio": "Dueñas",
+  "lat": 42.929514,
+  "lon": -5.114682,
+  "url_publica": "https://www.saihduero.es/risr/EA151",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA151/historico/xATVRFURfFTNxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA519",
+  "cuenca": "Duero",
+  "codigo": "EA519",
+  "nombre": "Boisán",
+  "rio": "Duerna",
+  "lat": 42.374142,
+  "lon": -6.288519,
+  "url_publica": "https://www.saihduero.es/risr/EA519",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA519/historico/xATVRFURflTM1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA520",
+  "cuenca": "Duero",
+  "codigo": "EA520",
+  "nombre": "Velilla de la Valduerna",
+  "rio": "Duerna",
+  "lat": 42.324555,
+  "lon": -6.146747,
+  "url_publica": "https://www.saihduero.es/risr/EA520",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA520/historico/xATVRFURfBjM1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA101",
+  "cuenca": "Duero",
+  "codigo": "EA101",
+  "nombre": "Molinos de Duero",
+  "rio": "Duero",
+  "lat": 41.888772,
+  "lon": -2.785925,
+  "url_publica": "https://www.saihduero.es/risr/EA101",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA101/historico/xATVRFURfFDMxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA001",
+  "cuenca": "Duero",
+  "codigo": "EA001",
+  "nombre": "Salida del embalse de La Cuerda del Pozo",
+  "rio": "Duero",
+  "lat": 41.876358,
+  "lon": -2.693171,
+  "url_publica": "https://www.saihduero.es/risr/EA001",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA001/historico/xATVRFURfFDMwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA002",
+  "cuenca": "Duero",
+  "codigo": "EA002",
+  "nombre": "Garray-Soria",
+  "rio": "Duero",
+  "lat": 41.797096,
+  "lon": -2.454961,
+  "url_publica": "https://www.saihduero.es/risr/EA002",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA002/historico/xATVRFURfJDMwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA162",
+  "cuenca": "Duero",
+  "codigo": "EA162",
+  "nombre": "Tardajos de Duero",
+  "rio": "Duero",
+  "lat": 41.663267,
+  "lon": -2.393283,
+  "url_publica": "https://www.saihduero.es/risr/EA162",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA162/historico/xATVRFURfJjNxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA163",
+  "cuenca": "Duero",
+  "codigo": "EA163",
+  "nombre": "Almazán",
+  "rio": "Duero",
+  "lat": 41.499595,
+  "lon": -2.510264,
+  "url_publica": "https://www.saihduero.es/risr/EA163",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA163/historico/xATVRFURfNjNxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA004",
+  "cuenca": "Duero",
+  "codigo": "EA004",
+  "nombre": "Gormaz",
+  "rio": "Duero",
+  "lat": 41.486513,
+  "lon": -3.010517,
+  "url_publica": "https://www.saihduero.es/risr/EA004",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA004/historico/xATVRFURfRDMwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA522",
+  "cuenca": "Duero",
+  "codigo": "EA522",
+  "nombre": "Vadocondes",
+  "rio": "Duero",
+  "lat": 41.644297,
+  "lon": -3.573505,
+  "url_publica": "https://www.saihduero.es/risr/EA522",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA522/historico/xATVRFURfJjM1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA013",
+  "cuenca": "Duero",
+  "codigo": "EA013",
+  "nombre": "Aranda de Duero",
+  "rio": "Duero",
+  "lat": 41.654017,
+  "lon": -3.680586,
+  "url_publica": "https://www.saihduero.es/risr/EA013",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA013/historico/xATVRFURfNTMwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA132",
+  "cuenca": "Duero",
+  "codigo": "EA132",
+  "nombre": "Quintanilla de Onésimo",
+  "rio": "Duero",
+  "lat": 41.628441,
+  "lon": -4.3615,
+  "url_publica": "https://www.saihduero.es/risr/EA132",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA132/historico/xATVRFURfJzMxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA054",
+  "cuenca": "Duero",
+  "codigo": "EA054",
+  "nombre": "San Miguel del Pino",
+  "rio": "Duero",
+  "lat": 41.504113,
+  "lon": -4.930566,
+  "url_publica": "https://www.saihduero.es/risr/EA054",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA054/historico/xATVRFURfRTNwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA062",
+  "cuenca": "Duero",
+  "codigo": "EA062",
+  "nombre": "Toro-Duero",
+  "rio": "Duero",
+  "lat": 41.50827,
+  "lon": -5.39942,
+  "url_publica": "https://www.saihduero.es/risr/EA062",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA062/historico/xATVRFURfJjNwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA121",
+  "cuenca": "Duero",
+  "codigo": "EA121",
+  "nombre": "Zamora",
+  "rio": "Duero",
+  "lat": 41.51189,
+  "lon": -5.722436,
+  "url_publica": "https://www.saihduero.es/risr/EA121",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA121/historico/xATVRFURfFjMxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA524",
+  "cuenca": "Duero",
+  "codigo": "EA524",
+  "nombre": "Saucelle-Duero",
+  "rio": "Duero",
+  "lat": 41.031013,
+  "lon": -6.820708,
+  "url_publica": "https://www.saihduero.es/risr/EA524",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA524/historico/xATVRFURfRjM1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA012",
+  "cuenca": "Duero",
+  "codigo": "EA012",
+  "nombre": "Sepúlveda",
+  "rio": "Duratón",
+  "lat": 41.300674,
+  "lon": -3.737698,
+  "url_publica": "https://www.saihduero.es/risr/EA012",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA012/historico/xATVRFURfJTMwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA161",
+  "cuenca": "Duero",
+  "codigo": "EA161",
+  "nombre": "Salida del embalse de Las Vencías",
+  "rio": "Duratón",
+  "lat": 41.434177,
+  "lon": -3.967232,
+  "url_publica": "https://www.saihduero.es/risr/EA161",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA161/historico/xATVRFURfFjNxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA525",
+  "cuenca": "Duero",
+  "codigo": "EA525",
+  "nombre": "Valsaín",
+  "rio": "Eresma",
+  "lat": 40.89037,
+  "lon": -4.022122,
+  "url_publica": "https://www.saihduero.es/risr/EA525",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA525/historico/xATVRFURfVjM1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA526",
+  "cuenca": "Duero",
+  "codigo": "EA526",
+  "nombre": "Salida del embalse de El Pontón Alto",
+  "rio": "Eresma",
+  "lat": 40.921309,
+  "lon": -4.0497,
+  "url_publica": "https://www.saihduero.es/risr/EA526",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA526/historico/xATVRFURfZjM1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA050",
+  "cuenca": "Duero",
+  "codigo": "EA050",
+  "nombre": "Segovia",
+  "rio": "Eresma",
+  "lat": 40.950641,
+  "lon": -4.147769,
+  "url_publica": "https://www.saihduero.es/risr/EA050",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA050/historico/xATVRFURfBTNwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA053",
+  "cuenca": "Duero",
+  "codigo": "EA053",
+  "nombre": "Bernardos",
+  "rio": "Eresma",
+  "lat": 41.155826,
+  "lon": -4.344796,
+  "url_publica": "https://www.saihduero.es/risr/EA053",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA053/historico/xATVRFURfNTNwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA527",
+  "cuenca": "Duero",
+  "codigo": "EA527",
+  "nombre": "Coca-Eresma",
+  "rio": "Eresma",
+  "lat": 41.263097,
+  "lon": -4.560353,
+  "url_publica": "https://www.saihduero.es/risr/EA527",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA527/historico/xATVRFURfdjM1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA089",
+  "cuenca": "Duero",
+  "codigo": "EA089",
+  "nombre": "Morla de La Valdería",
+  "rio": "Eria",
+  "lat": 42.222559,
+  "lon": -6.252405,
+  "url_publica": "https://www.saihduero.es/risr/EA089",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA089/historico/xATVRFURflDOwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA082",
+  "cuenca": "Duero",
+  "codigo": "EA082",
+  "nombre": "Morales del Rey",
+  "rio": "Eria",
+  "lat": 42.05782,
+  "lon": -5.76103,
+  "url_publica": "https://www.saihduero.es/risr/EA082",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA082/historico/xATVRFURfJDOwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA049",
+  "cuenca": "Duero",
+  "codigo": "EA049",
+  "nombre": "Cabañes de Esgueva",
+  "rio": "Esgueva",
+  "lat": 41.829679,
+  "lon": -3.790514,
+  "url_publica": "https://www.saihduero.es/risr/EA049",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA049/historico/xATVRFURflDNwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA528",
+  "cuenca": "Duero",
+  "codigo": "EA528",
+  "nombre": "Torre de Esgueva",
+  "rio": "Esgueva",
+  "lat": 41.762533,
+  "lon": -4.197478,
+  "url_publica": "https://www.saihduero.es/risr/EA528",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA528/historico/xATVRFURfhjM1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA025",
+  "cuenca": "Duero",
+  "codigo": "EA025",
+  "nombre": "Villanueva de los Infantes",
+  "rio": "Esgueva",
+  "lat": 41.700719,
+  "lon": -4.481126,
+  "url_publica": "https://www.saihduero.es/risr/EA025",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA025/historico/xATVRFURfVjMwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA044",
+  "cuenca": "Duero",
+  "codigo": "EA044",
+  "nombre": "Valladolid-Esgueva",
+  "rio": "Esgueva",
+  "lat": 41.651141,
+  "lon": -4.701912,
+  "url_publica": "https://www.saihduero.es/risr/EA044",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA044/historico/xATVRFURfRDNwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA529",
+  "cuenca": "Duero",
+  "codigo": "EA529",
   "nombre": "Liegos",
   "rio": "Esla",
   "lat": 43.028346,
-  "lon": -5.07653831,
-  "url_historico": "https://www.saihduero.es/risr/EA529/historico/xATVRFURfljM1EUR"
+  "lon": -5.076538,
+  "url_publica": "https://www.saihduero.es/risr/EA529",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA529/historico/xATVRFURfljM1EUR"
+  }
  },
  {
-  "id": "EA102",
+  "id": "Duero:EA102",
+  "cuenca": "Duero",
+  "codigo": "EA102",
   "nombre": "Las Salas",
   "rio": "Esla",
-  "lat": 42.93344058,
-  "lon": -5.10049006,
-  "url_historico": "https://www.saihduero.es/risr/EA102/historico/xATVRFURfJDMxEUR"
+  "lat": 42.933441,
+  "lon": -5.10049,
+  "url_publica": "https://www.saihduero.es/risr/EA102",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA102/historico/xATVRFURfJDMxEUR"
+  }
  },
  {
-  "id": "EA103",
+  "id": "Duero:EA103",
+  "cuenca": "Duero",
+  "codigo": "EA103",
   "nombre": "Cistierna",
   "rio": "Esla",
-  "lat": 42.83351016,
-  "lon": -5.13090663,
-  "url_historico": "https://www.saihduero.es/risr/EA103/historico/xATVRFURfNDMxEUR"
+  "lat": 42.83351,
+  "lon": -5.130907,
+  "url_publica": "https://www.saihduero.es/risr/EA103",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA103/historico/xATVRFURfNDMxEUR"
+  }
  },
  {
-  "id": "EA111",
+  "id": "Duero:EA111",
+  "cuenca": "Duero",
+  "codigo": "EA111",
   "nombre": "Villómar",
   "rio": "Esla",
-  "lat": 42.51648895,
-  "lon": -5.37436437,
-  "url_historico": "https://www.saihduero.es/risr/EA111/historico/xATVRFURfFTMxEUR"
+  "lat": 42.516489,
+  "lon": -5.374364,
+  "url_publica": "https://www.saihduero.es/risr/EA111",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA111/historico/xATVRFURfFTMxEUR"
+  }
  },
  {
-  "id": "EA710",
+  "id": "Duero:EA710",
+  "cuenca": "Duero",
+  "codigo": "EA710",
   "nombre": "Villalobar",
   "rio": "Esla",
-  "lat": 42.39628809,
-  "lon": -5.55595363,
-  "url_historico": "https://www.saihduero.es/risr/EA710/historico/xATVRFURfBTM3EUR"
+  "lat": 42.396288,
+  "lon": -5.555954,
+  "url_publica": "https://www.saihduero.es/risr/EA710",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA710/historico/xATVRFURfBTM3EUR"
+  }
  },
  {
-  "id": "EA711",
+  "id": "Duero:EA711",
+  "cuenca": "Duero",
+  "codigo": "EA711",
   "nombre": "Benamariel 2",
   "rio": "Esla",
-  "lat": 42.36674105,
-  "lon": -5.56485818,
-  "url_historico": "https://www.saihduero.es/risr/EA711/historico/xATVRFURfFTM3EUR"
+  "lat": 42.366741,
+  "lon": -5.564858,
+  "url_publica": "https://www.saihduero.es/risr/EA711",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA711/historico/xATVRFURfFTM3EUR"
+  }
  },
  {
-  "id": "EA074",
+  "id": "Duero:EA074",
+  "cuenca": "Duero",
+  "codigo": "EA074",
   "nombre": "Castropepe",
   "rio": "Esla",
-  "lat": 41.97428643,
-  "lon": -5.63655064,
-  "url_historico": "https://www.saihduero.es/risr/EA074/historico/xATVRFURfRzNwEUR"
+  "lat": 41.974286,
+  "lon": -5.636551,
+  "url_publica": "https://www.saihduero.es/risr/EA074",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA074/historico/xATVRFURfRzNwEUR"
+  }
  },
  {
-  "id": "EA530",
+  "id": "Duero:EA530",
+  "cuenca": "Duero",
+  "codigo": "EA530",
   "nombre": "Bretó",
   "rio": "Esla",
-  "lat": 41.87224825,
-  "lon": -5.76562617,
-  "url_historico": "https://www.saihduero.es/risr/EA530/historico/xATVRFURfBzM1EUR"
+  "lat": 41.872248,
+  "lon": -5.765626,
+  "url_publica": "https://www.saihduero.es/risr/EA530",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA530/historico/xATVRFURfBzM1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA129",
+  "cuenca": "Duero",
+  "codigo": "EA129",
+  "nombre": "Toro-Guareña",
+  "rio": "Guareña",
+  "lat": 41.488713,
+  "lon": -5.387499,
+  "url_publica": "https://www.saihduero.es/risr/EA129",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA129/historico/xATVRFURfljMxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA094",
+  "cuenca": "Duero",
+  "codigo": "EA094",
+  "nombre": "Puente Resbala",
+  "rio": "Huebra",
+  "lat": 40.995533,
+  "lon": -6.626339,
+  "url_publica": "https://www.saihduero.es/risr/EA094",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA094/historico/xATVRFURfRTOwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA531",
+  "cuenca": "Duero",
+  "codigo": "EA531",
+  "nombre": "Saucelle-Huebra",
+  "rio": "Huebra",
+  "lat": 41.032913,
+  "lon": -6.803574,
+  "url_publica": "https://www.saihduero.es/risr/EA531",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA531/historico/xATVRFURfFzM1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA718",
+  "cuenca": "Duero",
+  "codigo": "EA718",
+  "nombre": "Genestacio",
+  "rio": "Jamuz",
+  "lat": 42.19527,
+  "lon": -5.85005,
+  "url_publica": "https://www.saihduero.es/risr/EA718",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA718/historico/xATVRFURfhTM3EUR"
+  }
+ },
+ {
+  "id": "Duero:EA136",
+  "cuenca": "Duero",
+  "codigo": "EA136",
+  "nombre": "Villallano",
+  "rio": "Lucio",
+  "lat": 42.76601,
+  "lon": -4.233673,
+  "url_publica": "https://www.saihduero.es/risr/EA136",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA136/historico/xATVRFURfZzMxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA532",
+  "cuenca": "Duero",
+  "codigo": "EA532",
+  "nombre": "Sena de Luna",
+  "rio": "Luna",
+  "lat": 42.92158,
+  "lon": -5.962802,
+  "url_publica": "https://www.saihduero.es/risr/EA532",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA532/historico/xATVRFURfJzM1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA188",
+  "cuenca": "Duero",
+  "codigo": "EA188",
+  "nombre": "Barrios de Luna",
+  "rio": "Luna",
+  "lat": 42.842189,
+  "lon": -5.862324,
+  "url_publica": "https://www.saihduero.es/risr/EA188",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA188/historico/xATVRFURfhDOxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA122",
+  "cuenca": "Duero",
+  "codigo": "EA122",
+  "nombre": "Salida del embalse de Barrios de Luna",
+  "rio": "Luna",
+  "lat": 42.836279,
+  "lon": -5.870689,
+  "url_publica": "https://www.saihduero.es/risr/EA122",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA122/historico/xATVRFURfJjMxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA075",
+  "cuenca": "Duero",
+  "codigo": "EA075",
+  "nombre": "La Magdalena",
+  "rio": "Luna",
+  "lat": 42.819196,
+  "lon": -5.83428,
+  "url_publica": "https://www.saihduero.es/risr/EA075",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA075/historico/xATVRFURfVzNwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA189",
+  "cuenca": "Duero",
+  "codigo": "EA189",
+  "nombre": "Santiago de la Puebla",
+  "rio": "Margañan",
+  "lat": 40.802417,
+  "lon": -5.276371,
+  "url_publica": "https://www.saihduero.es/risr/EA189",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA189/historico/xATVRFURflDOxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA168",
+  "cuenca": "Duero",
+  "codigo": "EA168",
+  "nombre": "Robleda-Mayas",
+  "rio": "Mayas",
+  "lat": 40.372422,
+  "lon": -6.578207,
+  "url_publica": "https://www.saihduero.es/risr/EA168",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA168/historico/xATVRFURfhjNxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA533",
+  "cuenca": "Duero",
+  "codigo": "EA533",
+  "nombre": "Monderio",
+  "rio": "Monderio",
+  "lat": 42.905972,
+  "lon": -4.531545,
+  "url_publica": "https://www.saihduero.es/risr/EA533",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA533/historico/xATVRFURfNzM1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA051",
+  "cuenca": "Duero",
+  "codigo": "EA051",
+  "nombre": "El Espinar",
+  "rio": "Moros",
+  "lat": 40.75032,
+  "lon": -4.15557,
+  "url_publica": "https://www.saihduero.es/risr/EA051",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA051/historico/xATVRFURfFTNwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA055",
+  "cuenca": "Duero",
+  "codigo": "EA055",
+  "nombre": "Los Ángeles de San Rafael",
+  "rio": "Moros",
+  "lat": 40.773136,
+  "lon": -4.242431,
+  "url_publica": "https://www.saihduero.es/risr/EA055",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA055/historico/xATVRFURfVTNwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA052",
+  "cuenca": "Duero",
+  "codigo": "EA052",
+  "nombre": "Guijas Albas",
+  "rio": "Moros",
+  "lat": 40.81986,
+  "lon": -4.282907,
+  "url_publica": "https://www.saihduero.es/risr/EA052",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA052/historico/xATVRFURfJTNwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA113",
+  "cuenca": "Duero",
+  "codigo": "EA113",
+  "nombre": "Santa Eulalia de Rionegro",
+  "rio": "Negro",
+  "lat": 42.036216,
+  "lon": -6.267084,
+  "url_publica": "https://www.saihduero.es/risr/EA113",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA113/historico/xATVRFURfNTMxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA018",
+  "cuenca": "Duero",
+  "codigo": "EA018",
+  "nombre": "Pedrosa del Príncipe",
+  "rio": "Odra",
+  "lat": 42.251478,
+  "lon": -4.201581,
+  "url_publica": "https://www.saihduero.es/risr/EA018",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA018/historico/xATVRFURfhTMwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA138",
+  "cuenca": "Duero",
+  "codigo": "EA138",
+  "nombre": "Castro de La Lomba",
+  "rio": "Omaña",
+  "lat": 42.76817,
+  "lon": -5.956574,
+  "url_publica": "https://www.saihduero.es/risr/EA138",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA138/historico/xATVRFURfhzMxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA076",
+  "cuenca": "Duero",
+  "codigo": "EA076",
+  "nombre": "Las Omañas",
+  "rio": "Omaña",
+  "lat": 42.703403,
+  "lon": -5.902317,
+  "url_publica": "https://www.saihduero.es/risr/EA076",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA076/historico/xATVRFURfZzNwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA061",
+  "cuenca": "Duero",
+  "codigo": "EA061",
+  "nombre": "Santa Marina del Rey",
+  "rio": "Órbigo",
+  "lat": 42.505636,
+  "lon": -5.878259,
+  "url_publica": "https://www.saihduero.es/risr/EA061",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA061/historico/xATVRFURfFjNwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA060",
+  "cuenca": "Duero",
+  "codigo": "EA060",
+  "nombre": "Cebrones del Río",
+  "rio": "Órbigo",
+  "lat": 42.248466,
+  "lon": -5.829247,
+  "url_publica": "https://www.saihduero.es/risr/EA060",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA060/historico/xATVRFURfBjNwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA145",
+  "cuenca": "Duero",
+  "codigo": "EA145",
+  "nombre": "Manganeses",
+  "rio": "Órbigo",
+  "lat": 42.038257,
+  "lon": -5.740515,
+  "url_publica": "https://www.saihduero.es/risr/EA145",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA145/historico/xATVRFURfVDNxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA535",
+  "cuenca": "Duero",
+  "codigo": "EA535",
+  "nombre": "Vegacerneja",
+  "rio": "Orza",
+  "lat": 43.042049,
+  "lon": -5.008596,
+  "url_publica": "https://www.saihduero.es/risr/EA535",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA535/historico/xATVRFURfVzM1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA123",
+  "cuenca": "Duero",
+  "codigo": "EA123",
+  "nombre": "Barbadillo del Pez",
+  "rio": "Pedroso",
+  "lat": 42.107234,
+  "lon": -3.229818,
+  "url_publica": "https://www.saihduero.es/risr/EA123",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA123/historico/xATVRFURfNjMxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA141",
+  "cuenca": "Duero",
+  "codigo": "EA141",
+  "nombre": "Pinilla de Los Moros",
+  "rio": "Pedroso",
+  "lat": 42.065008,
+  "lon": -3.32774,
+  "url_publica": "https://www.saihduero.es/risr/EA141",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA141/historico/xATVRFURfFDNxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA057",
+  "cuenca": "Duero",
+  "codigo": "EA057",
+  "nombre": "Villovela de Pirón",
+  "rio": "Pirón",
+  "lat": 41.113168,
+  "lon": -4.124416,
+  "url_publica": "https://www.saihduero.es/risr/EA057",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA057/historico/xATVRFURfdTNwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA536",
+  "cuenca": "Duero",
+  "codigo": "EA536",
+  "nombre": "San Salvador de Cantamuda",
+  "rio": "Pisuerga",
+  "lat": 42.960547,
+  "lon": -4.488196,
+  "url_publica": "https://www.saihduero.es/risr/EA536",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA536/historico/xATVRFURfZzM1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA106",
+  "cuenca": "Duero",
+  "codigo": "EA106",
+  "nombre": "Arbejal",
+  "rio": "Pisuerga",
+  "lat": 42.89926,
+  "lon": -4.525083,
+  "url_publica": "https://www.saihduero.es/risr/EA106",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA106/historico/xATVRFURfZDMxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA019",
+  "cuenca": "Duero",
+  "codigo": "EA019",
+  "nombre": "Salinas de Pisuerga",
+  "rio": "Pisuerga",
+  "lat": 42.848832,
+  "lon": -4.389231,
+  "url_publica": "https://www.saihduero.es/risr/EA019",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA019/historico/xATVRFURflTMwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA020",
+  "cuenca": "Duero",
+  "codigo": "EA020",
+  "nombre": "Salida del embalse de Aguilar de Campoo",
+  "rio": "Pisuerga",
+  "lat": 42.794311,
+  "lon": -4.280639,
+  "url_publica": "https://www.saihduero.es/risr/EA020",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA020/historico/xATVRFURfBjMwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA024",
+  "cuenca": "Duero",
+  "codigo": "EA024",
+  "nombre": "Alar del Rey",
+  "rio": "Pisuerga",
+  "lat": 42.657157,
+  "lon": -4.315851,
+  "url_publica": "https://www.saihduero.es/risr/EA024",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA024/historico/xATVRFURfRjMwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA133",
+  "cuenca": "Duero",
+  "codigo": "EA133",
+  "nombre": "Herrera de Pisuerga",
+  "rio": "Pisuerga",
+  "lat": 42.561125,
+  "lon": -4.305328,
+  "url_publica": "https://www.saihduero.es/risr/EA133",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA133/historico/xATVRFURfNzMxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA029",
+  "cuenca": "Duero",
+  "codigo": "EA029",
+  "nombre": "Cordovilla",
+  "rio": "Pisuerga",
+  "lat": 42.130534,
+  "lon": -4.249564,
+  "url_publica": "https://www.saihduero.es/risr/EA029",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA029/historico/xATVRFURfljMwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA043",
+  "cuenca": "Duero",
+  "codigo": "EA043",
+  "nombre": "Cabezón de Pisuerga",
+  "rio": "Pisuerga",
+  "lat": 41.741082,
+  "lon": -4.639288,
+  "url_publica": "https://www.saihduero.es/risr/EA043",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA043/historico/xATVRFURfNDNwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA097",
+  "cuenca": "Duero",
+  "codigo": "EA097",
+  "nombre": "Valladolid-Pisuerga",
+  "rio": "Pisuerga",
+  "lat": 41.661169,
+  "lon": -4.732359,
+  "url_publica": "https://www.saihduero.es/risr/EA097",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA097/historico/xATVRFURfdTOwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA078",
+  "cuenca": "Duero",
+  "codigo": "EA078",
+  "nombre": "Camposolillo",
+  "rio": "Porma",
+  "lat": 42.988725,
+  "lon": -5.259976,
+  "url_publica": "https://www.saihduero.es/risr/EA078",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA078/historico/xATVRFURfhzNwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA011",
+  "cuenca": "Duero",
+  "codigo": "EA011",
+  "nombre": "Salida del embalse del Porma",
+  "rio": "Porma",
+  "lat": 42.925227,
+  "lon": -5.296433,
+  "url_publica": "https://www.saihduero.es/risr/EA011",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA011/historico/xATVRFURfFTMwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA112",
+  "cuenca": "Duero",
+  "codigo": "EA112",
+  "nombre": "Secos",
+  "rio": "Porma",
+  "lat": 42.601108,
+  "lon": -5.4051,
+  "url_publica": "https://www.saihduero.es/risr/EA112",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA112/historico/xATVRFURfJTMxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA716",
+  "cuenca": "Duero",
+  "codigo": "EA716",
+  "nombre": "Camarzana-Regato",
+  "rio": "Regato",
+  "lat": 41.99832,
+  "lon": -6.018091,
+  "url_publica": "https://www.saihduero.es/risr/EA716",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA716/historico/xATVRFURfZTM3EUR"
+  }
+ },
+ {
+  "id": "Duero:EA157",
+  "cuenca": "Duero",
+  "codigo": "EA157",
+  "nombre": "Remolina",
+  "rio": "Remolina",
+  "lat": 42.926029,
+  "lon": -5.079799,
+  "url_publica": "https://www.saihduero.es/risr/EA157",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA157/historico/xATVRFURfdTNxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA000",
+  "cuenca": "Duero",
+  "codigo": "EA000",
+  "nombre": "Vinuesa",
+  "rio": "Revinuesa",
+  "lat": 41.91126,
+  "lon": -2.75761,
+  "url_publica": "https://www.saihduero.es/risr/EA000",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA000/historico/xATVRFURfBDMwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA009",
+  "cuenca": "Duero",
+  "codigo": "EA009",
+  "nombre": "Riaza",
+  "rio": "Riaza",
+  "lat": 41.28382,
+  "lon": -3.472033,
+  "url_publica": "https://www.saihduero.es/risr/EA009",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA009/historico/xATVRFURflDMwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA538",
+  "cuenca": "Duero",
+  "codigo": "EA538",
+  "nombre": "Languilla",
+  "rio": "Riaza",
+  "lat": 41.448343,
+  "lon": -3.426378,
+  "url_publica": "https://www.saihduero.es/risr/EA538",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA538/historico/xATVRFURfhzM1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA552",
+  "cuenca": "Duero",
+  "codigo": "EA552",
+  "nombre": "Salida del embalse de Linares",
+  "rio": "Riaza",
+  "lat": 41.529998,
+  "lon": -3.55461,
+  "url_publica": "https://www.saihduero.es/risr/EA552",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA552/historico/xATVRFURfJTN1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA010",
+  "cuenca": "Duero",
+  "codigo": "EA010",
+  "nombre": "Linares del Arroyo",
+  "rio": "Riaza",
+  "lat": 41.533929,
+  "lon": -3.561177,
+  "url_publica": "https://www.saihduero.es/risr/EA010",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA010/historico/xATVRFURfBTMwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA539",
+  "cuenca": "Duero",
+  "codigo": "EA539",
+  "nombre": "Ventanilla",
+  "rio": "Rivera",
+  "lat": 42.890787,
+  "lon": -4.58203,
+  "url_publica": "https://www.saihduero.es/risr/EA539",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA539/historico/xATVRFURflzM1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA107",
+  "cuenca": "Duero",
+  "codigo": "EA107",
+  "nombre": "Salida del embalse de Cervera",
+  "rio": "Rivera",
+  "lat": 42.865959,
+  "lon": -4.525769,
+  "url_publica": "https://www.saihduero.es/risr/EA107",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA107/historico/xATVRFURfdDMxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA022",
+  "cuenca": "Duero",
+  "codigo": "EA022",
+  "nombre": "Ruesga",
+  "rio": "Rivera",
+  "lat": 42.858284,
+  "lon": -4.517183,
+  "url_publica": "https://www.saihduero.es/risr/EA022",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA022/historico/xATVRFURfJjMwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA169",
+  "cuenca": "Duero",
+  "codigo": "EA169",
+  "nombre": "Menaza",
+  "rio": "Rubagón",
+  "lat": 42.830506,
+  "lon": -4.223503,
+  "url_publica": "https://www.saihduero.es/risr/EA169",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA169/historico/xATVRFURfljNxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA124",
+  "cuenca": "Duero",
+  "codigo": "EA124",
+  "nombre": "Medina de Rioseco",
+  "rio": "Sequillo",
+  "lat": 41.887471,
+  "lon": -5.038684,
+  "url_publica": "https://www.saihduero.es/risr/EA124",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA124/historico/xATVRFURfRjMxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA080",
+  "cuenca": "Duero",
+  "codigo": "EA080",
+  "nombre": "Puebla de Sanabria",
+  "rio": "Tera",
+  "lat": 42.056448,
+  "lon": -6.631655,
+  "url_publica": "https://www.saihduero.es/risr/EA080",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA080/historico/xATVRFURfBDOwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA541",
+  "cuenca": "Duero",
+  "codigo": "EA541",
+  "nombre": "Camarzana de Tera",
+  "rio": "Tera",
+  "lat": 41.987112,
+  "lon": -6.041461,
+  "url_publica": "https://www.saihduero.es/risr/EA541",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA541/historico/xATVRFURfFDN1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA099",
+  "cuenca": "Duero",
+  "codigo": "EA099",
+  "nombre": "Mózar de Valverde",
+  "rio": "Tera",
+  "lat": 41.941693,
+  "lon": -5.783777,
+  "url_publica": "https://www.saihduero.es/risr/EA099",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA099/historico/xATVRFURflTOwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA164",
+  "cuenca": "Duero",
+  "codigo": "EA164",
+  "nombre": "Tardesillas",
+  "rio": "Tera (Soria)",
+  "lat": 41.829227,
+  "lon": -2.453822,
+  "url_publica": "https://www.saihduero.es/risr/EA164",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA164/historico/xATVRFURfRjNxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA542",
+  "cuenca": "Duero",
+  "codigo": "EA542",
+  "nombre": "Getino",
+  "rio": "Torío",
+  "lat": 42.941805,
+  "lon": -5.553035,
+  "url_publica": "https://www.saihduero.es/risr/EA542",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA542/historico/xATVRFURfJDN1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA150",
+  "cuenca": "Duero",
+  "codigo": "EA150",
+  "nombre": "Matallana de Torio",
+  "rio": "Torío",
+  "lat": 42.840608,
+  "lon": -5.523569,
+  "url_publica": "https://www.saihduero.es/risr/EA150",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA150/historico/xATVRFURfBTNxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA006",
+  "cuenca": "Duero",
+  "codigo": "EA006",
+  "nombre": "Hoyos del Espino",
+  "rio": "Tormes",
+  "lat": 40.341154,
+  "lon": -5.181906,
+  "url_publica": "https://www.saihduero.es/risr/EA006",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA006/historico/xATVRFURfZDMwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA085",
+  "cuenca": "Duero",
+  "codigo": "EA085",
+  "nombre": "El Barco de Ávila",
+  "rio": "Tormes",
+  "lat": 40.356153,
+  "lon": -5.529773,
+  "url_publica": "https://www.saihduero.es/risr/EA085",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA085/historico/xATVRFURfVDOwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA081",
+  "cuenca": "Duero",
+  "codigo": "EA081",
+  "nombre": "Puente Congosto",
+  "rio": "Tormes",
+  "lat": 40.503298,
+  "lon": -5.529986,
+  "url_publica": "https://www.saihduero.es/risr/EA081",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA081/historico/xATVRFURfFDOwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA140",
+  "cuenca": "Duero",
+  "codigo": "EA140",
+  "nombre": "Salida del embalse de Santa Teresa",
+  "rio": "Tormes",
+  "lat": 40.712201,
+  "lon": -5.590427,
+  "url_publica": "https://www.saihduero.es/risr/EA140",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA140/historico/xATVRFURfBDNxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA545",
+  "cuenca": "Duero",
+  "codigo": "EA545",
+  "nombre": "Encinas de Abajo",
+  "rio": "Tormes",
+  "lat": 40.932923,
+  "lon": -5.481467,
+  "url_publica": "https://www.saihduero.es/risr/EA545",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA545/historico/xATVRFURfVDN1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA087",
+  "cuenca": "Duero",
+  "codigo": "EA087",
+  "nombre": "Salamanca",
+  "rio": "Tormes",
+  "lat": 40.958786,
+  "lon": -5.647634,
+  "url_publica": "https://www.saihduero.es/risr/EA087",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA087/historico/xATVRFURfdDOwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA546",
+  "cuenca": "Duero",
+  "codigo": "EA546",
+  "nombre": "Ledesma",
+  "rio": "Tormes",
+  "lat": 41.093843,
+  "lon": -5.996735,
+  "url_publica": "https://www.saihduero.es/risr/EA546",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA546/historico/xATVRFURfZDN1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA547",
+  "cuenca": "Duero",
+  "codigo": "EA547",
+  "nombre": "Quintana del Castillo",
+  "rio": "Tuerto",
+  "lat": 42.673051,
+  "lon": -6.099003,
+  "url_publica": "https://www.saihduero.es/risr/EA547",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA547/historico/xATVRFURfdDN1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA077",
+  "cuenca": "Duero",
+  "codigo": "EA077",
+  "nombre": "Villameca",
+  "rio": "Tuerto",
+  "lat": 42.646555,
+  "lon": -6.072803,
+  "url_publica": "https://www.saihduero.es/risr/EA077",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA077/historico/xATVRFURfdzNwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA156",
+  "cuenca": "Duero",
+  "codigo": "EA156",
+  "nombre": "San Félix de La Vega",
+  "rio": "Tuerto",
+  "lat": 42.399924,
+  "lon": -5.952307,
+  "url_publica": "https://www.saihduero.es/risr/EA156",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA156/historico/xATVRFURfZTNxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA159",
+  "cuenca": "Duero",
+  "codigo": "EA159",
+  "nombre": "Quintanadueñas",
+  "rio": "Ubierna",
+  "lat": 42.388091,
+  "lon": -3.72849,
+  "url_publica": "https://www.saihduero.es/risr/EA159",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA159/historico/xATVRFURflTNxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA154",
+  "cuenca": "Duero",
+  "codigo": "EA154",
+  "nombre": "Ucero",
+  "rio": "Ucero",
+  "lat": 41.716972,
+  "lon": -3.050383,
+  "url_publica": "https://www.saihduero.es/risr/EA154",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA154/historico/xATVRFURfRTNxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA005",
+  "cuenca": "Duero",
+  "codigo": "EA005",
+  "nombre": "Osma",
+  "rio": "Ucero",
+  "lat": 41.575522,
+  "lon": -3.083775,
+  "url_publica": "https://www.saihduero.es/risr/EA005",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA005/historico/xATVRFURfVDMwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA041",
+  "cuenca": "Duero",
+  "codigo": "EA041",
+  "nombre": "Villalcázar de Sirga",
+  "rio": "Ucieza",
+  "lat": 42.322315,
+  "lon": -4.523921,
+  "url_publica": "https://www.saihduero.es/risr/EA041",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA041/historico/xATVRFURfFDNwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA026",
+  "cuenca": "Duero",
+  "codigo": "EA026",
+  "nombre": "Abia de Las Torres",
+  "rio": "Valdavia",
+  "lat": 42.423271,
+  "lon": -4.41862,
+  "url_publica": "https://www.saihduero.es/risr/EA026",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA026/historico/xATVRFURfZjMwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA135",
+  "cuenca": "Duero",
+  "codigo": "EA135",
+  "nombre": "Emisario de La Nava",
+  "rio": "Valdeginate",
+  "lat": 42.032567,
+  "lon": -4.579567,
+  "url_publica": "https://www.saihduero.es/risr/EA135",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA135/historico/xATVRFURfVzMxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA105",
+  "cuenca": "Duero",
+  "codigo": "EA105",
+  "nombre": "Santervás de Campos",
+  "rio": "Valderaduey",
+  "lat": 42.215723,
+  "lon": -5.096569,
+  "url_publica": "https://www.saihduero.es/risr/EA105",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA105/historico/xATVRFURfVDMxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA126",
+  "cuenca": "Duero",
+  "codigo": "EA126",
+  "nombre": "Villárdiga",
+  "rio": "Valderaduey",
+  "lat": 41.772347,
+  "lon": -5.498521,
+  "url_publica": "https://www.saihduero.es/risr/EA126",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA126/historico/xATVRFURfZjMxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA548",
+  "cuenca": "Duero",
+  "codigo": "EA548",
+  "nombre": "Benegiles",
+  "rio": "Valderaduey",
+  "lat": 41.622909,
+  "lon": -5.631576,
+  "url_publica": "https://www.saihduero.es/risr/EA548",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA548/historico/xATVRFURfhDN1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA549",
+  "cuenca": "Duero",
+  "codigo": "EA549",
+  "nombre": "Burgos-Vena",
+  "rio": "Vena",
+  "lat": 42.344375,
+  "lon": -3.696748,
+  "url_publica": "https://www.saihduero.es/risr/EA549",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA549/historico/xATVRFURflDN1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA047",
+  "cuenca": "Duero",
+  "codigo": "EA047",
+  "nombre": "Mediana de Voltoya",
+  "rio": "Voltoya",
+  "lat": 40.716978,
+  "lon": -4.539241,
+  "url_publica": "https://www.saihduero.es/risr/EA047",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA047/historico/xATVRFURfdDNwEUR"
+  }
+ },
+ {
+  "id": "Duero:EA114",
+  "cuenca": "Duero",
+  "codigo": "EA114",
+  "nombre": "Coca-Voltoya",
+  "rio": "Voltoya",
+  "lat": 41.210419,
+  "lon": -4.531738,
+  "url_publica": "https://www.saihduero.es/risr/EA114",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA114/historico/xATVRFURfRTMxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA550",
+  "cuenca": "Duero",
+  "codigo": "EA550",
+  "nombre": "Boca de Huérgano",
+  "rio": "Yuso",
+  "lat": 42.971038,
+  "lon": -4.923144,
+  "url_publica": "https://www.saihduero.es/risr/EA550",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA550/historico/xATVRFURfBTN1EUR"
+  }
+ },
+ {
+  "id": "Duero:EA185",
+  "cuenca": "Duero",
+  "codigo": "EA185",
+  "nombre": "Bercial",
+  "rio": "Zapardiel",
+  "lat": 41.045515,
+  "lon": -4.968363,
+  "url_publica": "https://www.saihduero.es/risr/EA185",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA185/historico/xATVRFURfVDOxEUR"
+  }
+ },
+ {
+  "id": "Duero:EA551",
+  "cuenca": "Duero",
+  "codigo": "EA551",
+  "nombre": "Medina del Campo",
+  "rio": "Zapardiel",
+  "lat": 41.311294,
+  "lon": -4.913719,
+  "url_publica": "https://www.saihduero.es/risr/EA551",
+  "extra": {
+   "url_historico": "https://www.saihduero.es/risr/EA551/historico/xATVRFURfFTN1EUR"
+  }
+ },
+ {
+  "id": "Tajo:AR21",
+  "cuenca": "Tajo",
+  "codigo": "AR21",
+  "nombre": "Alberche En Navaluenga",
+  "rio": "Alberche",
+  "lat": 40.405344,
+  "lon": -4.730403,
+  "url_publica": "https://saihtajo.chtajo.es",
+  "extra": {
+   "url_grafico": "https://saihtajo.chtajo.es/index.php?w=get-estacion-grafico-grande&x=%2F4ZGs%2B6M%2BZWfvq6%2FyxpbhbdAXe24pSEYnAF63MXXH5H0QyClFuZp6oSbTgNGYw%2BXtfrabJDvt7Zj%2BCdkIy7N6iSwt1Z4G6%2BkIXrVRb168rMgWOG4YePSd7etoPp4RT2T9DTfan1WHAklsP1ATzDncQ%3D%3D",
+   "senal": "CAUDAL CIRCULANTE"
+  }
+ },
+ {
+  "id": "Tajo:AR28",
+  "cuenca": "Tajo",
+  "codigo": "AR28",
+  "nombre": "Tietar En La Iglesuela",
+  "rio": "Tietar",
+  "lat": 40.25959,
+  "lon": -4.746158,
+  "url_publica": "https://saihtajo.chtajo.es",
+  "extra": {
+   "url_grafico": "https://saihtajo.chtajo.es/index.php?w=get-estacion-grafico-grande&x=%2F4ZGs%2B6M%2BZWfvq6%2FyxpbhbdAXe24pSEYnAF63MXXH5H0QyClFuZp6oSbTgNGYw%2BXZW59G6QKqBWt%2BefexooOa720PoPEBosPFf2dj7dwlg3DGVEfR8JT3x6DpliI%2BRdhnAncELD5jyRImRZnY0fZtw%3D%3D",
+   "senal": "CAUDAL CIRCULANTE"
+  }
+ },
+ {
+  "id": "Tajo:AR34",
+  "cuenca": "Tajo",
+  "codigo": "AR34",
+  "nombre": "Arenal En Arenas S. Pedro",
+  "rio": "Arenal",
+  "lat": 40.159432,
+  "lon": -5.078042,
+  "url_publica": "https://saihtajo.chtajo.es",
+  "extra": {
+   "url_grafico": "https://saihtajo.chtajo.es/index.php?w=get-estacion-grafico-grande&x=%2F4ZGs%2B6M%2BZWfvq6%2FyxpbhbdAXe24pSEYnAF63MXXH5H0QyClFuZp6oSbTgNGYw%2BX1%2BFYMFKHYfdtZEPdnutY%2B1FR701uMRZCSdkGtcA6YMtMUmnLE4mjC%2FhUDEKEVYTiJ%2BZVdUlEOqQTx27YCyEDZg%3D%3D",
+   "senal": "CAUDAL CIRCULANTE"
+  }
+ },
+ {
+  "id": "Tajo:AR35",
+  "cuenca": "Tajo",
+  "codigo": "AR35",
+  "nombre": "Alagón En Garcibuey",
+  "rio": "Alagón",
+  "lat": 40.501749,
+  "lon": -5.94774,
+  "url_publica": "https://saihtajo.chtajo.es",
+  "extra": {
+   "url_grafico": "https://saihtajo.chtajo.es/index.php?w=get-estacion-grafico-grande&x=%2F4ZGs%2B6M%2BZWfvq6%2FyxpbhbdAXe24pSEYnAF63MXXH5H0QyClFuZp6oSbTgNGYw%2BXynMubPBHbSB1cEr9WDytBkBk03SpCevKwiJ%2BV3Y02u5b5UKH9dGgvcnVPGj71NUCOK1FLeuJ7jNhyr2E%2Ft4NCw%3D%3D",
+   "senal": "CAUDAL CIRCULANTE"
+  }
+ },
+ {
+  "id": "Tajo:AR37",
+  "cuenca": "Tajo",
+  "codigo": "AR37",
+  "nombre": "Cuerpo De Hombre En Los Cotos",
+  "rio": "Cuerpo De Hombre",
+  "lat": 40.424793,
+  "lon": -6.013075,
+  "url_publica": "https://saihtajo.chtajo.es",
+  "extra": {
+   "url_grafico": "https://saihtajo.chtajo.es/index.php?w=get-estacion-grafico-grande&x=%2F4ZGs%2B6M%2BZWfvq6%2FyxpbhbdAXe24pSEYnAF63MXXH5H0QyClFuZp6oSbTgNGYw%2BX%2Bv%2FWT8T2%2BRtgnih5UPlh%2BPk7FWz2wVHAhdJNCH2u4vyIAkON2L%2Bl3YoUObIp4jRS5wLe1UTpszp5xfm6kHYkXQ%3D%3D",
+   "senal": "CAUDAL CIRCULANTE"
+  }
+ },
+ {
+  "id": "Tajo:AR38",
+  "cuenca": "Tajo",
+  "codigo": "AR38",
+  "nombre": "Batuecas En El Ladrillar",
+  "rio": "Batuecas",
+  "lat": 40.423529,
+  "lon": -6.143329,
+  "url_publica": "https://saihtajo.chtajo.es",
+  "extra": {
+   "url_grafico": "https://saihtajo.chtajo.es/index.php?w=get-estacion-grafico-grande&x=%2F4ZGs%2B6M%2BZWfvq6%2FyxpbhbdAXe24pSEYnAF63MXXH5H0QyClFuZp6oSbTgNGYw%2BX8bXnB1QqKNjSVCrethlUPiL%2B8MZLPt5V1P%2Ft9KdmU%2FegcEJbtgZhHDq%2F1ca3v8Y9%2B7Gop1qqYXAseSFCd5%2Bn2w%3D%3D",
+   "senal": "CAUDAL CIRCULANTE"
+  }
+ },
+ {
+  "id": "Tajo:R188",
+  "cuenca": "Tajo",
+  "codigo": "R188",
+  "nombre": "Alberche En Aldea Del Fresno",
+  "rio": "Alberche",
+  "lat": 40.307738,
+  "lon": -4.219057,
+  "url_publica": "https://saihtajo.chtajo.es",
+  "extra": {
+   "url_grafico": "https://saihtajo.chtajo.es/index.php?w=get-estacion-grafico-grande&x=%2F4ZGs%2B6M%2BZWfvq6%2FyxpbhbdAXe24pSEYnAF63MXXH5H0QyClFuZp6oSbTgNGYw%2BXgtueY7nTj0eHibrEo5HoOeYw7RFV8e6H%2FWlt8EJ8wZsElYiqK8mlbr8LW%2BldAP6QhnZcx1CradcaWfAqrzsiRg%3D%3D",
+   "senal": "CAUDAL"
+  }
+ },
+ {
+  "id": "Tajo:R502",
+  "cuenca": "Tajo",
+  "codigo": "R502",
+  "nombre": "Tiétar En Talayuela - Pozo Del Rey",
+  "rio": "Tiétar",
+  "lat": 40.06836,
+  "lon": -5.468272,
+  "url_publica": "https://saihtajo.chtajo.es",
+  "extra": {
+   "url_grafico": "https://saihtajo.chtajo.es/index.php?w=get-estacion-grafico-grande&x=%2F4ZGs%2B6M%2BZWfvq6%2FyxpbhbdAXe24pSEYnAF63MXXH5H0QyClFuZp6oSbTgNGYw%2BX4MsZsdSye5mFABHABDQFij7WHlAyWV%2BLpxJJEO5pJimJ56QykeOQQmQmw%2BsrXjcBVp500wQi7UHrnnk2YdUtOg%3D%3D",
+   "senal": "CAUDAL"
+  }
+ },
+ {
+  "id": "Miño-Sil:A030",
+  "cuenca": "Miño-Sil",
+  "codigo": "A030",
+  "nombre": "Rio Sil En Barco De Valdeorras",
+  "rio": "Sil",
+  "lat": 42.41668,
+  "lon": -6.962923,
+  "url_publica": "https://saih.chminosil.es/index.php?url=/datos/ficha/estacion:A030/area:HID",
+  "extra": {
+   "tag": "A030_ACQRIO2"
+  }
+ },
+ {
+  "id": "Miño-Sil:A024",
+  "cuenca": "Miño-Sil",
+  "codigo": "A024",
+  "nombre": "Rio Cúa En Quilós",
+  "rio": "Cúa",
+  "lat": 42.646038,
+  "lon": -6.73201,
+  "url_publica": "https://saih.chminosil.es/index.php?url=/datos/ficha/estacion:A024/area:HID",
+  "extra": {
+   "tag": "A024_ACQRIO1"
+  }
+ },
+ {
+  "id": "Miño-Sil:N037",
+  "cuenca": "Miño-Sil",
+  "codigo": "N037",
+  "nombre": "Rio Sil En Matarrosa Del Sil",
+  "rio": "Sil",
+  "lat": 42.758462,
+  "lon": -6.529674,
+  "url_publica": "https://saih.chminosil.es/index.php?url=/datos/ficha/estacion:N037/area:HID",
+  "extra": {
+   "tag": "N037_ACQRIO1"
+  }
+ },
+ {
+  "id": "Miño-Sil:N036",
+  "cuenca": "Miño-Sil",
+  "codigo": "N036",
+  "nombre": "Rio Tremor En Almagarinos",
+  "rio": "Tremor",
+  "lat": 42.707549,
+  "lon": -6.219462,
+  "url_publica": "https://saih.chminosil.es/index.php?url=/datos/ficha/estacion:N036/area:HID",
+  "extra": {
+   "tag": "N036_ACQRIO1"
+  }
+ },
+ {
+  "id": "Miño-Sil:N008",
+  "cuenca": "Miño-Sil",
+  "codigo": "N008",
+  "nombre": "Rio Selmo En Oencia",
+  "rio": "Selmo",
+  "lat": 42.553571,
+  "lon": -6.90795,
+  "url_publica": "https://saih.chminosil.es/index.php?url=/datos/ficha/estacion:N008/area:HID",
+  "extra": {
+   "tag": "N008_ACQRIO1"
+  }
+ },
+ {
+  "id": "Miño-Sil:N003",
+  "cuenca": "Miño-Sil",
+  "codigo": "N003",
+  "nombre": "Rio Sil En Ponferrada",
+  "rio": "Sil",
+  "lat": 42.551744,
+  "lon": -6.591935,
+  "url_publica": "https://saih.chminosil.es/index.php?url=/datos/ficha/estacion:N003/area:HID",
+  "extra": {
+   "tag": "N003_ACQRIO1"
+  }
+ },
+ {
+  "id": "Miño-Sil:A142",
+  "cuenca": "Miño-Sil",
+  "codigo": "A142",
+  "nombre": "Rio Burbia En Veguellina",
+  "rio": "Burbia",
+  "lat": 42.708026,
+  "lon": -6.779123,
+  "url_publica": "https://saih.chminosil.es/index.php?url=/datos/ficha/estacion:A142/area:HID",
+  "extra": {
+   "tag": "A142_ACQRIO1"
+  }
+ },
+ {
+  "id": "Miño-Sil:A026",
+  "cuenca": "Miño-Sil",
+  "codigo": "A026",
+  "nombre": "Rio Burbia Villafranca Bierzo",
+  "rio": "Burbia",
+  "lat": 42.6059,
+  "lon": -6.817058,
+  "url_publica": "https://saih.chminosil.es/index.php?url=/datos/ficha/estacion:A026/area:HID",
+  "extra": {
+   "tag": "A026_ACQRIO1"
+  }
+ },
+ {
+  "id": "Miño-Sil:A022",
+  "cuenca": "Miño-Sil",
+  "codigo": "A022",
+  "nombre": "Rio Cúa En Fabero",
+  "rio": "Cúa",
+  "lat": 42.757989,
+  "lon": -6.648396,
+  "url_publica": "https://saih.chminosil.es/index.php?url=/datos/ficha/estacion:A022/area:HID",
+  "extra": {
+   "tag": "A022_ACQRIO1"
+  }
+ },
+ {
+  "id": "Miño-Sil:A019",
+  "cuenca": "Miño-Sil",
+  "codigo": "A019",
+  "nombre": "Rio Boeza En Boeza",
+  "rio": "Boeza",
+  "lat": 42.685026,
+  "lon": -6.292437,
+  "url_publica": "https://saih.chminosil.es/index.php?url=/datos/ficha/estacion:A019/area:HID",
+  "extra": {
+   "tag": "A019_ACQRIO1"
+  }
+ },
+ {
+  "id": "Cantábrico:1402",
+  "cuenca": "Cantábrico",
+  "codigo": "1402",
+  "nombre": "Vallo",
+  "rio": "Ser",
+  "lat": 42.893599,
+  "lon": -6.985609,
+  "url_publica": "https://visor.saichcantabrico.es/",
+  "extra": {
+   "cod_roea": "1402"
+  }
+ },
+ {
+  "id": "Cantábrico:1407",
+  "cuenca": "Cantábrico",
+  "codigo": "1407",
+  "nombre": "Ponte da Murias",
+  "rio": "Navia",
+  "lat": 43.024537,
+  "lon": -6.962336,
+  "url_publica": "https://visor.saichcantabrico.es/",
+  "extra": {
+   "cod_roea": "1407"
+  }
+ },
+ {
+  "id": "Cantábrico:1297",
+  "cuenca": "Cantábrico",
+  "codigo": "1297",
+  "nombre": "Ribota",
+  "rio": "Sella",
+  "lat": 43.140492,
+  "lon": -5.054411,
+  "url_publica": "https://visor.saichcantabrico.es/",
+  "extra": {
+   "cod_roea": "1297"
+  }
+ },
+ {
+  "id": "Cantábrico:1268",
+  "cuenca": "Cantábrico",
+  "codigo": "1268",
+  "nombre": "Puentellés",
+  "rio": "Deva",
+  "lat": 43.317097,
+  "lon": -4.607205,
+  "url_publica": "https://visor.saichcantabrico.es/",
+  "extra": {
+   "cod_roea": "1268"
+  }
+ },
+ {
+  "id": "Cantábrico:1274",
+  "cuenca": "Cantábrico",
+  "codigo": "1274",
+  "nombre": "Poncebos",
+  "rio": "Cares",
+  "lat": 43.259102,
+  "lon": -4.83051,
+  "url_publica": "https://visor.saichcantabrico.es/",
+  "extra": {
+   "cod_roea": "1274"
+  }
+ },
+ {
+  "id": "Cantábrico:1178",
+  "cuenca": "Cantábrico",
+  "codigo": "1178",
+  "nombre": "Alonsotegi",
+  "rio": "Cadagua",
+  "lat": 43.243098,
+  "lon": -2.994408,
+  "url_publica": "https://visor.saichcantabrico.es/",
+  "extra": {
+   "cod_roea": "1178"
+  }
+ },
+ {
+  "id": "Ebro:A254",
+  "cuenca": "Ebro",
+  "codigo": "A254",
+  "nombre": "Trueba En Medina Pomar",
+  "rio": "Trueba",
+  "lat": 42.93021,
+  "lon": -3.480322,
+  "url_publica": "https://www.saihebro.com/tiempo-real/estacion-aforos-A254-trueba-medina",
+  "extra": {
+   "tag": "A254L65QRIO1",
+   "zona": "mapa-aforos-H1-alto-ebro-mi"
+  }
+ },
+ {
+  "id": "Ebro:A283",
+  "cuenca": "Ebro",
+  "codigo": "A283",
+  "nombre": "Nela En Villarcayo",
+  "rio": "Nela",
+  "lat": 42.946587,
+  "lon": -3.573343,
+  "url_publica": "https://www.saihebro.com/tiempo-real/estacion-aforos-A283-nela-villarcayo",
+  "extra": {
+   "tag": "A283L65QRIO1",
+   "zona": "mapa-aforos-H1-alto-ebro-mi"
+  }
+ },
+ {
+  "id": "Ebro:A092",
+  "cuenca": "Ebro",
+  "codigo": "A092",
+  "nombre": "Nela En Trespaderne",
+  "rio": "Nela",
+  "lat": 42.80244,
+  "lon": -3.401689,
+  "url_publica": "https://www.saihebro.com/tiempo-real/estacion-aforos-A092-nela-trespaderne",
+  "extra": {
+   "tag": "A092L65QRIO1",
+   "zona": "mapa-aforos-H1-alto-ebro-mi"
+  }
+ },
+ {
+  "id": "Ebro:A166",
+  "cuenca": "Ebro",
+  "codigo": "A166",
+  "nombre": "Jerea En Virues",
+  "rio": "Jerea",
+  "lat": 42.808062,
+  "lon": -3.357328,
+  "url_publica": "https://www.saihebro.com/tiempo-real/estacion-aforos-A166-jerea-virues",
+  "extra": {
+   "tag": "A166L65QRIO1",
+   "zona": "mapa-aforos-H1-alto-ebro-mi"
+  }
+ },
+ {
+  "id": "Ebro:A188",
+  "cuenca": "Ebro",
+  "codigo": "A188",
+  "nombre": "Omecillo En Bergüenda",
+  "rio": "Omecillo",
+  "lat": 42.783655,
+  "lon": -3.044693,
+  "url_publica": "https://www.saihebro.com/tiempo-real/estacion-aforos-A188-omecillo-berguenda",
+  "extra": {
+   "tag": "A188L65QRIO1",
+   "zona": "mapa-aforos-H1-alto-ebro-mi"
+  }
+ },
+ {
+  "id": "Ebro:A026",
+  "cuenca": "Ebro",
+  "codigo": "A026",
+  "nombre": "Ebro En Arroyo",
+  "rio": "Ebro",
+  "lat": 42.962696,
+  "lon": -4.058467,
+  "url_publica": "https://www.saihebro.com/tiempo-real/estacion-aforos-A026-ebro-arroyo",
+  "extra": {
+   "tag": "A026L66QRIO1",
+   "zona": "mapa-aforos-H1-alto-ebro-mi"
+  }
+ },
+ {
+  "id": "Ebro:A161",
+  "cuenca": "Ebro",
+  "codigo": "A161",
+  "nombre": "Ebro En Palazuelos (Rio)",
+  "rio": "Ebro",
+  "lat": 42.791725,
+  "lon": -3.343221,
+  "url_publica": "https://www.saihebro.com/tiempo-real/estacion-aforos-A161-ebro-palazuelos",
+  "extra": {
+   "tag": "A161L65QRIO1",
+   "zona": "mapa-aforos-H1-alto-ebro-mi"
+  }
+ },
+ {
+  "id": "Ebro:A001",
+  "cuenca": "Ebro",
+  "codigo": "A001",
+  "nombre": "Ebro En Miranda",
+  "rio": "Ebro",
+  "lat": 42.687655,
+  "lon": -2.955527,
+  "url_publica": "https://www.saihebro.com/tiempo-real/estacion-aforos-A001-ebro-miranda",
+  "extra": {
+   "tag": "A001L65QRIO1",
+   "zona": "mapa-aforos-H1-alto-ebro-mi"
+  }
+ },
+ {
+  "id": "Ebro:A044",
+  "cuenca": "Ebro",
+  "codigo": "A044",
+  "nombre": "Cidacos En Yanguas",
+  "rio": "Cidacos",
+  "lat": 42.104738,
+  "lon": -2.332236,
+  "url_publica": "https://www.saihebro.com/tiempo-real/estacion-aforos-A044-cidacos-yanguas",
+  "extra": {
+   "tag": "A044T65QRIO1",
+   "zona": "mapa-aforos-H11-semi-alta-logrono"
+  }
+ },
+ {
+  "id": "Ebro:A279",
+  "cuenca": "Ebro",
+  "codigo": "A279",
+  "nombre": "Rudron En Valdelateja",
+  "rio": "Rudron",
+  "lat": 42.774441,
+  "lon": -3.767625,
+  "url_publica": "https://www.saihebro.com/tiempo-real/estacion-aforos-A279-rudron-valdelateja",
+  "extra": {
+   "tag": "A279Z65QRIO1",
+   "zona": "mapa-aforos-H15-alto-ebro-md"
+  }
+ },
+ {
+  "id": "Ebro:A093",
+  "cuenca": "Ebro",
+  "codigo": "A093",
+  "nombre": "Oca En Oña",
+  "rio": "Oca",
+  "lat": 42.735315,
+  "lon": -3.41395,
+  "url_publica": "https://www.saihebro.com/tiempo-real/estacion-aforos-A093-oca-ona",
+  "extra": {
+   "tag": "A093L65QRIO1",
+   "zona": "mapa-aforos-H15-alto-ebro-md"
+  }
+ },
+ {
+  "id": "Ebro:A189",
+  "cuenca": "Ebro",
+  "codigo": "A189",
+  "nombre": "Oroncillo En Orón",
+  "rio": "Oroncillo",
+  "lat": 42.67065,
+  "lon": -2.979422,
+  "url_publica": "https://www.saihebro.com/tiempo-real/estacion-aforos-A189-oroncillo-oron",
+  "extra": {
+   "tag": "A189L65QRIO1",
+   "zona": "mapa-aforos-H15-alto-ebro-md"
+  }
+ },
+ {
+  "id": "Ebro:A165",
+  "cuenca": "Ebro",
+  "codigo": "A165",
+  "nombre": "Bayas En Miranda",
+  "rio": "Bayas",
+  "lat": 42.689018,
+  "lon": -2.928036,
+  "url_publica": "https://www.saihebro.com/tiempo-real/estacion-aforos-A165-bayas-miranda",
+  "extra": {
+   "tag": "A165L65QRIO1",
+   "zona": "mapa-aforos-H2-semi-alta-miranda"
+  }
+ },
+ {
+  "id": "Ebro:A074",
+  "cuenca": "Ebro",
+  "codigo": "A074",
+  "nombre": "Zadorra En Arce",
+  "rio": "Zadorra",
+  "lat": 42.677368,
+  "lon": -2.896768,
+  "url_publica": "https://www.saihebro.com/tiempo-real/estacion-aforos-A074-zadorra-arce",
+  "extra": {
+   "tag": "A074L65QRIO1",
+   "zona": "mapa-aforos-H2-semi-alta-miranda"
+  }
+ },
+ {
+  "id": "Ebro:A050",
+  "cuenca": "Ebro",
+  "codigo": "A050",
+  "nombre": "Tirón En Ochánduri",
+  "rio": "Tirón",
+  "lat": 42.524361,
+  "lon": -3.002084,
+  "url_publica": "https://www.saihebro.com/tiempo-real/estacion-aforos-A050-tiron-ochanduri",
+  "extra": {
+   "tag": "A050L66QRIO1",
+   "zona": "mapa-aforos-H2-semi-alta-miranda"
+  }
+ },
+ {
+  "id": "Ebro:A048",
+  "cuenca": "Ebro",
+  "codigo": "A048",
+  "nombre": "Najerilla En Anguiano",
+  "rio": "Najerilla",
+  "lat": 42.256178,
+  "lon": -2.778086,
+  "url_publica": "https://www.saihebro.com/tiempo-real/estacion-aforos-A048-najerilla-anguiano",
+  "extra": {
+   "tag": "A048L65QRIO1",
+   "zona": "mapa-aforos-H2-semi-alta-miranda"
+  }
+ },
+ {
+  "id": "Ebro:A167",
+  "cuenca": "Ebro",
+  "codigo": "A167",
+  "nombre": "Blanco En Barrio Blanco",
+  "rio": "Blanco",
+  "lat": 41.193068,
+  "lon": -2.33265,
+  "url_publica": "https://www.saihebro.com/tiempo-real/estacion-aforos-A167-blanco-b-blanco",
+  "extra": {
+   "tag": "A167Z66QRIO1",
+   "zona": "mapa-aforos-H20-alto-jalon"
+  }
+ },
+ {
+  "id": "Ebro:A147",
+  "cuenca": "Ebro",
+  "codigo": "A147",
+  "nombre": "Nágima En Monreal Ariza",
+  "rio": "Nágima",
+  "lat": 41.308048,
+  "lon": -2.116142,
+  "url_publica": "https://www.saihebro.com/tiempo-real/estacion-aforos-A147-nagima-monreal-ariza",
+  "extra": {
+   "tag": "A147Z65QRIO1",
+   "zona": "mapa-aforos-H20-alto-jalon"
+  }
+ },
+ {
+  "id": "Ebro:A057",
+  "cuenca": "Ebro",
+  "codigo": "A057",
+  "nombre": "Deza En Embid De Ariza",
+  "rio": "Deza",
+  "lat": 41.386488,
+  "lon": -1.984147,
+  "url_publica": "https://www.saihebro.com/tiempo-real/estacion-aforos-A057-deza-embid",
+  "extra": {
+   "tag": "A057Z65QRIO1",
+   "zona": "mapa-aforos-H20-alto-jalon"
+  }
+ },
+ {
+  "id": "Ebro:A287",
+  "cuenca": "Ebro",
+  "codigo": "A287",
+  "nombre": "Manubles En Bijuesca",
+  "rio": "Manubles",
+  "lat": 41.541148,
+  "lon": -1.922264,
+  "url_publica": "https://www.saihebro.com/tiempo-real/estacion-aforos-A287-manubles-bijuesca",
+  "extra": {
+   "tag": "A287Z65QRIO1",
+   "zona": "mapa-aforos-H20-alto-jalon"
+  }
+ },
+ {
+  "id": "Ebro:A058",
+  "cuenca": "Ebro",
+  "codigo": "A058",
+  "nombre": "Jalon En Jubera",
+  "rio": "Jalon",
+  "lat": 41.196596,
+  "lon": -2.338434,
+  "url_publica": "https://www.saihebro.com/tiempo-real/estacion-aforos-A058-jalon-jubera",
+  "extra": {
+   "tag": "A058Z65QRIO1",
+   "zona": "mapa-aforos-H20-alto-jalon"
+  }
+ },
+ {
+  "id": "Ebro:A043",
+  "cuenca": "Ebro",
+  "codigo": "A043",
+  "nombre": "Linares En S.Pedro Manrique",
+  "rio": "Linares",
+  "lat": 42.019416,
+  "lon": -2.222975,
+  "url_publica": "https://www.saihebro.com/tiempo-real/estacion-aforos-A043-linares-s-pedro-manrique",
+  "extra": {
+   "tag": "A043T65QRIO1",
+   "zona": "mapa-aforos-H21-medio-ebro-md"
+  }
+ },
+ {
+  "id": "Ebro:A251",
+  "cuenca": "Ebro",
+  "codigo": "A251",
+  "nombre": "Alhama En Cervera Alhama",
+  "rio": "Alhama",
+  "lat": 42.007117,
+  "lon": -1.951382,
+  "url_publica": "https://www.saihebro.com/tiempo-real/estacion-aforos-A251-alhama-cervera",
+  "extra": {
+   "tag": "A251T65QRIO1",
+   "zona": "mapa-aforos-H21-medio-ebro-md"
+  }
+ },
+ {
+  "id": "Ebro:A174",
+  "cuenca": "Ebro",
+  "codigo": "A174",
+  "nombre": "Queiles En Los Fayos",
+  "rio": "Queiles",
+  "lat": 41.880492,
+  "lon": -1.781609,
+  "url_publica": "https://www.saihebro.com/tiempo-real/estacion-aforos-A174-queiles-los-fayos",
+  "extra": {
+   "tag": "A174T65QRIO1",
+   "zona": "mapa-aforos-H21-medio-ebro-md"
+  }
  }
 ]

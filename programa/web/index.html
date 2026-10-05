@@ -9,48 +9,72 @@
 </head>
 <body>
   <header>
-    <h1>🎣 Tiempo de Pesca <span>Carrión · Esla · Arlanzón · Cea</span></h1>
-    <nav><a href="como-funciona.html">¿Cómo funciona? · Fuentes</a></nav>
+    <h1><a href="./" id="inicio">🎣 Tiempo de Pesca <span>Castilla y León</span></a></h1>
+    <nav><a href="como-funciona.html">¿Cómo funciona?</a></nav>
   </header>
 
-  <main>
-    <aside id="panel">
-      <form id="form">
-        <label>Río
-          <select id="rio">
-            <option value="">Todos</option>
-          </select>
-        </label>
-        <label>Tramo
-          <select id="tramo" required></select>
-        </label>
-        <label class="check"><input type="checkbox" id="verVedados"> Mostrar refugios (vedados)</label>
-        <label>Día
-          <input type="date" id="fecha" required>
-        </label>
-        <button type="submit">Consultar</button>
-      </form>
-      <div id="map"></div>
-      <div class="leyenda">
-        <span><i style="background:#2b6cb0"></i>Carrión</span>
-        <span><i style="background:#1f7a5a"></i>Esla</span>
-        <span><i style="background:#b7791f"></i>Arlanzón</span>
-        <span><i style="background:#9b2c9b"></i>Cea</span>
-        <span>● estación de aforo</span>
-        <span>🌤️ punto de previsión</span>
-        <span>🏠 pueblo de referencia</span>
-        <span>💧 estación usada</span>
-      </div>
-    </aside>
+  <main class="pasos">
+    <!-- PASO 1: elegir tramo -->
+    <section id="paso1" class="paso">
+      <h2><span class="num">1</span> ¿Dónde vas a pescar?</h2>
 
-    <section id="resultado">
-      <p class="vacio">Elige un tramo (en la lista o en el mapa) y un día.</p>
+      <div id="elegido" class="elegido" hidden></div>
+
+      <div id="eleccion">
+        <p class="instruccion">Pulsa sobre el río en el mapa para elegir el tramo. Usa <b>+</b> y <b>−</b> para acercarte.</p>
+        <div id="mapaElegir"><p class="cargando-mini">Cargando el mapa de tramos…</p></div>
+        <div class="leyenda-mapa">
+          <span><i class="linea truchera"></i> Aguas trucheras</span>
+          <span class="solo-todos" hidden><i class="linea otras"></i> No trucheras</span>
+          <span class="solo-todos" hidden><i class="linea vedada"></i> Vedado</span>
+        </div>
+
+        <div id="recientes" hidden>
+          <p class="etiqueta">Tus últimos tramos:</p>
+          <div id="listaRecientes" class="lista"></div>
+        </div>
+
+        <p class="o">¿No lo encuentras en el mapa? Búscalo aquí:</p>
+        <label class="campo">Busca por río, pueblo o nombre del tramo
+          <input id="buscar" type="search" placeholder="Por ejemplo: Carrión, Saldaña, Esla…" autocomplete="off">
+        </label>
+
+        <p class="o">o elígelo por partes:</p>
+        <div class="fila">
+          <label class="campo">Provincia
+            <select id="provincia"><option value="">Elige la provincia</option></select>
+          </label>
+          <label class="campo">Río
+            <select id="rio" disabled><option value="">Primero elige la provincia</option></select>
+          </label>
+        </div>
+        <label class="check"><input type="checkbox" id="verTodos"> Mostrar también aguas no trucheras y refugios (vedados)</label>
+
+        <div id="listaTramos" class="lista"></div>
+      </div>
     </section>
+
+    <!-- PASO 2: elegir día -->
+    <section id="paso2" class="paso" hidden>
+      <h2><span class="num">2</span> ¿Qué día?</h2>
+      <div id="elegidoDia" class="elegido" hidden></div>
+      <div id="eleccionDia">
+        <div id="dias" class="dias"></div>
+        <label class="campo otro-dia">¿Otro día?
+          <input type="date" id="fecha">
+        </label>
+      </div>
+    </section>
+
+    <!-- PASO 3: resultados -->
+    <section id="paso3" hidden></section>
   </main>
 
   <footer>
-    Datos: tramos <a href="https://idecyl.jcyl.es" target="_blank">IDECyL – Junta de Castilla y León</a> ·
-    caudales <a href="https://www.saihduero.es" target="_blank">SAIH Duero</a> ·
+    Datos: tramos y pueblos <a href="https://idecyl.jcyl.es" target="_blank">Junta de Castilla y León (IDECyL)</a> ·
+    caudales: confederaciones hidrográficas del <a href="https://www.saihduero.es" target="_blank">Duero</a>,
+    <a href="https://saihtajo.chtajo.es" target="_blank">Tajo</a>, <a href="https://saih.chminosil.es" target="_blank">Miño-Sil</a>,
+    <a href="https://visor.saichcantabrico.es" target="_blank">Cantábrico</a> y <a href="https://www.saihebro.com" target="_blank">Ebro</a> ·
     tiempo <a href="https://open-meteo.com" target="_blank">Open-Meteo</a>.
     Consulta siempre la normativa oficial antes de pescar. <a href="como-funciona.html">Cómo funciona</a>.
   </footer>

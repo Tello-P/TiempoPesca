@@ -1,0 +1,4 @@
+{
+  "_instrucciones": "Copia este fichero como config.json en esta misma carpeta y pega tu clave del SAIH Ebro. Se consigue gratis registrándose en https://www.saihebro.com/usuarios/registro y pidiendo en Observaciones acceso a la API de Open Data. Sin clave, el Ebro muestra solo el caudal actual.",
+  "ebro_apikey": ""
+}
