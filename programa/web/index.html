@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tiempo de Pesca CyL</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🎣 Tiempo de Pesca <span>Carrión · Esla · Arlanzón · Cea</span></h1>
+    <nav><a href="como-funciona.html">¿Cómo funciona? · Fuentes</a></nav>
+  </header>
+
+  <main>
+    <aside id="panel">
+      <form id="form">
+        <label>Río
+          <select id="rio">
+            <option value="">Todos</option>
+          </select>
+        </label>
+        <label>Tramo
+          <select id="tramo" required></select>
+        </label>
+        <label class="check"><input type="checkbox" id="verVedados"> Mostrar refugios (vedados)</label>
+        <label>Día
+          <input type="date" id="fecha" required>
+        </label>
+        <button type="submit">Consultar</button>
+      </form>
+      <div id="map"></div>
+      <div class="leyenda">
+        <span><i style="background:#2b6cb0"></i>Carrión</span>
+        <span><i style="background:#1f7a5a"></i>Esla</span>
+        <span><i style="background:#b7791f"></i>Arlanzón</span>
+        <span><i style="background:#9b2c9b"></i>Cea</span>
+        <span>● estación de aforo</span>
+        <span>🌤️ punto de previsión</span>
+        <span>🏠 pueblo de referencia</span>
+        <span>💧 estación usada</span>
+      </div>
+    </aside>
+
+    <section id="resultado">
+      <p class="vacio">Elige un tramo (en la lista o en el mapa) y un día.</p>
+    </section>
+  </main>
+
+  <footer>
+    Datos: tramos <a href="https://idecyl.jcyl.es" target="_blank">IDECyL – Junta de Castilla y León</a> ·
+    caudales <a href="https://www.saihduero.es" target="_blank">SAIH Duero</a> ·
+    tiempo <a href="https://open-meteo.com" target="_blank">Open-Meteo</a>.
+    Consulta siempre la normativa oficial antes de pescar. <a href="como-funciona.html">Cómo funciona</a>.
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

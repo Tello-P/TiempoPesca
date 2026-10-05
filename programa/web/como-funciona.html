@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cómo funciona · Tiempo de Pesca CyL</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1><a href="./">🎣 Tiempo de Pesca</a> <span>Cómo funciona y de dónde salen los datos</span></h1>
+    <nav><a href="./">← Volver a la consulta</a></nav>
+  </header>
+
+  <div class="doc">
+    <div class="card">
+      <h2>En resumen</h2>
+      <p>Eliges un <b>tramo de pesca</b> y un <b>día</b>. La web junta varias fuentes públicas:</p>
+      <table>
+        <thead><tr><th>Dato</th><th>Fuente</th><th>Cómo se relaciona con el tramo</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><b>Tramos y normativa</b></td>
+            <td>Junta de Castilla y León: capa <a href="https://idecyl.jcyl.es/geonetwork/srv/api/records/SPAGOBCYLMNADTSAMPZP" target="_blank">«Pesca CyL: tramos de pesca»</a> (IDECyL)</td>
+            <td>Es el propio tramo: trazado, categoría, modalidad, límites, periodos, cebos y cupos.</td>
+          </tr>
+          <tr>
+            <td><b>Tiempo</b> (viento, temperatura, lluvia)</td>
+            <td><a href="https://open-meteo.com" target="_blank">Open-Meteo</a>, que agrega modelos meteorológicos públicos</td>
+            <td>Se pide para las coordenadas del <b>punto medio del tramo</b> (🌤️ en el mapa). Se indica el
+              <b>pueblo más cercano</b> a ese punto (🏠) como referencia.</td>
+          </tr>
+          <tr>
+            <td><b>Pueblo de referencia</b></td>
+            <td>Junta de Castilla y León: capa <b>«Núcleos de población»</b> (IDECyL)</td>
+            <td>El pueblo habitado más cercano al punto donde se pide el tiempo.</td>
+          </tr>
+          <tr>
+            <td><b>Caudal</b></td>
+            <td><a href="https://www.saihduero.es" target="_blank">SAIH Duero</a>, de la Confederación Hidrográfica del Duero</td>
+            <td>Se usa la estación de aforo <b>del mismo río más cercana</b> al tramo (💧 en el mapa).</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="nota">Todos los resultados llevan un recuadro <b>«Fuente»</b> con enlaces a los datos originales de esa consulta concreta.</p>
+    </div>
+
+    <div class="card">
+      <h2>1. Los tramos</h2>
+      <p>La Junta publica cada temporada una capa cartográfica oficial con <b>todos los tramos de pesca</b> de la comunidad:
+        cotos, AREC, escenarios deportivo-sociales, aguas libres, refugios, excepciones de fechas… Esa capa ya trae el trazado
+        de cada tramo sobre el río y sus datos de normativa, así que <b>no hace falta mantener una base de datos propia</b>.</p>
+      <p>El script <code>programa/scripts/build_data.py</code> descarga esa capa con un servicio WFS estándar, se queda con los tramos de los
+        ríos Carrión, Esla, Arlanzón y Cea, y lo guarda en <code>programa/data/tramos.geojson</code>.</p>
+      <p>Algunos tramos se solapan. Por ejemplo, una «excepción de fecha de inicio y cierre» puede cubrir el mismo trozo de río
+        que un tramo libre: son normas distintas que se aplican sobre el mismo sitio.</p>
+      <p><b>Última descarga:</b> <span id="generado">…</span>. La normativa puede cambiar: antes de pescar, consulta siempre la
+        <a href="https://www.pescacastillayleon.es/visor/" target="_blank">ficha oficial</a>.</p>
+    </div>
+
+    <div class="card">
+      <h2>2. El tiempo</h2>
+      <p><b>¿Dónde se calcula?</b> En las <b>coordenadas del punto medio del tramo</b>, medido a lo largo del río, y no en el centro
+        de un pueblo. Muchos tramos de montaña están lejos del pueblo que les da nombre, y un tramo puede pasar por varios municipios.</p>
+      <p><b>¿Qué pueblo es?</b> Para que sepas de dónde es el tiempo, cada consulta indica el <b>pueblo más cercano</b> a ese punto
+        (por ejemplo, «Tiempo junto a Lario»), con la distancia. Sale de la capa oficial de núcleos de población de la Junta (IDECyL):
+        se usan los núcleos principales habitados y se elige el más cercano en línea recta. Normalmente está a 0,5–3 km.
+        La tabla de abajo indica el pueblo de cada tramo.</p>
+      <p><b>¿De dónde sale?</b> De <a href="https://open-meteo.com" target="_blank">Open-Meteo</a>, un servicio gratuito que redistribuye
+        los modelos de los servicios meteorológicos nacionales. Divide el mapa en una malla de celdas y devuelve la de la celda más
+        cercana, incluida su altitud, que aparece en cada consulta.</p>
+      <ul>
+        <li><b>Hasta 15 días vista y hasta unos 3 meses atrás:</b> API de previsión. Open-Meteo elige los modelos más adecuados para la zona
+          y el plazo (por ejemplo, Météo-France AROME/ARPEGE, DWD ICON o ECMWF). Para días pasados devuelve lo que pronosticaron los
+          modelos, no medidas de estaciones.</li>
+        <li><b>Fechas más antiguas:</b> API de archivo, basada en reanálisis (ERA5 de Copernicus/ECMWF y similares). Es una reconstrucción
+          del tiempo pasado y no incluye probabilidad de lluvia.</li>
+        <li><b>Más de 15 días vista:</b> no hay previsión.</li>
+      </ul>
+      <p><b>Qué significa cada dato:</b></p>
+      <ul>
+        <li><b>Viento:</b> velocidad media a 10 m del suelo, en km/h. <b>Rachas:</b> golpes máximos de viento en esa hora.</li>
+        <li><b>Dirección:</b> la letra (N, SO…) indica <i>de dónde viene</i> el viento y la flecha <i>hacia dónde sopla</i>.</li>
+        <li><b>Lluvia:</b> mm de precipitación en cada hora. <b>Probabilidad:</b> probabilidad de que llueva en esa hora.</li>
+        <li><b>Lluvia 7 días previos:</b> suma de la lluvia de los 7 días anteriores al día elegido. Sirve para intuir si el río puede venir
+          crecido o tomado.</li>
+        <li>En la tabla se resaltan las horas con viento de 25 km/h o más, o con rachas de 35 km/h o más.</li>
+      </ul>
+      <p><b>Limitaciones:</b> la malla tiene una resolución de kilómetros, y en valles encajados (Riaño, alto Carrión…) el viento real puede
+        ser distinto por encauzamientos o brisas de valle. En tramos muy largos, como los embalses, el punto medio puede no representar
+        todo el tramo.</p>
+    </div>
+
+    <div class="card">
+      <h2>3. El caudal</h2>
+      <p>El <a href="https://www.saihduero.es" target="_blank">SAIH Duero</a> (Sistema Automático de Información Hidrológica) es la red de
+        estaciones de aforo de la Confederación Hidrográfica del Duero: miden el nivel y el caudal de los ríos cada pocos minutos.
+        No tiene API pública, así que la web lee el mismo histórico que muestra su página de cada estación (unos 35 días, dato horario).</p>
+      <p><b>¿Cómo se elige la estación?</b> Al generar los datos, a cada tramo se le asigna la estación de aforo <b>del mismo río</b>
+        más cercana a la línea del tramo. Si hay varias dentro del tramo, se elige la más cercana a su punto medio. La asignación completa
+        está en la tabla de abajo, con la distancia, y se puede corregir a mano en <code>OVERRIDES_ESTACION</code>.</p>
+      <ul>
+        <li><b>Día de hoy o futuro:</b> se muestran los últimos 7 días, porque no existe previsión pública de caudal.</li>
+        <li><b>Día pasado:</b> se muestran los 7 días que terminan ese día, si están dentro del histórico disponible.</li>
+        <li><b>Tendencia:</b> compara la media de las últimas 24 h con la de las 24 h anteriores. Si cambia más de un 10 %, sube o baja.</li>
+      </ul>
+      <p><b>Ojo:</b> son datos en tiempo real, provisionales y sin validar. Si entre el tramo y la estación hay una presa o entra un
+        afluente, el caudal en el tramo será distinto. Las estaciones «Salida del embalse de…» miden lo que se desembalsa, que puede
+        cambiar bruscamente de un día para otro.</p>
+    </div>
+
+    <div class="card">
+      <h2>Pueblo y estación de cada tramo</h2>
+      <div class="tabla-wrap">
+        <table id="asignacion">
+          <thead><tr><th>Río</th><th>Tramo</th><th>Categoría</th><th>Tiempo junto a</th><th>Estación de aforo</th><th>Distancia</th></tr></thead>
+          <tbody><tr><td colspan="6">Cargando…</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Privacidad y funcionamiento local</h2>
+      <p>La web funciona en tu ordenador (se arranca con <code>Iniciar-Windows.bat</code> o <code>Iniciar-Linux.sh</code>). Las únicas peticiones externas son las de los datos
+        (Open-Meteo y SAIH Duero), el mapa base de OpenStreetMap y las librerías Leaflet y Chart.js. Las respuestas se guardan en
+        memoria unos 30 minutos para no repetir peticiones.</p>
+      <p><b>Velocidad:</b> el tiempo y el caudal se piden por separado, así que el tiempo aparece en un segundo aunque el SAIH
+        vaya lento (a veces tarda más de 20 s por página). Al arrancar, el servidor descarga en segundo plano el caudal de todas las
+        estaciones; cuando un dato tiene más de 30 minutos, se muestra el que ya había y se actualiza en segundo plano. La hora
+        exacta de cada dato aparece en su recuadro «Fuente».</p>
+    </div>
+  </div>
+
+  <script>
+    const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    (async () => {
+      const [geo, estaciones] = await Promise.all([
+        fetch("/api/tramos").then((r) => r.json()),
+        fetch("/api/estaciones").then((r) => r.json()),
+      ]);
+      const meta = geo.metadata || {};
+      document.getElementById("generado").textContent = (meta.generado || "desconocida").replace("T", " ");
+      const porId = Object.fromEntries(estaciones.map((e) => [e.id, e]));
+      const ajustes = meta.overrides_estacion || {};
+      document.querySelector("#asignacion tbody").innerHTML = geo.features.map(({ properties: p }) => {
+        const e = porId[p.estacion];
+        return `<tr>
+          <td>${esc(p.rio_mas_a)}</td>
+          <td><a href="./#tramo=${encodeURIComponent(p.codigo)}">${esc(p.nombr_tram)}</a> (${esc(p.codigo)})</td>
+          <td>${esc(p.categoria)}</td>
+          <td>${p.pueblo ? `${esc(p.pueblo.nombre)} <span class="sub">(${p.pueblo.dist_km.toLocaleString("es-ES")} km)</span>` : "–"}</td>
+          <td>${e ? `<a href="https://www.saihduero.es/risr/${esc(e.id)}" target="_blank">${esc(e.nombre)}</a> (${esc(e.id)})` : "–"}${ajustes[p.codigo] ? " · asignada a mano" : ""}</td>
+          <td>${p.estacion_dist_km != null ? p.estacion_dist_km.toLocaleString("es-ES") + " km" : "–"}</td>
+        </tr>`;
+      }).join("");
+    })();
+  </script>
+</body>
+</html>

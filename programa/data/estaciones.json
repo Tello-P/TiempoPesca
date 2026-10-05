@@ -1,0 +1,194 @@
+[
+ {
+  "id": "EA508",
+  "nombre": "Pineda de la Sierra",
+  "rio": "Arlanzón",
+  "lat": 42.22937903,
+  "lon": -3.31020521,
+  "url_historico": "https://www.saihduero.es/risr/EA508/historico/xATVRFURfhDM1EUR"
+ },
+ {
+  "id": "EA109",
+  "nombre": "Salida del embalse de Arlanzón",
+  "rio": "Arlanzón",
+  "lat": 42.26967097,
+  "lon": -3.33955368,
+  "url_historico": "https://www.saihduero.es/risr/EA109/historico/xATVRFURflDMxEUR"
+ },
+ {
+  "id": "EA032",
+  "nombre": "Salida del embalse de Úzquiza",
+  "rio": "Arlanzón",
+  "lat": 42.30521355,
+  "lon": -3.3730129,
+  "url_historico": "https://www.saihduero.es/risr/EA032/historico/xATVRFURfJzMwEUR"
+ },
+ {
+  "id": "EA139",
+  "nombre": "Burgos-Arlanzón",
+  "rio": "Arlanzón",
+  "lat": 42.34816593,
+  "lon": -3.73718339,
+  "url_historico": "https://www.saihduero.es/risr/EA139/historico/xATVRFURflzMxEUR"
+ },
+ {
+  "id": "EA116",
+  "nombre": "Celada del Camino",
+  "rio": "Arlanzón",
+  "lat": 42.25524238,
+  "lon": -3.92800992,
+  "url_historico": "https://www.saihduero.es/risr/EA116/historico/xATVRFURfZTMxEUR"
+ },
+ {
+  "id": "EA512",
+  "nombre": "Triollo",
+  "rio": "Carrión",
+  "lat": 42.92926519,
+  "lon": -4.6750927,
+  "url_historico": "https://www.saihduero.es/risr/EA512/historico/xATVRFURfJTM1EUR"
+ },
+ {
+  "id": "EA108",
+  "nombre": "Salida del embalse de Camporredondo",
+  "rio": "Carrión",
+  "lat": 42.89520652,
+  "lon": -4.74454434,
+  "url_historico": "https://www.saihduero.es/risr/EA108/historico/xATVRFURfhDMxEUR"
+ },
+ {
+  "id": "EA037",
+  "nombre": "Salida del embalse de Compuerto",
+  "rio": "Carrión",
+  "lat": 42.85284602,
+  "lon": -4.83334502,
+  "url_historico": "https://www.saihduero.es/risr/EA037/historico/xATVRFURfdzMwEUR"
+ },
+ {
+  "id": "EA134",
+  "nombre": "Guardo",
+  "rio": "Carrión",
+  "lat": 42.80747349,
+  "lon": -4.84990891,
+  "url_historico": "https://www.saihduero.es/risr/EA134/historico/xATVRFURfRzMxEUR"
+ },
+ {
+  "id": "EA023",
+  "nombre": "Celadilla del Río",
+  "rio": "Carrión",
+  "lat": 42.60824545,
+  "lon": -4.79830863,
+  "url_historico": "https://www.saihduero.es/risr/EA023/historico/xATVRFURfNjMwEUR"
+ },
+ {
+  "id": "EA040",
+  "nombre": "Villoldo",
+  "rio": "Carrión",
+  "lat": 42.2494274,
+  "lon": -4.60015592,
+  "url_historico": "https://www.saihduero.es/risr/EA040/historico/xATVRFURfBDNwEUR"
+ },
+ {
+  "id": "EA187",
+  "nombre": "Ribas de Campos",
+  "rio": "Carrión",
+  "lat": 42.14477751,
+  "lon": -4.52275278,
+  "url_historico": "https://www.saihduero.es/risr/EA187/historico/xATVRFURfdDOxEUR"
+ },
+ {
+  "id": "EA042",
+  "nombre": "Palencia",
+  "rio": "Carrión",
+  "lat": 42.03625314,
+  "lon": -4.55828678,
+  "url_historico": "https://www.saihduero.es/risr/EA042/historico/xATVRFURfJDNwEUR"
+ },
+ {
+  "id": "EA104",
+  "nombre": "Villaverde de Arcayos",
+  "rio": "Cea",
+  "lat": 42.61335066,
+  "lon": -5.03866094,
+  "url_historico": "https://www.saihduero.es/risr/EA104/historico/xATVRFURfRDMxEUR"
+ },
+ {
+  "id": "EA073",
+  "nombre": "Sahagún",
+  "rio": "Cea",
+  "lat": 42.37044177,
+  "lon": -5.03802237,
+  "url_historico": "https://www.saihduero.es/risr/EA073/historico/xATVRFURfNzNwEUR"
+ },
+ {
+  "id": "EA516",
+  "nombre": "Valderas",
+  "rio": "Cea",
+  "lat": 42.08158196,
+  "lon": -5.46223185,
+  "url_historico": "https://www.saihduero.es/risr/EA516/historico/xATVRFURfZTM1EUR"
+ },
+ {
+  "id": "EA529",
+  "nombre": "Liegos",
+  "rio": "Esla",
+  "lat": 43.028346,
+  "lon": -5.07653831,
+  "url_historico": "https://www.saihduero.es/risr/EA529/historico/xATVRFURfljM1EUR"
+ },
+ {
+  "id": "EA102",
+  "nombre": "Las Salas",
+  "rio": "Esla",
+  "lat": 42.93344058,
+  "lon": -5.10049006,
+  "url_historico": "https://www.saihduero.es/risr/EA102/historico/xATVRFURfJDMxEUR"
+ },
+ {
+  "id": "EA103",
+  "nombre": "Cistierna",
+  "rio": "Esla",
+  "lat": 42.83351016,
+  "lon": -5.13090663,
+  "url_historico": "https://www.saihduero.es/risr/EA103/historico/xATVRFURfNDMxEUR"
+ },
+ {
+  "id": "EA111",
+  "nombre": "Villómar",
+  "rio": "Esla",
+  "lat": 42.51648895,
+  "lon": -5.37436437,
+  "url_historico": "https://www.saihduero.es/risr/EA111/historico/xATVRFURfFTMxEUR"
+ },
+ {
+  "id": "EA710",
+  "nombre": "Villalobar",
+  "rio": "Esla",
+  "lat": 42.39628809,
+  "lon": -5.55595363,
+  "url_historico": "https://www.saihduero.es/risr/EA710/historico/xATVRFURfBTM3EUR"
+ },
+ {
+  "id": "EA711",
+  "nombre": "Benamariel 2",
+  "rio": "Esla",
+  "lat": 42.36674105,
+  "lon": -5.56485818,
+  "url_historico": "https://www.saihduero.es/risr/EA711/historico/xATVRFURfFTM3EUR"
+ },
+ {
+  "id": "EA074",
+  "nombre": "Castropepe",
+  "rio": "Esla",
+  "lat": 41.97428643,
+  "lon": -5.63655064,
+  "url_historico": "https://www.saihduero.es/risr/EA074/historico/xATVRFURfRzNwEUR"
+ },
+ {
+  "id": "EA530",
+  "nombre": "Bretó",
+  "rio": "Esla",
+  "lat": 41.87224825,
+  "lon": -5.76562617,
+  "url_historico": "https://www.saihduero.es/risr/EA530/historico/xATVRFURfBzM1EUR"
+ }
+]
